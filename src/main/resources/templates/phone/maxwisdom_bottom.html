@@ -1,0 +1,250 @@
+<div th:fragment="maxwisdom_bottom">
+
+
+    <style type="text/css">
+        .row{margin: 0px;}
+
+    </style>
+
+
+    <div class="row" style="margin: 0 auto;text-align: center; height: 100%; background-image: url(/static/images/phone/chossefteacher/commodityOnePxwj/bottom.jpg); background-size: cover;">
+        <br/><br/><br/>
+        <div class="col-xs-12">
+            <p style="font-size:5vw;font-family: Medium;line-height:100%;color: white; ">麦思顿英语免费试听课+活动课</p>
+        </div>
+        <div class="col-xs-12">
+            <div class="foot-form ">
+                <div class="row foot-fmx" id="myModal">
+                    <div class="modal-body">
+                        <form id="tijiaonav" class="form-horizontal">
+                            <div class="row">
+                                <div class=" col-xs-12" style="text-align: left;">
+                                    <div class="form-group">
+                                        <label class=" control-label" style="color: white;">姓名</label>
+                                        <input type="text" v-model="name" class="form-control"
+                                               maxlength="32"    name="name"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class=" col-xs-12"style="text-align: left;">
+
+                                    <div class="form-group">
+                                        <label class=" control-label" style="color: white;">年龄</label>
+                                        <input type="text" v-model="age" class="form-control"
+                                               maxlength="2"      name="age"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-xs-12" style="text-align: left;">
+
+                                    <div class="form-group">
+                                        <!--oninput="if(value.length>11)value=value.slice(0,11)"-->
+                                        <label class=" control-label" style="color: white;">电话</label>
+                                        <input type="number" v-model="phone" class="form-control"
+                                               maxlength="11" name="phone" id="phoneId"/>
+                                        <!--<div class="box" v-show="statu==true">您输入的手机号码格式正确</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12 col-button " >
+                        <!--onclick="submitImmediately()"-->
+                        <button type="button" class="btn btn-primary" id="tijiaosubi"  style="background-color: white;color: #444666; border: 1px solid white;">立即领取</button>
+                    </div>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin: 0 auto;text-align: center; height: 100%; background-color: #5d5d5d;">
+        <br/><br/>
+        <div class="col-xs-12">
+            <img src="/static/images/phone/chossefteacher/logo.png" style="width: 35%;">
+        </div>
+        <br/><br/><br/>
+        <br/>
+        <div class="col-xs-12">
+            <div class="col-xs-6" style="text-align: left;">
+                <a href="/parallel/aboutUs"><p style="color: white;">关于我们</p></a>
+            </div>
+            <div class="col-xs-6" style="color: white;">
+                <img src="/static/images/phone/chossefteacher/commodityOnePxwj/phone.png" style="width: 92%; margin-left: 16px;">
+            </div>
+        </div>
+
+
+        <div class="col-xs-12">
+            <div class="col-xs-6" style="text-align: left; color: white;color: white;">
+                <a href="/parallel/chooseTeacher"><p style="color: white;">选择外教</p></a>
+            </div>
+            <div class="col-xs-6" style="color: white;">
+                        <img src="/static/images/phone/chossefteacher/commodityOnePxwj/email.png" style="width: 80%;">
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="col-xs-6" style="text-align: left; color: white;">
+                <a href="/parallel/partener"><p style="color: white;">城市合伙人</p></a>
+            </div>
+            <div class="col-xs-6">
+            </div>
+        </div>
+
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <br/><br/><br/>
+    </div>
+
+    <script type="text/javascript">
+
+        var jobsub = new Vue({
+            el: "#tijiaonav",
+            data: {
+                name: '',
+                age: '',
+                phone: '',
+            },
+            watch: {
+                phone: function () {
+                    this.phone = this.phone.replace(/\D/g, '')
+                }
+            },
+
+            methods: {
+
+            }
+
+        })
+        $("#tijiaosubi").click(function () {
+            // 检查正则
+            $('#tijiaonav').data('bootstrapValidator').validate();//启用验证
+            flag = $('#tijiaonav').data('bootstrapValidator').isValid();
+            if (flag == true) {
+                $('.alert-warning').html('').hide();
+                $('.alert-success').html('').hide();
+                $('.alert-info').html('提交中请稍后...').show();
+                $("#tijiaosubi").attr("disabled", "true");
+                var formData = new FormData();
+                formData.append("name", jobsub.name);
+                formData.append("age", jobsub.age);
+                formData.append("phone", jobsub.phone);
+
+                /*var phone = document.getElementById('phoneId').value;
+                if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone))){
+                    alert("手机号码有误，请重新输入");
+                    $("#tijiaosubi").removeAttr("disabled");
+                    return false;
+                }*/
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    // contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+                    //  dataType: "json",//预期服务器返回的数据类型
+                    url: "/audition/receive",//url
+                    cache: false,//cache设置为false，上传文件不需要缓存。
+                    processData: false,//取消默认的序列化,因为formaata已经是序列化的数据
+                    contentType: false,//contentType设置为false，不设置contentType值，因为是由<form>表单构造的FormData对象，且已经声明了属性enctype="multipart/form-data"，所以这里设置为false。
+                    data: formData,
+
+                    success: function (result) {
+                        fanhui = result;
+                        if (fanhui == "sucees") {
+                            $('.alert-warning').html('').hide();
+                            $('.alert-info').html('').hide();
+                            $('.alert-success').html('').hide();
+                            message("我们将在24小时之内联系您");
+                        } else if (fanhui == "error") {
+                            $('.alert-warning').html('').hide();
+                            $('.alert-info').html('').hide();
+                            message("服务器异常");
+                            $("#tijiaosubi").removeAttr("disabled");
+                        } else {
+                            $('.alert-warning').html('').hide();
+                            $('.alert-info').html('').hide();
+                            message("服务器异常");
+                            $("#tijiaosubi").removeAttr("disabled");
+                        }
+                    },
+                    error: function () {
+                        $('.alert-warning').html('').hide();
+                        $('.alert-info').html('').hide();
+                        message("服务器异常");
+                        $("#tijiaosubi").removeAttr("disabled");
+                        console.log(reason);
+                    }
+                })
+
+            } else {
+                $('.alert-info').html('').hide();
+                $('.alert-success').html('').hide();
+                $('.alert-warning').html('请修改后再提交').show();
+            }
+        })
+        /*< !--当个别控件判断失效时可以试着把他的位置换到上面来-- >*/
+
+        $('#tijiaonav').bootstrapValidator(
+            {
+                message: '无效的值',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    name: {
+                        validators: {
+                            notEmpty: {
+                                message: '名称不能为空'
+                            }
+                        }
+                    },
+                    age: {
+                        validators: {
+                            min: 1,
+                            max: 2,
+                            notEmpty: {
+                                message: '年龄不能为空'
+                            },
+                            digits: {
+                                message: '该值只能包含数字。'
+                            }
+                        }
+
+                    },
+                    phone: {
+                        validators: {
+                            notEmpty:{
+                                message:'手机号码不能为空'
+                            },
+                            stringlength:{
+                                min:11,
+                                max:11,
+                                message:'请输入11位手机号码'
+                            },
+                            regexp:{
+                                regexp:/^1[3|5|8|7]{1}[0-9]{9}$/,
+                                message:'请输入正确的手机号码'
+                            }
+                        }
+                    }
+
+                }
+            }).on('success.form.bv', function (e) {
+        });
+
+
+    </script>
+
+
+
+
+</div>

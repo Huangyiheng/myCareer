@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- release v4.4.9, copyright 2014 - 2018 Kartik Visweswaran -->
+<!--suppress JSUnresolvedLibraryURL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js" ></script>
+    <script type="text/javascript" src="js/bootstrap.js" ></script>
+        <script type="text/javascript" src="js/fileinput.js" ></script>
+        
+	<link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/fileinput.css" />
+</head>
+<body>
+<div class="container kv-main">
+    <form enctype="multipart/form-data">
+        <div class="file-loading">
+            <input id="kv-explorer" type="file" multiple>
+        </div>
+       
+        <br>
+      
+    </form>
+</div>
+</body>
+<script>
+   
+    $(document).ready(function () {
+       
+        $("#kv-explorer").fileinput({
+            'theme': 'explorer-fa',
+            'uploadUrl': '#',
+            overwriteInitial: false,
+            initialPreviewAsData: true
+        });
+    });
+</script>
+</html>

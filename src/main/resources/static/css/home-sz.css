@@ -1,0 +1,397 @@
+.gjkc h1,
+.shizi h1
+ {
+	font-size: 60px;
+	line-height: 1;
+	font-weight: 500;
+	letter-spacing: -3px
+}
+
+.gjkc h2,
+.shizi h2
+ {
+	font-size: 28px;
+	font-weight: 600;
+	margin-top: 25px
+}
+
+.gjkc,.shizi {
+
+	text-align: center;
+	padding-top: 240px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+.gjkc .gjkc-js ,
+.shizi .gjkc-js{
+	font-size: 18px;
+	line-height: 24px;
+	margin-top: 10px;
+	margin-bottom: 63px
+}
+
+.gjkc .arrow,
+.shizi .arrow {
+	width: 26px;
+	height: 39px;
+	background: url(../img/db2.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 20px;
+	left: 0
+}
+
+.gjkc .list-item2 .arrow ,
+.shizi .list-item2 .arrow{
+	background-image: url(../img/db1.png);
+	left: auto;
+	right: 0
+}
+
+.gjkc .list-item ,
+.shizi .list-item{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex
+}
+
+.gjkc .list-item img ,
+.shizi .list-item img{
+	width: 100%;
+	height: auto
+}
+.shizi .list-item .explore,
+.gjkc .list-item .explore {
+	width: 240px;
+	height: 240px;
+	background: url(../images/index/explore.jpg) no-repeat;
+	background-size: 100% 100%;
+	display: block;
+	float: right
+}
+.shizi .list-item .item-box .explore,
+.gjkc .list-item .item-box .explore {
+	display: none;
+	float: left
+}
+.shizi .list-item2,
+.gjkc .list-item2 {
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end
+}
+.shizi .list-item4 .item-box,
+.gjkc .list-item4 .item-box {
+	background: #fff
+}
+.shizi .item-img,
+.gjkc .item-img {
+	width: 50%
+}
+.shizi .item-box,
+.gjkc .item-box {
+	width: 480px;
+	background: #f9f9f9;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: left;
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	/*justify-content: center;*/
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column
+}
+.shizi .item-box p,
+.gjkc .item-box p {
+	padding: 0 70px
+}
+.shizi .item-box .name,
+.gjkc .item-box .name {
+	font-size: 54px;
+	line-height: 60px;
+	font-weight: bold
+}
+.shizi .item-box .v-name
+.gjkc .item-box .v-name {
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 10px
+}
+.shizi .item-box .desc,
+.gjkc .item-box .desc {
+	width: 80%;
+	font-size: 19px;
+	line-height: 30px;
+	margin-top: 18px;
+	text-indent: 3em;
+	word-wrap:break-word;
+
+
+}
+.shizi .item-box .more,
+.gjkc .item-box .more {
+font-family: NotoSansHans-DemiLight;
+	width: 25%;
+	height: 66px;
+	line-height: 66px;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	background-color: #666666;
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+}
+.sizibutton{
+	position: relative;left: 210px;
+	width: 25%;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	background-color: #666666;
+}
+
+
+.gjkc h1,
+
+	.gjkc h2,
+	.jzs h2,
+	.hzhb h2 {
+		margin-top: 10px
+	}
+	.gjkc {
+		padding-top: 30px
+	}
+
+	.gjkc .gjkc-js {
+		margin-bottom: 83px
+	}
+	.gjkc .list-item .explore {
+		width: 170px;
+		height: 170px
+	}
+	.gjkc .list-item .item-img .explore {
+		display: none
+	}
+	.gjkc .list-item .item-box .explore {
+		display: block
+	}
+	.gjkc .item-box {
+		width: 450px
+	}
+	.gjkc .item-box p {
+		padding: 0 40px
+	}
+	.gjkc .item-box .v-name {
+		margin-top: 0px
+	}
+	.gjkc .item-box .name {
+		margin-top: -190px;
+		font-size: 48px;
+		line-height: 54px
+	}
+	.gjkc .item-box .more {
+		height: 55px;
+		line-height: 55px
+	}
+
+
+.shizi h1,
+	.jzs h1,
+	.hzhb h1 {
+		font-size: 48px
+	}
+	.shizi h2,
+	.jzs h2,
+	.hzhb h2 {
+		margin-top: 10px
+	}
+	.shizi {
+		padding-top: 83px
+	}
+
+	.shizi .gjkc-js {
+		margin-bottom: 83px
+	}
+	.shizi .list-item .explore {
+		width: 170px;
+		height: 170px;
+	}
+	.shizi .list-item .item-img .explore {
+		display: none;
+	}
+	.shizi .list-item .item-box .explore {
+		display: block;
+	}
+	.shizi .item-box {
+		width: 400px;
+	}
+	.shizi .item-box p {
+		padding: 0 40px;
+	}
+	.shizi .item-box .v-name {
+		margin-top: 0px;
+	}
+	.shizi .item-box .name {
+		margin-top: -10px;
+		font-size: 48px;
+		line-height: 54px
+	}
+	.shizi .item-box .more {
+		height: 55px;
+		line-height: 55px
+	}
+
+	/*动画效果*/
+
+/*.kechengtixion h1,
+.gjkc-js
+.kechengtixion,h2{
+	opacity: 1;
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0)
+}
+.gjkc-js,
+.kechengtixi h1,
+.kechengtixi h2{
+
+	opacity: 0;
+	-webkit-transform: translate(0, 100px);
+	transform: translate(0, 100px);
+	-webkit-transition: all 1s linear;
+	transition: all 1s linear
+
+
+
+}*/
+
+
+
+
+
+
+
+.xuanchuan h1,
+.gjkc h1,
+.shizi h1,
+.gjkc h2,
+.shizi h2,
+.shizi .gjkc-js,
+.gjkc .gjkc-js {
+	opacity: 0;
+	-webkit-transform: translate(0, 100px);
+	transform: translate(0, 100px);
+	-webkit-transition: all 1s linear;/*一秒执行完,由快到慢*/
+	transition: all 1s linear;
+
+}
+.xuanchuan.on h1,
+.shizi.on h1,
+.gjkc.on h1,
+.gjkc.on h2,
+.shizi.on h2,
+.shizi.on .gjkc-js ,
+.gjkc.on .gjkc-js {
+	opacity: 1;
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+.shizi.on h2,
+.gjkc.on h2 {
+	-webkit-transition-delay: 0.3s;/*延时执行*/
+	transition-delay: 0.3s;
+}
+.shizi.on .gjkc-js
+.gjkc.on .gjkc-js {
+	-webkit-transition-delay: 0.6s;
+	transition-delay: 0.6s;
+}
+/*课程体系动画*/
+.dong1 .item-img,
+.dong3 .item-img,
+.dong5 .item-img,
+
+.dong2 .item-box,
+.dong4 .item-box
+{
+	-webkit-transform: translate(-200px, 0);
+	transform: translate(-200px, 0);
+	opacity: 0;
+}
+.dong1 .item-box,
+.dong3 .item-box,
+.dong5 .item-box,
+
+.dong2 .item-img,
+.dong4 .item-img
+{
+	-webkit-transform: translate(200px, 0);
+	transform: translate(200px, 0);
+	opacity: 0;
+}
+
+.dong1.on .item-box,
+.dong1.on .item-img,
+.dong2.on .item-box,
+.dong2.on .item-img,
+.dong3.on .item-box,
+.dong3.on .item-img,
+.dong4.on .item-box,
+.dong4.on .item-img,
+.dong5.on .item-box,
+.dong5.on .item-img
+
+{
+	-webkit-transition: all 1s 0s;
+	transition: all 1s 0s;
+	opacity: 1;
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0)
+}
+
+
+
+
+.tixiitem .item-box{
+	opacity: 0;
+	transform: scale(0.5);
+}
+.tixiitem.on .item-box{
+	opacity: 1;
+	transform: scale(1.0);
+
+	-webkit-transition: all 1.5s 0s;
+	transition: all 1.5s 0s;
+
+}
+
+.doubleclass{
+	opacity: 0;
+	transform: scale(1.2);
+}
+.doubleclass.on{
+	-webkit-transition: all 1.5s 0s;
+	transition: all 1.5s 0s;
+	opacity: 1;
+	transform: scale(1);
+}
+
+
+
+
+
+
+
+

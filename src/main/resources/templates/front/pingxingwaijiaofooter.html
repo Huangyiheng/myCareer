@@ -1,0 +1,773 @@
+<div th:fragment="footer">
+
+
+    <style type="text/css">
+
+
+        /********************底部栏样式开始****************/
+
+
+        .foot-bar {
+            background-color: #141414;
+            padding: 20px 15px;
+            text-align: center
+        }
+
+        .foot-bar a,
+        .foot-bar span {
+            color: #FFFFFF;
+            margin: 0 5px;
+        }
+
+        .foot-bar img {
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+
+        .footer {
+            background-color: #2d2d2d;
+            color: #FFFFFF;
+            height: 450px;
+        }
+
+        .foot-main {
+            /*padding: 100px 0;*/
+        }
+
+
+        .foot-nav {
+            position: relative;
+            padding-top: 10px;
+            margin: 30px 0;
+        }
+
+        .foot-nav:before {
+            display: block;
+            content: '　';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fb6b22;
+            width: 40px;
+            height: 4px;
+        }
+
+        .foot-nav li {
+            width: 100px;
+            float: left;
+            padding: 5px 0;
+        }
+
+        .foot-nav li a {
+            color: #909090;
+        }
+
+        .foot-nav li a:hover {
+            color: #FFFFFF;
+        }
+
+        .foot-hd {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #FFFFFF;
+        }
+
+        .foot-hd:after {
+            display: block;
+            content: '　';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: #fb6b22;
+            width: 40px;
+            height: 4px;
+        }
+
+        .foot-contact .tel {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .foot-contact .tel .iconfont {
+            font-size: 22px;
+        }
+
+
+        .foot-hd.text-center:after {
+            left: 50%;
+            margin-left: -20px;
+        }
+
+        .foot-form {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .foot-form .foot-hd {
+            font-size: 20px;
+        }
+
+        .foot-fmx > div {
+            padding: 5px;
+        }
+
+        .foot-fmx input {
+            height: 32px;
+            line-height: 30px;
+            padding: 0 10px;
+            width: 100%;
+            background-color: transparent;
+            outline: none;
+            color: #FFFFFF;
+
+        }
+
+        .foot-fmx .btn-getv {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 35px;
+            background-color: #ff8a00;
+            color: #FFFFFF;
+            cursor: pointer;
+            width: 300px;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 16px;
+        }
+
+
+        .footer {
+            background-image: url("/static/images/paralleTeachers/dibutupian.jpg");
+            /*padding-top: 50px;
+            //padding-bottom: 100px*/
+        }
+
+        .footer .wrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+
+        .footer .left-box,
+        .footer .right-box {
+            width: 50%
+        }
+
+        .footer .left-box {
+            padding-left: 85px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        .footer h3 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 33px
+        }
+
+        .footer .enter,
+        .footer .about {
+            display: inline-block;
+            text-align: center
+        }
+
+        .footer .enter a,
+        .footer .about a {
+            color: #d3d2d2;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+            -webkit-transition: color 0.25s;
+            transition: color 0.25s;
+            text-align: left
+        }
+
+        .footer .enter a:hover,
+        .footer .about a:hover {
+            color: #fff
+        }
+
+        .footer .enter {
+            border-right: 2px dashed #636363;
+            padding-right: 35px
+        }
+
+        .footer .enter a {
+            margin-bottom: 24px
+        }
+
+        .footer .about {
+            padding-left: 35px
+        }
+
+        .footer .logo {
+            width: 175px;
+            margin-top: 70px
+        }
+
+        .footer .right-box p {
+            font-size: 14px;
+            color: #d3d2d2;
+            line-height: 24px
+        }
+
+        .footer .right-box .fp0 {
+            padding-left: 73px
+        }
+
+        .footer .iconcode {
+            display: inline-block;
+            width: 100%;
+            margin-top: 50px;
+            line-height: 158px
+        }
+
+        .footer .iconcode a {
+            width: 45px;
+            height: 45px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin-right: 18px;
+            display: inline-block
+        }
+
+
+        .footer .iconcode .code {
+            width: 124px;
+            text-align: center;
+            float: right;
+            display: none
+        }
+
+        .footer .iconcode .coo {
+            margin-right: 25px;
+            margin-left: 50px;
+            display: none
+        }
+
+        .footer .iconcode .code-name {
+            font-size: 14px;
+            color: #d3d2d2;
+            margin-top: 10px
+        }
+
+        .footer .iconcode img {
+            display: block;
+            max-width: 100%
+        }
+
+        .footer .cpy {
+            width: 100%;
+            text-align: center;
+            color: #cdcdcd;
+            font-size: 16px;
+            line-height: 30px;
+            margin-top: 30px
+        }
+
+        .footer .footer-flex {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+
+        .clearfix > li, .share-link {
+            list-style: none;
+        }
+
+        /*修改提示文字颜色*/
+        input::-webkit-input-placeholder { /* WebKit browsers */
+
+            color: white;
+
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+            color: white;
+
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+
+            color: white;
+
+        }
+
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */
+
+            color: white;
+
+        }
+
+        .footfitie div {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        /**********底部栏样式结束*****************/
+
+        /*    右侧导航栏*/
+        /*右侧导航栏*/
+
+        .xgwz_fix {
+            width: 90px;
+
+            background-color: #fff;
+            box-shadow: 0 0 10px #ccc;
+            position: fixed;
+            z-index: 99999;
+            top: 45%;
+            right: 20px;
+            border-radius: 50px;
+            text-align: center;
+            padding: 2vw 10px;
+        }
+
+        .xgwz_fix img {
+            display: initial;
+            margin: 10px 0px;
+            cursor: pointer;
+        }
+
+        .xgwz_fix .fuwuhao-pic {
+            display: none;
+            position: absolute;
+            width: 177px;
+            /*  border: 3px solid #fff;*/
+            /* box-shadow: 0 0 10px #ccc;*/
+        }
+
+        .xgwz_fix .fuwuhao-pic img {
+            max-width: 100%;
+        }
+
+        .xgwz_fix a.fuwuhao {
+            position: relative
+        }
+
+        .xgwz_fix a.fuwuhao:hover .fuwuhao-pic {
+            display: block;
+            right: 80px;
+            top: -2vw;
+        }
+
+        .kefudianhua-pic {
+            display: none;
+            position: absolute;
+            width: 260px;
+            height: 50px;
+            line-height: 50px;
+            background: #fff;
+            color: #ff8a00;
+            font-size: 30px;
+            text-align: center;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .xgwz_fix a.kefudianhua {
+            position: relative
+        }
+
+        .xgwz_fix a.kefudianhua:hover .kefudianhua-pic {
+            display: block;
+            right: 80px;
+            bottom: -25px;
+        }
+
+        .xgwz_fix h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .img_tel{
+            width: 100%;
+        }
+
+    </style>
+    <!--右侧的导航栏-->
+    <div id="rightnav">
+        <div class="xgwz_fix">
+
+
+            <a class="fuwuhao "><img class="img_tel " src="\static\images\pingxingwaijiao\01.png">
+            </a>
+            <br/>
+            <a class="fuwuhao "><img class="img_tel " src="\static\images\pingxingwaijiao\02.png">
+                <div class="fuwuhao-pic " style="border: 0px;box-shadow: 0 0 0px #ccc; "><img
+                        src="\static\images\pingxingwaijiao\lianxidianhua.jpg" style="border-radius: 10px;width:90%;float: right;"></div>
+            </a>
+            <br/>
+            <a class="fuwuhao "><img class="img_tel "  src="\static\images\pingxingwaijiao\03.png  "
+                                     style="border-radius: 10px;width: 90%;">
+                <div class="fuwuhao-pic " style="border: 0px;box-shadow: 0 0 0px #ccc;"><img
+                        src="\static\images\pingxingwaijiao\gongzonghao.jpg" style="border-radius: 10px;width:60%;float: right;position:relative;"></div>
+            </a>
+        </div>
+
+        <!--弹出-->
+        <div class="deskDiv " style="display: none; "></div>
+
+        <div class="layerDiv receive " style="top: 194px; display: none; ">
+            <div class="layerTitle ">
+                <h2>{{$t('i18ndata.mianfeilingqushitingke')}}</h2>
+                <span class="closeBox " id="close"></span>
+            </div>
+            <form class="layerForm cleafix " @submit.prevent="baoming($event)"
+                  name="form2 " id="form2 ">
+                <ul>
+                    <li>
+                        <span>{{$t('i18ndata.xingming')}}</span>
+                        <div class="formBox "><input class="formtxt " v-model="babyname" type="text " name="name "
+                                                     maxlength="30">
+                        </div>
+                    </li>
+                    <li>
+                        <span>{{$t('i18ndata.nianling')}}</span>
+                        <div class="formBox "><input class="formtxt " v-model="babyage" type="text " name="babyage "
+                                                     maxlength="2">
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>{{$t('i18ndata.dianhua')}}</span>
+                        <div class="formBox "><input class="formtxt " v-model="phoneNumber" type="text "
+                                                     @blur="blur_phone()" name="phoneNumber " maxlength="11 ">
+
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <div class="formBtn ">
+
+                            <button type="submit" id="submit" class="submit1 baomingsubmit">
+                                <strong id="fixdtishimsg">{{$t('i18ndata.lijilingqu')}}</strong>
+                            </button>
+                            <!--                        <button type="submit"  id="submit" class="submit1 baomingsubmit" ><strong>{{tishimsg}}<strong/></button>-->
+                            <!--                    -->
+
+
+                        </div>
+                    </li>
+                    <p style="width: 100%;color: #9b9b9b;text-align: center;">{{$t('i18ndata.ershisilianxi')}}</p>
+                </ul>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!--页面底部-->
+    <div class="footer " id="footer"
+         style=" background-repeat: no-repeat;background-size: cover;overflow: hidden;">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="foot-main  " style="padding-left: 20px;padding-right: 20px">
+            <div style="max-width: 1440px;margin: 0 auto;">
+                <div class="row footfitie">
+                    <div class="col-md-3 col-sm-3"><span style="text-align: center;font-size: 25px;">网站导航</span></div>
+                    <div class="col-md-1 col-sm-1"></div>
+                    <!--<div class="col-md-4 col-sm-4">北京平行外教免费试听课+活动课</div>-->
+                    <div class="col-md-4 col-sm-4" style="font-size: 25px;">麦思顿英语免费试听课+活动课</div>
+                    <div class="col-md-4 col-sm-4" style="text-align: center;font-size: 25px;">联系我们</div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row ">
+                    <div class="col-md-3 col-sm-4">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <!--{{$t('i18ndata.shouye')}}-->
+                            <div class="col-md-5 Medium"><span class="glyphicon glyphicon-play"
+                                                               style="color: white"></span>&nbsp;<a
+                                    style="color: #FFFFFF; " title="返回首页 " href="/parallel">网站首页</a>
+                            </div>
+                            <!--{{$t('i18ndata.shouye')}}-->
+                            <div class="col-md-5 Medium"><span class="glyphicon glyphicon-play"
+                                                               style="color: white"></span>&nbsp;
+                                <a href="/parallel/commodityOne" style="color: #FFFFFF; "
+                                   target=" ">课程体系</a></div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <!--{{$t('i18ndata.shizi')}-->
+                            <div class="col-md-5 Medium"><span class="glyphicon glyphicon-play"
+                                                               style="color: white"></span>&nbsp;
+                                <a href="/parallel/chooseTeacher" style="color: #FFFFFF; " target=" ">选择外教</a></div>
+                            <!--{{$t('i18ndata.shuangshiketang')}}-->
+                            <div class="col-md-5 Medium"><span class="glyphicon glyphicon-play"
+                                                               style="color: white"></span>&nbsp;<a
+                                    href="/parallel/aboutUs" style="color: #FFFFFF; "
+                                    target=" ">关于我们</a></div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <!--{{$t('i18ndata.jiaoxuechengguo')}}-->
+                            <div class="col-md-5 Medium"><span class="glyphicon glyphicon-play"
+                                                               style="color: white"></span>&nbsp;<a
+                                    href="/parallel/partener" style="color: #FFFFFF; "
+                                    target=" ">城市合伙人</a></div>
+                            <!--{{$t('i18ndata.youerbancahnggui')}}-->
+
+                            <!--<div class="col-md-5 Medium"><span class="glyphicon glyphicon-play" style="color: white"></span>&nbsp;<a
+                                    href="###" style="color: #FFFFFF; "
+                                    target=" ">登录注册</a></div>-->
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div class="col-md-1 col-sm-0"></div>
+                    <div class="col-md-4 col-sm-4">
+                        <form @submit.prevent="baoming($event)">
+                            <div class="foot-form ">
+
+                                <div class="row foot-fmx ">
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <!--i18ndata.xingming-->
+                                            <input type="text " v-model="babyname" value="" id="name " maxlength="30"
+                                                   name="name " placeholder="请输入姓名"
+                                                   style="border-bottom: white 1px solid; ">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <!--i18ndata.nianling-->
+                                            <input type="text " v-model="babyage" maxlength="2" value="" id="babyage "
+                                                   name="babyage " placeholder="请输入年龄"
+                                                   style="border-bottom: white 1px solid;">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <!--i18ndata.dianhua-->
+                                            <input type="text " v-model="phoneNumber" maxlength="11" value=""
+                                                   @blur="blur_phone()" id="phoneNumber " name="phoneNumber "
+                                                   placeholder="请输入电话" style="border-bottom: white 1px solid;">
+                                        </div>
+                                    </div>
+                                    <br/>
+
+                                    <div class="col-xs-12 col-button ">
+                                        <!--i18ndata.lijilingqu-->
+                                        <button type="submit" id="btnsubm" style="background-color: white;"
+                                                class="btn btn-getv baomingsubmit">
+                                            <strong id="tishimsg" style="color: #444666;">领取</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4 col-sm-4" style="padding-left: 5vw;">
+                        <div class="row">
+                            <!--{{$t('i18ndata.jiaoxuechengguo')}}-->
+                            <div class="col-md-12 " style="">
+                                <img src="\static\images\maxwisdom\erweima.png" style="width: 51%;">
+
+                            </div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12"><span class=""
+                                                         style="color: white">联系电话</span>：&nbsp;400-877-9107
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="text-align: left;">
+                            <div class="col-md-12"><span class=""
+                                                         style="color: white">联系邮箱</span>：&nbsp;max@maxwisdomglobal.com
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="text-align: left;">
+                            <div class="col-md-12"><span class=""
+                                                         style="color: white">公司地址</span>：&nbsp;北京市顺义区金汉绿港家园二区12号楼2层
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="text-align: left;">
+                            <div class="col-md-12"><span class=""
+                                                         style="color: white">北京麦思顿国际文化交流有限公司</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                    </div>
+                    <div class="col-md-1 col-sm-0"></div>
+                    <div class="col-md-4 col-sm-4">
+                        Copyright © 2019-2025 EEOA - All rights reserved. 京ICP备15059501号
+                    </div>
+                    <div class="col-md-1 col-sm-0"></div>
+                    <div class="col-md-3 col-sm-4" style=" right: -3%;">
+                    </div>
+                    <div class="col-md-1 col-sm-0"></div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+    </div>
+
+
+    <script type="application/javascript">
+
+        var domain = window.location.href.split(':')[0] + '://' + document.domain;
+        /*  alert("当前地址"+domain);*/
+
+
+        var vm = new Vue({
+            el: "#footer",
+            data: {
+                babyage: '',
+                babyname: '',
+                phoneNumber: '',
+
+            },
+            /*限制只能输入数字*/
+            watch: {
+                babyage: function () {
+                    this.babyage = this.babyage.replace(/\D/g, '')
+                },
+                phoneNumber: function () {
+                    this.phoneNumber = this.phoneNumber.replace(/\D/g, '')
+                }
+            },
+            methods: {
+                /*提交按钮*/
+                baoming: function (event) {
+                    // 检查正则
+                    var re_phone = /^1[345789]\d{9}$/;
+
+                    if (this.babyname == "" || this.babyname == null) {
+
+
+                        $("#tishimsg").html('领取');
+                        //动态加载i18n,语言数据也可以从后台获取
+                        //如果你的18n已经设置过语言包，记得要在这边也要把之前的值补进去，否则会被覆盖
+                        // this.$i18n.mergeLocaleMessage('zh-CN', { 'zh-CN': vuelgzh,   'en-US': vuelgen   });
+
+                        var bba = this;
+                        setTimeout(function () {
+
+                            $("#tishimsg").html('领取');
+
+                        }, 2000);
+                    } else if (this.babyage == "" || this.babyage == null) {
+                        $("#tishimsg").html('请填写年龄');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('领取');
+
+                        }, 2000);
+
+                    } else if (this.phoneNumber == "" || this.phoneNumber == null) {
+                        $("#tishimsg").html('请填写手机号码');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('领取');
+
+                        }, 2000);
+                    } else if (re_phone.test(this.phoneNumber)) {
+                        //符合则提交
+                        var bba = this;
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "POST",//方法类型
+                            //  dataType: "json",//预期服务器返回的数据类型
+                            url: "/parallel/apply",//url
+                            //processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+                            data: {"babyage": this.babyage, "babyname": this.babyname, "phoneNumber": this.phoneNumber},
+                            success: function (result) {
+
+                                fanhui = result;
+                                if (fanhui == "sucees") {
+                                    message('报名成功我们将尽快联系您!');
+                                    $(function () {
+
+                                        $(".baomingsubmit").html("<strong>您已经报名成功!<strong/>")
+
+                                        $(".baomingsubmit").attr("disabled", "true");
+                                    })
+                                } else if (fanhui == "false") {
+                                    message({
+                                        message: '服务器异常!',
+                                        type: 'error'
+                                    });
+
+
+                                } else {
+                                    message({
+                                        message: '服务器异常!!!',
+                                        type: 'error'
+                                    });
+                                }
+
+                            },
+                            error: function () {
+                                console.log(error);
+                                message({
+                                    message: '服务器异常!!!',
+                                    type: 'error'
+                                });
+                            }
+                        });
+
+
+                    } else {
+                        $("#tishimsg").html('手机号码格式错误');
+                        //$("#btnsubm").css("background-color","red");
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('立即入驻');
+
+                        }, 2000);
+
+
+                    }
+                },
+                blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+                }
+                ,
+            },
+            created: function () { //页面加载就执行
+                //页面加载就根据语言环境替换提示信息语言英文或中文
+            }
+
+        })
+
+
+    </script>
+</div>

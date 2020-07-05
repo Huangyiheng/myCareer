@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/static/images/paralleTeachers/log.ico" type="image/x-icon"/>
+    <title>绘本网站</title>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--表单验证-->
+    <link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <!--    自定义字体-->
+    <link rel="stylesheet" href="\static\css\fonts_custom.css"/>
+
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?016ad8c6d8aa38ae08176064d55c5bda";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style type="text/css">
+        .rowdiv div {
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+      /*  .row {
+            width: 92%;
+            text-align: center;
+            margin: 20px auto;
+        }*/
+    </style>
+</head>
+<body style="background-color: #f3f3f3;">
+<div th:replace="phone/phone_head :: phone_head" ></div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <img src="/static/images/phone/chossefteacher/drawTheBookWebsite/1.jpg" style="width: 100%;">
+</div>
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        为什么要学分级拼读？</p >
+    </div>
+</div><br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        一个简单的理由是，分级阅读的最大作用是帮助孩子们学习语言，培养阅读能力。少年儿童在不同的成长时期，阅读性质和阅读能力是完全不同的，即便是同一个年龄段的孩子，男孩和女孩的语言发育速度也是远远不同的。针对不同语言发育水平的孩子需要因材施教，选择不同级别的分级读物能满足孩子持续进行英语语言学习的需要。
+    </p></div>
+</div>
+
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        分级阅读能够检测孩子目前的真实英语能力，让家长参考科学的结果选择合适难度的读物，帮助孩子继续保持阅读的兴趣。其次，分级读物从文字编排、主题选择具有专业性。英文分级阅读读物里有大量的语境，书中的表达更地道、更生活化，分级阅读读物中能找到和孩子生活相关的方方面面，潜移默化中帮助孩子提高日常交流能力，让英文会话表达更丰富。
+    </p></div>
+</div>
+
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">在国外，这套分级读物受到了英国剑桥大学国际考试中心的推荐，是英美幼儿园、小学最普遍使用的阅读教材之一;而在国内，它又被列为中国国家重点课题“中国中小学英语分级阅读体系标准研制”的配套实验教材，可以说是“根正苗红”的经典读物。</p ></div>
+</div>
+
+
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center; background-color: #f3f3f3;">
+    <img src="/static/images/phone/chossefteacher/drawTheBookWebsite/2.jpg" style="width: 100%;">
+</div>
+
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        具体的课程体系是什么呢？</p >
+    </div>
+</div>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        <strong class="Medium" style="color: #ff9900;font-size:4.5vw;">绘本专项口语课</strong>由11个级别组成，阅读内容由浅至深，粉红A, B和红色A,B这4套针对培养3-7岁学员的注意力、观察力、记忆力和思维力而开发，主要是以扎实基础和稳步提升英语阅读水平为目的。而绿色、黄色和蓝色这3套产品则就8-13岁儿童在校学习的特点，加入了更多的寓言故事和科学知识，以让孩子更轻松地融入学校环境并带着兴趣去阅读，在阅读中学习英语，增长知识。
+    </p ></div>
+</div>
+
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <img src="/static/images/phone/chossefteacher/drawTheBookWebsite/3.png" style="width: 80%;">
+</div>
+
+
+
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;">
+    <img src="/static/images/phone/chossefteacher/drawTheBookWebsite/4.jpg" style="width: 100%;">
+</div>
+
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/5.png" style="width: 100%;">
+        </div>
+    <div class="col-xs-3"></div>
+</div>
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #333333 ">
+        师资优势</p >
+    </div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p
+            style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666; ">TEACHING&nbsp;&nbsp;&nbsp;&nbsp;ADVANTAGES</p ></div>
+</div>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p
+            style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #333333; ">为什么要跟麦思顿英语老师一起学习？</p ></div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p
+            style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666; ">外教平均教龄5年以上/筛选通过率不超过8%/来自欧美本科学历以上</p ></div>
+</div>
+
+
+<div class="row" style="margin: 0 auto;">
+    <div class="col-xs-12">
+        &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/6.png" style="width: 100%;">
+    </div>
+</div>
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <p style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; ">严格的招聘标准？</p>
+    <p style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666; ">欧洲/加拿大设立自营教学运营中心，层层把关，筛选通过率不超过8%</p >
+    <div class="col-xs-12">
+        &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/7.png" style="width: 100%;">
+    </div>
+</div>
+
+<br/><br/>
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:4vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        如何选老师上课呢？</p >
+    </div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666 ">
+        简单的6步，找到外教大朋友</p >
+    </div>
+</div>
+
+
+<div class="row" style="margin: 0 auto;">
+    <div class="col-xs-12">
+        &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/8.png" style="width: 100%;">
+    </div>
+</div>
+
+<br/><br/><br/>
+<div th:replace="phone/phone_bottom :: phone_bottom" ></div>
+
+</body>
+<script type="text/javascript">
+
+
+</script>
+</html>

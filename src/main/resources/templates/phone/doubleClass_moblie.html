@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/static/images/paralleTeachers/log.ico" type="image/x-icon"/>
+    <title>双师网站</title>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--表单验证-->
+    <link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <!--    自定义字体-->
+    <link rel="stylesheet" href="\static\css\fonts_custom.css"/>
+
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?016ad8c6d8aa38ae08176064d55c5bda";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style type="text/css">
+        .rowdiv div {
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+      /*  .row {
+            width: 92%;
+            text-align: center;
+            margin: 20px auto;
+        }*/
+    </style>
+</head>
+<body style="background-color: #f3f3f3;">
+<div th:replace="phone/phone_head :: phone_head" ></div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <img src="/static/images/phone/chossefteacher/doubleClass/1.jpg" style="width: 100%;">
+</div>
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        什么是双师课堂?</p >
+    </div>
+</div>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px; text-indent: 2em;">
+        <strong class="Medium" style="color: #ff9900;font-size:4.5vw;">双师课堂</strong>
+        课程专为3-6岁学龄前学生设计的，是一种在原有的课堂上的一种创新，也是一种教育形式的创新，这种创新可以给人们的学习带来更大的好处，因为双师课堂不仅能够将优质的师资力量发挥到更大，而且它的覆盖范围很广，远程在线授课让更多学生接受到优质的教育，而且线下辅导老师的存在，也可以最大程度上的帮助孩子、解答孩子的各种疑惑，让他们能够更加的理解学习内容，学习到更多更透彻的知识。有效的激发学生们的积极性，提高学生们的效率,提供更多的优秀的老师，实现资源的共享。
+    </p></div>
+</div>
+
+
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center; background-color: #f3f3f3;">
+    <img src="/static/images/phone/chossefteacher/doubleClass/2.jpg" style="width: 100%;">
+</div>
+
+
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        双师课堂的特点和优势是什么？</p >
+    </div>
+</div>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        3-6岁幼儿是语言发展的黄金阶段，在此时期给孩子创造一个良好纯正的英文环境，对于孩子掌握英语第二语言非常重要。孩子在享受到优质外教启蒙教育的同时，而且线下班主任老师直接面对学生，进行管理和辅助教学，二者相辅相成，一起实现教学效果。
+    </p ></div>
+</div>
+
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        优势：外教在幼儿教学中优势显著，欧美外教发音纯正，语调自然，外教英语的逻辑性直接影响到孩子对于英语表达能力以及逻辑思维能力的建立。外教授课将语言与文化教学融合一起，重视平等互动，培养学生创新意识，高效率激发孩子积极性。
+    </p ></div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        中教老师辅助课堂，直接接触孩子，了解中国文化，懂得孩子心理，在教学中及时解决孩子学习中的疑惑，引导并协助学生配合外教老师完成课堂任务。
+    </p ></div>
+</div>
+
+
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        双师课堂的课程内容是什么？</p >
+    </div>
+</div>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        双师课堂选用麦格-劳希尔教育集团Midsaurus教材，有6个级别组成，专为3到6岁的孩子设计的英语课程。孩子们通过故事绘本集体阅读，趣味活动，角色扮演，音乐律动和主题歌曲，有效地学习英语。教材带有配套APP，协助孩子们在家通过手机、ipad、电脑终端进行巩固复习。
+    </p ></div>
+</div>
+
+
+<br/>
+<div class="row" style="margin: 0 auto;text-align: center; background-color: #f3f3f3;">
+    <img src="/static/images/phone/chossefteacher/doubleClass/3.png" style="width: 100%;">
+</div>
+
+
+
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-lg-12"><p
+            style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; line-height: 24px;text-indent: 2em;">
+        <strong class="Medium" style="color: #ff9900;font-size:4.5vw;">自然拼读</strong>
+        内容学习,循序渐进，孩子能够达到无需帮助即可识别词汇。自然拼读的内容仍然涉及了整个系列共覆盖150多个发音规则。每条发音规则，都有趣味性的练习，难度循序渐进。内容涵盖字母The Alphabet、短元音Short Vowels、长元音Long Vowels、辅音连读Consonant Blends、字母组合Letter Combinations等，逐步拓展学习内容，系统科学，不断提高拼读能力。
+    </p ></div>
+</div>
+
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: left;">
+    <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/5.png" style="width: 100%;">
+        </div>
+    <div class="col-xs-3"></div>
+</div>
+
+<br/><br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:5vw;font-family: Medium;line-height:100%;color: #333333 ">
+        师资优势</p >
+    </div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p
+            style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666; ">TEACHING&nbsp;&nbsp;&nbsp;&nbsp;ADVANTAGES</p ></div>
+</div>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p
+            style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #333333; ">为什么要跟麦思顿英语老师一起学习？</p ></div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p
+            style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666; ">外教平均教龄5年以上/筛选通过率不超过8%/来自欧美本科学历以上</p ></div>
+</div>
+
+
+<div class="row" style="margin: 0 auto;">
+    <div class="col-xs-12">
+        &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/6.png" style="width: 100%;">
+    </div>
+</div>
+
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <p style="font-size:4vw;font-family: Regular;line-height:100%;color: #666666; ">严格的招聘标准？</p>
+    <p style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666; ">欧洲/加拿大设立自营教学运营中心，层层把关，筛选通过率不超过8%</p >
+    <div class="col-xs-12">
+        &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/7.png" style="width: 100%;">
+    </div>
+</div>
+
+<br/><br/>
+<br/><br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:4vw;font-family: Medium;line-height:100%;color: #ff9900 ">
+        如何选老师上课呢？</p >
+    </div>
+</div>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12"><p style="font-size:2.5vw;font-family: Regular;line-height:100%;color: #666666 ">
+        简单的6步，找到外教大朋友</p >
+    </div>
+</div>
+
+
+<div class="row" style="margin: 0 auto;">
+    <div class="col-xs-12">
+        &nbsp;<img src="/static/images/phone/chossefteacher/commodityOnePxwj/8.png" style="width: 100%;">
+    </div>
+</div>
+
+<br/><br/><br/>
+<div th:replace="phone/phone_bottom :: phone_bottom" ></div>
+
+</body>
+<script type="text/javascript">
+
+
+</script>
+</html>

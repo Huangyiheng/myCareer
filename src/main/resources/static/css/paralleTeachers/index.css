@@ -1,0 +1,245 @@
+.content{
+    background: #ff9a00;
+}
+.head{
+    width: 1826px;
+    height: 108px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+/* -------左边 */
+.head-1{
+    margin-top: 31px;
+    margin-right: 361px;
+}
+.head-1 span{
+    display: inline-block;
+    font-size: 32px;
+    color: aliceblue;
+}
+/* -------右边 */
+.head-2 ul{
+    overflow: hidden;
+}
+.head-2 li{
+    float: left;
+    line-height: 64px;
+    margin-top: 36px;
+    margin-left: 105px;
+    color: #ffe8d3;
+    font-size: 14px;
+}
+.head-2 li:first-child{
+    border-bottom: 8px solid #f5f5f5;
+}
+/* 图片 */
+.bannerbox{
+    width:1826px;
+    height: 1076px;
+    position:relative;  
+    overflow:hidden;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+.banner{
+    width: 1920px;
+    background: red;
+    position: absolute;
+    left:50%;
+    margin-left:-950px;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+    display: block;
+
+}
+/* 课程产品 */
+.main{
+    width: 1260px;
+    margin: 0 auto; 
+    border-bottom:35px solid #f5f5f5;
+    /*background-image: url("../../images/paralleTeachers/bottom.png");*/
+    /*background-color: #01AAED;*/
+}
+
+
+
+.pin{
+    width: 564px;
+    height: 98px;
+    background: #fff;
+    margin-left: 673px;
+    margin-bottom: 164px;
+    text-align: center;
+    border-radius:20px;
+    padding:27px 0 33px 0;
+    box-shadow: 0px 0px 20px #f1f1f1;
+}
+.pin-1{
+    font-size: 35px;
+    color: #222;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.pin-2{
+    color: #999;
+    font-size: 28px;
+}
+
+.zi{
+    position: relative;
+    width: 753px;
+    height: 640px;
+    margin-left: 267px;
+    margin-bottom: 136px;
+    box-shadow: -20px -20px 20px #feb12d;
+}
+.zi img{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+.zi .zi-1{
+    position: absolute;
+    top: 106px;
+    left: 694px;
+    width: 655px;
+    height: 474px;
+    background-color: #fff;
+    padding: 43px 0 0 50px;
+}
+
+.zi .zi-1 span:first-child{
+    color: #ff9827;
+    font-size:34px;
+}
+.zi .zi-1 p{
+    text-indent: 22px;
+}
+.hui{
+    position: relative;
+    width: 774px;
+    height: 663px;
+    margin-left: 872px;
+    margin-bottom: 136px;
+}
+.hui img{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+.hui .hui-1{
+    position: absolute;
+    top: 106px;
+    left: -572px;
+    border: 1px solid #ff9a00;
+    width: 655px;
+    height: 474px;
+    background-color: #fff;
+    text-align: right;
+    padding: 43px 24px 0 0;
+}
+
+.hui .hui-1 span:first-child{
+    color: #ff9827;
+    font-size:34px;
+}
+.hui .hui-1 p{
+    text-align: left;
+   text-indent: 22px;
+}
+
+/* 资格 */
+.ge{
+    height: 875px;
+    margin-top: 132px;
+	font-size: 30px;
+	font-weight: 100;
+    /* background-color: chartreuse; */
+	/* background-image: url(../image/6.png); */
+	background-repeat: no-repeat;
+	background-size: 100%;
+	
+}
+.ge-a{
+    text-align: center;
+
+}
+/* 底部 */
+.footerbox{
+   background:#e08113;
+   overflow: hidden;
+}
+.footer{
+    /*width:1166px;*/
+    height: 313px;
+    margin: 0 auto;
+    /*padding: 85px 330px;*/
+    /*text-align: center;*/
+    line-height:1;
+}
+.webnav{
+    width: 372px; 
+}
+.web-1{
+    margin-bottom:50px;
+    font-weight:bold;
+}
+.webnav ul{
+    padding: 0 52px;
+    overflow: hidden;
+}
+.webnav ul li{
+    padding: 0 35px;
+}
+.webnav ul li:nth-child(5){
+    padding-right: 20px;
+}
+.webnav ul li:nth-child(2n){
+    margin-bottom:32px;
+}
+.lession{
+    width: 490px;
+    -background:hotpink;
+}
+.lession .center{
+    width: 248px;
+
+}
+.lession input{
+    width: 252px;
+    height: 37px;
+    border-bottom: 1px solid #f5f5f5;
+    background: #e08113;
+    text-indent: 10px;
+    margin-bottom: 10px;
+}
+.lession input:nth-of-type(3){
+    margin-bottom:23px;
+}
+::-webkit-input-placeholder{
+    color: #f5f5f5;
+    font-size:15px;
+}
+.lession .click{
+    color: #e08113;
+    background: #f5f5f5;
+    padding: 5px 30px;
+    line-height:25px;
+    border-radius:8px;
+}
+.call{
+    width:296px;
+}
+.call .right{
+    width: 176px;
+}
+.call p{
+    margin-bottom: 25px;
+}
+.call p:last-child{
+    margin-left: 10px;
+}

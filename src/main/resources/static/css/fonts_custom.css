@@ -1,0 +1,109 @@
+/*自定义字体*/
+/*.NotoSansHans-Thin-Windows{
+    font-family: NotoSansHans-Thin-Windows;
+}
+@font-face {
+    font-family:NotoSansHans-Thin-Windows;
+    src:url("../fonts/NotoSansHans-Thin-Windows.otf");
+}*/
+.Intro{
+    font-family: Intro;
+}
+@font-face {
+    font-family:Intro;
+    src:url("../fonts/Intro Cond Black Free.woff.ttf");
+}
+
+.NotoSansHans-Bold{
+    font-weight: 600;
+  /*  font-family: NotoSansHans-Bold;*/
+}
+@font-face {
+    font-family:NotoSansHans-Bold;
+    src:url("../fonts/NotoSansHans-Bold.otf");
+}
+
+.NotoSansHans-DemiLight{
+    font-family: NotoSansHans-DemiLight;
+    color: #666666;
+}
+@font-face {
+    font-family:NotoSansHans-DemiLight;
+    src:url("../fonts/NotoSansHans-DemiLight.otf");
+}
+
+
+.AEASWFTE_zdy{
+    /*font-family: AEASWFTE_zdy;*/
+    font-family: DFKai-SB;
+    /*  color: #333333;*/
+    /*color: #00be72;*/
+}
+@font-face {
+    font-family:AEASWFTE_zdy;
+    src:url("../fonts/AEASWFTE.TTF");
+}
+
+
+
+.zrgys{
+    font-family: zrgys;
+    /*  color: #333333;*/
+    /*color: #00be72;*/
+}
+@font-face {
+    font-family:zrgys;
+    src:url("../fonts/zrgys.ttf");
+}
+
+
+.Regular{
+   /*font-family: Regular;*/
+    font-family: "Microsoft YaHei";
+    /*  color: #333333;*/
+
+}
+
+
+
+
+.Medium{
+  /*  font-family: Medium;*/
+    font-family: "Microsoft YaHei";
+    font-weight: 700;
+    /*  color: #333333;*/
+
+}
+@font-face {
+    font-family:Medium;
+    src:url("../fonts/NotoSansHans-Medium.otf");
+}
+
+
+.Light{
+   /* font-family: LiSu;*/
+    font-weight: 300;
+   /* font-family: Light;*/
+      color: #666666;
+
+}
+/*
+@font-face {
+    font-family:Light;
+    src:url("../fonts/NotoSansHans-Light.otf");
+}
+*/
+
+
+
+/*
+
+.MSYH_zdy{
+    !*字体18M谨慎使用*!
+    font-family: MSYH_zdy;
+      color: #333333;
+}
+@font-face {
+    font-family:MSYH_zdy;
+    src:url("../fonts/MSYH.TTC");
+}*/

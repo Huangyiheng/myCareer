@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8">
+    <title>加盟中心</title>
+
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <script src="/static/js/vue/vue-router.js"></script>
+    <!--国际化-->
+    <script src="/static/js/vue/vue-i18n.js"></script>
+    <!--导入国际化语言包-->
+    <script src="/static/js/vue/lang/en-US.js"></script>
+    <script src="/static/js/vue/lang/zh-CN.js"></script>
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+
+
+    <style type="text/css">
+        .rowc {
+            margin: 0px;
+            text-align: center;
+        }
+
+        img {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!--导航栏-->
+
+<div th:replace="front/head :: head"></div>
+<div id="jiamengapp">
+<div class=""
+     style="height: 100%;background-image: url(/static/img/join_pic1.jpg);padding-bottom: 20.8333%;background-size: cover;background-repeat: no-repeat;background-position: center;"></div>
+
+<div class="row">
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+    <span class="h4">爱的成长是一点一滴的积累，教育的力量是一代代的传承</span>
+     <br/>
+     <br/>
+     <br/>
+    <div class="col-lg-12"><span class="h3"><img src="/static/img/jiameng.PNG"></span></div>
+
+</div>
+ <br/>
+ <br/>
+ <br/>
+<div class="row rowc" style="background-image: url(' /static/img/join_pic3.jpg')">
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+    <span class="h3">品牌优势</span>  <br/>  <br/>
+    <span class="h4">打造属于我们的品牌优势，教育的力量是一代代的传承</span>
+     <br/>
+     <br/>
+     <br/>
+    <div class="col-lg-12"><span class="h3"><img src="/static/img/join_pic4.png"></span></div>
+     <br/>
+</div>
+
+<div class="row rowc">
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+    <span class="h3">十大支持</span>
+     <br/>
+     <br/>
+     <br/>
+    <div class="col-lg-12"><span class="h3"><img src="/static/img/join_pic5.png"></span></div>
+
+</div>
+ <br/>
+ <br/>
+ <br/>
+<div class="row rowc" style="background-image: url(' /static/img/join_pic7.jpg')">
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+    <span class="h3" style=" color: rgb(35, 146, 221);">加盟流程</span>
+     <br/>
+     <br/>
+     <br/>
+    <div class="col-lg-12"><span class="h3"><img src="/static/img/join_pic6.png"></span></div>
+
+</div>
+ <br/>
+ <br/>
+ <br/>
+<div class="row rowc">
+    <span class="h5">请认真填写报名表，确保信息完整正确。我校加盟办事处将会在24小时内通过电话和你联系。或者直接拨打电话：400-877-9107 咨询 填完报名表后，单击"提交"按钮即可!</span>
+</div>
+     <br/>
+     <br/>
+<div class="row rowc">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+
+        <form @submit.prevent="jiamengsubmit($event)">
+            <div class="col-xs-6 ">
+                <input type="text " class="form-control"  v-model="name" value=""  maxlength="30" :placeholder="$t('i18ndata.xingming')">
+            </div>
+
+            <div class="col-xs-6 ">
+                <input type="text " class="form-control"  v-model="phone" value=""  maxlength="11" :placeholder="$t('i18ndata.dianhua')">
+
+
+            </div>
+            <div class="col-xs-12  "> <br/></div>
+            <div class="col-xs-12 ">
+
+                        <textarea class="form-control" rows="4" v-model="remarks" maxlength="200" style="width: 100%;resize:none;"
+                                  :placeholder="$t('i18ndata.beizhu')"></textarea>
+            </div>
+            <div class="col-xs-12  "> <br/></div>
+            <div class="col-xs-12  ">
+                <button type="submit" id="btnjamengsubm" class="btn btn-primary">
+                    <strong id="jiamengtishimsg">{{$t('i18ndata.tijiao')}}</strong>
+                </button>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+</div>
+ <br/>
+ <br/>
+<!--页尾-->
+<div th:replace="front/footer :: footer"></div>
+</body>
+
+<script type="application/javascript">
+    //点击切换语言
+    $(function () {
+        $("#language_switch").click(function () {
+            if(vm.$i18n.locale=="zh-CN"){
+                Setcookie("i18nlocale","en-US");
+                vm.$i18n.locale="en-US"
+            }else{
+                Setcookie("i18nlocale","zh-CN");
+                vm.$i18n.locale="zh-CN"
+            }
+
+        })
+    })
+
+/*位head添加vue管理*/
+    var vm = new Vue({
+        el: "#eeonav",
+        i18n:i18n,//此处引入的是footer页面中定义的i18n
+    })
+    var jiameng = new Vue({
+        el: "#jiamengapp",
+        i18n:i18n,//此处引入的是footer页面中定义的i18n
+        data: {
+            name: '',
+            phone: '',
+            remarks: '',
+            jiamengtishimsg: '立即领取',
+        },
+        /*限制只能输入数字*/
+        watch: {
+            phone: function () {
+                this.phone = this.phone.replace(/\D/g, '')
+            }
+        },
+        methods: {
+            /*提交按钮*/
+            jiamengsubmit: function (event) {
+
+                // 检查正则
+                var re_phone = /^1[345789]\d{9}$/;
+
+                if (this.name == "" || this.name == null) {
+                    $("#jiamengtishimsg").html(this.$t('i18ndata.namenotnull'));
+                    var bba = this;
+                    setTimeout(function () {
+                        $("#jiamengtishimsg").html(bba.$t('i18ndata.tijiao'));
+
+                    }, 2000);
+
+                } else if (this.phone == "" || this.phone == null) {
+                    $("#jiamengtishimsg").html(this.$t('i18ndata.tianxiesjhm'));
+                    var bba = this;
+                    setTimeout(function () {
+                        $("#jiamengtishimsg").html(bba.$t('i18ndata.tijiao'));
+
+                    }, 2000);//符合则提交
+                } else if (re_phone.test(this.phone)) {
+                    var bba = this;
+
+                    console.log("提交");
+
+                    var params = new URLSearchParams();
+                    params.append('name', this.name);
+                    params.append('phone', this.phone);
+                    params.append('remarks', this.remarks);
+
+                    axios.post('/joininadd', params).then(function (response) {
+
+
+                        fanhui = response.data;
+                        if (fanhui == "sucees") {
+                            message(bba.$t('i18ndata.baomingcgwmjjklxn'));
+
+                            $(function () {
+                                $('.deskDiv').css({
+                                    display: 'none'
+                                });
+                                $(".receive ").css({
+                                    display: 'none'
+                                });
+
+                                $("#btnjamengsubm").attr("disabled", "true");
+                                $("#btnjamengsubm").html("<strong>" + bba.$t('i18ndata.baomingcg') + "!<strong/>")
+                            })
+                        } else if (fanhui == "false") {
+                            message({
+                                message: bba.$t('i18ndata.baomingsb') + '!',
+                                type: 'error'
+                            });
+
+
+                        } else {
+                            message({
+                                message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                type: 'error'
+                            });
+                        }
+
+
+                    }).catch(function (error) {
+                        console.log(error);
+                        message({
+                            message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                            type: 'error'
+                        });
+                    });
+
+
+                } else {
+                    $("#jiamengtishimsg").html(this.$t('i18ndata.shoujihmgscw'));
+                    //$("#btnsubm").css("background-color","red");
+                    var bba = this;
+                    setTimeout(function () {
+                        $("#jiamengtishimsg").html(bba.$t('i18ndata.tijiao'));
+
+                    }, 2000);
+
+
+                }
+            },
+            blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+            }
+            ,
+        }
+
+    })
+
+</script>
+</html>

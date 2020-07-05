@@ -1,0 +1,347 @@
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  min-height: 100%;
+  height: 100%;
+  line-height: 2;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+p {
+  font-size: 12px;
+}
+
+em, i {
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.link-page {
+  display: block;
+}
+
+img {
+  width: 100%;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.img-parent {
+  overflow: hidden;
+}
+
+:focus {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #d1d1d6;
+}
+
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #d1d1d6;
+}
+
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #d1d1d6;
+}
+
+input::-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #d1d1d6;
+}
+
+@font-face {
+  src: url("../fonts/health-icon.eot?l7yt0w");
+  src: url("fonts/health-icon.eot?l7yt0w#iefix") format("embedded-opentype"), url("../fonts/health-icon.ttf?l7yt0w") format("truetype"), url("../fonts/health-icon.woff?l7yt0w") format("woff"), url("../fonts/health-icon.svg?l7yt0w") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+.ziti{
+	width: 300px;
+	height: 30px;
+}
+
+.app {
+
+  max-width:1440px;
+  margin: 0 auto;
+  text-align: center;
+}
+.appe{
+	margin: 0 auto;
+	text-align: left;	
+}
+
+/*
+ * colors variables
+ */
+.top-header {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  padding: 0 10px;
+}
+/* .im{
+	
+} */
+
+.appi{
+
+}
+.daohang{
+	 display: table;
+	 table-layout: fixed;
+}
+
+.imds1{
+	width: "25%";
+	 display:table-cell;
+}
+.imds2{
+	width: "25%";
+	 display:table-cell;
+}
+.imds3{
+	width: "25%";
+	 display:table-cell;
+}
+.imds4{
+	width: "25%";
+	 display:table-cell;
+	
+}
+.imd1{
+	width: 70px;
+	height: 60px;
+}
+.imd2{
+	width: 70px;
+	height: 60px;
+}
+.imd3{
+	width: 70px;
+	height: 60px;
+}
+.imd4{
+	width: 70px;
+	height: 60px;
+}
+.ziti{
+	font-size: 20px;
+	font-weight: bold;
+}
+.ziti1{
+	font-size: 15px;
+	font-weight: bold;
+}
+.zitis{
+	font-size: 8px;
+}
+
+.anniu{
+	width: "100%";
+	height: 100px;
+	text-align: center;
+}
+.puts{
+	border: 0.7px solid #000000;
+}
+.dianji{
+	width: 100%;
+	text-align: center;
+}
+.wenzi {
+	width: 400px;
+	height: 40px;
+	text-align: center;
+}
+.wenzi {
+	width: 600px;
+	height: 40px;
+	text-align: center;
+}
+.deng{
+	margin-top: 40px;
+}
+.logins{
+	border: 1px solid #000000 ;
+}
+
+
+/*下拉框样式*/
+
+
+
+
+
+                      ul {
+                          list-style-type: none;
+                      }
+
+a {
+    color: #b63b4d;
+    text-decoration: none;
+}
+
+/** =======================
+ * Contenedor Principal
+ ===========================*/
+.accordion {
+    width: 94%;
+
+    margin: 30px auto 20px;
+    border: #9d9f9e solid 1px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.accordion .link {
+    text-align: left;
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 42px;
+    font-size: 22px;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li:last-child .link {
+    border-bottom: 0;
+    font-family: AEASWFTE_zdy;
+}
+.accordion li span{
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+    font-size: 16px;
+}
+
+.accordion li.open .link {
+    font-size: 22px;
+    font-family: AEASWFTE_zdy;
+}
+
+.accordion li.open i {
+    color: #b63b4d;
+}
+.accordion li.open span.glyphicon-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+.submenu {
+    display: none;
+padding-left: 42px;
+    font-size: 14px;
+}
+
+.submenu li {
+    font-size: 18px;
+    font-family: AEASWFTE_zdy;
+    margin-top: 10px;
+    line-height: 19px;
+    margin-bottom: 10px;
+    color: #9F9F9F;
+   text-align: left;
+
+}
+
+.submenu a {
+    display: block;
+    text-decoration: none;
+    color: #d9d9d9;
+    padding: 12px;
+    padding-left: 42px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.submenu a:hover {
+    background: #b63b4d;
+    color: #FFF;
+}
+
+
+
+
+

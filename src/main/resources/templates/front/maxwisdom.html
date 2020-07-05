@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/static/images/paralleTeachers/logico.ico" type="image/x-icon"/>
+    <title>麦思顿英语</title>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <script src="/static/js/vue/vue-router.js"></script>
+    <!--国际化-->
+    <script src="/static/js/vue/vue-i18n.js"></script>
+    <!--导入国际化语言包-->
+    <script src="/static/js/vue/lang/en-US.js"></script>
+    <script src="/static/js/vue/lang/zh-CN.js"></script>
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <!--引入字体-->
+    <link rel="stylesheet" href="/static/css/fonts_custom.css"/>
+
+    <script type="text/javascript" src="/static/js/home.js"></script>
+    <link rel="stylesheet" href="/static/css/pc.animation.css"/>
+
+    <!--    <link rel="stylesheet" href="/static/css/home_1200.css" media="all"/>-->
+    <!--不同宽度引入不同样式-->
+    <link rel="stylesheet" href="/static/css/home_1366.css" media="screen and (min-width: 1366px)"/>
+    <link rel="stylesheet" href="/static/css/home_992.css"
+          media="screen and (min-width: 768px) and (max-width: 1365px)"/>
+    <link rel="stylesheet" href="/static/css/home_768.css" media="screen and (min-width: 0px) and (max-width: 767px)"/>
+
+
+    <link rel="stylesheet" href="/static/css/home-sz.css"/>
+
+
+    <style type="text/css">
+        html, body {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body style="display: none;">
+<!--加载轮播图-->
+<div th:replace="front/lunbotu"></div>
+
+<div id="eeonav">
+    <div class="eeo-home">
+
+
+        <div class="eeo-nav ">
+            <div class="eeo-nav-box">
+                <a href="/"> <img src="/static/img/login.png" alt="eeologo"
+                                  style="width: 70px;height: 45px;margin-top: 7px;margin-right: 20px;"
+                                  class="eeo-nav-logo clearfix"></a>
+                <ul class="eeo-ul eeo-nav-ul eeo-nav-left ahover">
+                    <li class="" style="padding-right: 0px">
+                        <!---->
+                        <a href="/home" style="text-decoration: none;"
+                           class="nav-item router-link-exact-active router-link-active active">{{$t('i18ndata.shouye')}}</a>
+                        <!---->
+                        <!---->
+                    </li>
+                    <li class="eeo-nav-li product-li " style="width: 190px;padding-left: 0px;padding-right: 0px;">
+                        <!---->
+                        <!----><span class="nav-item" style="cursor: default;">{{$t('i18ndata.kechengtixi')}}</span>
+                        <ul class="eeo-ulkctx ">
+                            <li>
+                                <a href="/course" class="nav-item">{{$t('i18ndata.xianshangxianxia')}}</a>
+                            </li>
+                            <li>
+                                <a href="" class="nav-item">{{$t('i18ndata.shuangshiketang')}}</a>
+                            </li>
+                            <li>
+                                <a href="" class="nav-item">{{$t('i18ndata.youerbancahnggui')}}</a>
+                            </li>
+                            <li>
+                                <a href="" class="nav-item"
+                                >{{$t('i18ndata.youerquantian')}}</a>
+                            </li>
+                            <li>
+                                <a href="" class="nav-item"
+                                >{{$t('i18ndata.xioaxueban')}}</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="" style="padding-left: 0px">
+                        <a href="/teaching" style="text-decoration: none;" class="nav-item">{{$t('i18ndata.shizi')}}</a>
+                    </li>
+                    <li class="">
+                        <a href="/teaching_results" style="text-decoration: none;"
+                           class="nav-item">{{$t('i18ndata.jiaoxuechengguo')}}</a>
+                    </li>
+                    <li class="">
+                        <a href="/wonderful_activity" style="text-decoration: none;" class="nav-item">{{$t('i18ndata.jingcaihuodong')}}</a>
+                    </li>
+                    <li class="">
+                        <a href="/aboutus" style="text-decoration: none;" class="nav-item">{{$t('i18ndata.guanyuwomen')}}</a>
+                    </li>
+
+
+                </ul>
+                <ul class="eeo-ul eeo-nav-ul eeo-nav-right ahover">
+                    <!--<li>
+                            <a href="/en/register.html" class="nav-item institution">
+                                Schools &amp; Institutions
+
+                            </a>
+                        </li>-->
+                    <!-- <li>
+                         <a href="/en/login.html" class="nav-item">
+                             登录 /
+                             <span>注册</span></a>
+                     </li>-->
+                    <!-- 根据中英文进入不同的岗位页面-->
+                    <li>
+                        <a href="/jobwanted" style="text-decoration: none;" class="nav-item">{{$t('i18ndata.jiaruwomen')}}</a>
+                    </li>
+                    <li class="eeo-nav-li product-li" style="width: 160px;padding-left: 0px;padding-right: 0px;">
+                        <!---->
+                        <!----><span class="nav-item" style="cursor: default;">{{$t('i18ndata.zhanluehezuo')}}</span>
+                        <ul class="eeo-ulkctx">
+                            <li>
+                                <a href="/joinin" style="text-decoration: none;" class="nav-item">{{$t('i18ndata.xioaqujiameng')}}</a>
+                            </li>
+                            <li>
+                                <a href="/jobwanted" style="text-decoration: none;" class="nav-item">{{$t('i18ndata.chengshihehuoren')}}</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="###" id="language_switch" class="nav-item" style="text-decoration: none;">{{$t('i18ndata.language')}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="eeo-swiper" style="width: 100%;height: 100vh; position: absolute;top: 0px;z-index: 9; ">
+            <div class="swiper-container swiper-container-fade swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper" style="transition-duration: 0ms;">
+
+                    <div class="eeo-swiper-context">
+                        <!-- <span class="eeo-swiper-context-text animated fadeInUp" style="animation-delay: 800ms;"><img
+                                 src="/static/img/shouye_maisidun.png" style="width:750px;"> </span>-->
+
+                        <div class=" animated fadeInUp" style="animation-delay: 1000ms;">
+                            <img src="/static/img/maisidtoup.png" style="width:750px;">
+                            <!--  <p>&nbsp;</p>
+                              <p class="eeo-swiper-context-download" style="width: 100%;text-align: center">英语 &nbsp; •
+                                  &nbsp; 连接 &nbsp; • &nbsp;世界
+                             </p>-->
+                        </div>
+                    </div>
+
+
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        </div>
+
+        <div style="width: 100%;margin: 0 auto; background-image: url('/static/img/shouyebg.png');background-repeat: no-repeat;	background-size: cover;background-position-x: center;background-position-y:top">
+            <div style="max-width: 1440px;  margin: 0px auto;">
+                <div id="gjkc" class="gjkc">
+
+                    <h1 class=" ">
+
+
+                        <span style="font-family:'Intro';"> MAX CLASS SYSTEM </span>
+
+                    </h1>
+                    <h2><img src="/static/img/henxian.jpg" width="50px;" height="50px;"
+                             style="position: relative;top: -3px">&nbsp;MAX课程体系&nbsp;<img src="/static/img/henxian.jpg"
+                                                                                          width="50px;" height="50px;"
+                                                                                          style="position: relative;top: -3px">
+                    </h2>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="gjkc-js NotoSansHans-DemiLight"
+                         style="color: #666666; width: 70%;margin:0 auto ;word-wrap:break-word;text-align: left;text-indent: 3em;">
+                        {{$t('i18ndata.kechngtiximiaoshu')}}
+                    </div>
+                    <br/> <br/>
+
+                    <div class="list">
+                        <div class="list-item dong1">
+                            <div class="item-img">
+                                <img src="/static/img/shouye_onlineoffline_01.jpg" alt="">
+                            </div>
+                            <div class="item-box">
+                                <div class="arrow"></div>
+                                <p class="Intro" style="color: #66c7f0;   text-align:left;width: 100%;font-size: 60px;">
+                                    <strong>MAX</strong>
+                                    <span style="border: 2px solid rgb(102, 199, 240);width: 62%;display: inline-block;position: absolute;top: 40px;left: 170px;"></span>
+                                </p>
+                                <p class="Intro" style="text-align:left;width: 100%;font-size: 30px;position: relative ;top:-25px">
+                                    <strong>ONLINE & OFFLINE</strong></p>
+                                <br/>
+                                <p class="NotoSansHans-DemiLight" style="font-size: 18px;position: relative ;top:-30px"><strong>线上|线下教学</strong></p>
+                                <div class="desc NotoSansHans-DemiLight" style="position: relative ;top:-30px">
+                                    {{$t('i18ndata.xianshangxianxiamioashu')}}
+                                </div>
+                                <a href="/course" class="more">查看更多<i></i></a>
+                            </div>
+                        </div>
+                        <div class="list-item  list-item2 dong2">
+                            <div class="item-box">
+                                <div class="arrow"></div>
+
+                                <p class="Intro" style="color: #66c7f0;text-align:right;width: 100%;font-size: 60px;">
+                                    <span style="border: 2px solid rgb(102, 199, 240);width: 62%;display: inline-block;position: absolute;top: 40px;left: 0px;"></span>
+
+                                    <strong>MAX</strong>
+                                </p>
+                                <p class="Intro" style="text-align:right;width: 100%;font-size: 30px;position: relative ;top:-25px">
+                                    <strong>D O U B L E S</strong></p>
+                                <br/>
+                                <p class="NotoSansHans-DemiLight" style="font-size: 18px;position: relative ;top:-30px"><strong>幼儿双师课程</strong></p>
+                                <div class="desc NotoSansHans-DemiLight" style="position: relative ;top:-30px;">
+                                    {{$t('i18ndata.xianshangxianxiamioashu')}}
+                                </div>
+
+
+                                <a href="/course" class="more">查看更多<i></i></a>
+                            </div>
+                            <div class="item-img">
+                                <img src="/static/img/shouye_doubles_02.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="list-item  dong3">
+
+                            <div class="item-img">
+                                <img src="/static/img/shouye_xiaoxue_03.jpg" alt="">
+                            </div>
+                            <div class="item-box">
+                                <div class="arrow"></div>
+                                <p class="Intro" style="font-family:'Intro';color: #66c7f0;text-align:left;width: 100%;font-size: 60px;">
+                                    <strong>MAX </strong>
+                                    <span style="border: 2px solid rgb(102, 199, 240);width: 62%;display: inline-block;position: absolute;top: 40px;left: 170px;"></span>
+                                </p>
+                                <p class="Intro" style="text-align:left;width: 100%;font-size: 30px;position: relative ;top:-25px">
+                                    <strong>FUN</strong></p>
+                                <br/>
+                                <p class=" NotoSansHans-DemiLight" style="font-size: 18px;position: relative ;top:-30px"><strong>幼儿常规班</strong></p>
+                                <div  class="desc NotoSansHans-DemiLight" style="position: relative ;top:-30px;">
+                                    {{$t('i18ndata.xianshangxianxiamioashu')}}
+                                </div>
+                                <a href="http://www.xschool.com/x-maker.html" class="more">查看更多<i></i></a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="list-item list-item2 dong4">
+
+                            <div class="item-box">
+                                <div class="arrow"></div>
+                                <p class="Intro" style="color: #66c7f0;text-align:right;width: 100%;font-size: 60px;">
+                                    <span style="border: 2px solid rgb(102, 199, 240);width: 62%;display: inline-block;position: absolute;top: 40px;left: 0px;"></span>
+
+                                    <strong>MAX</strong></p>
+                                <p class="Intro" style="text-align:right;width: 100%;font-size: 30px;position: relative ;top:-25px">
+                                    <strong>FUN DAYCARE</strong></p>
+                                <br/>
+                                <p class="NotoSansHans-DemiLight" style="font-size: 18px;position: relative ;top:-30px"><strong>幼儿全天班</strong></p>
+                                <div  class="desc NotoSansHans-DemiLight" style="position: relative ;top:-30px">
+                                    {{$t('i18ndata.xianshangxianxiamioashu')}}
+                                </div>
+                                <a href="http://www.xschool.com/x-maker.html" class="more">查看更多<i></i></a>
+                            </div>
+                            <div class="item-img">
+                                <img src="/static/img/shouye_xiaoxue_03.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="list-item dong5">
+                            <div class="item-img">
+                                <img src="/static/img/shouye_xiaoxue_09.jpg" alt="">
+                            </div>
+                            <div class="item-box">
+                                <div class="arrow"></div>
+
+                                <p class="Intro" style="color: #66c7f0;text-align:left;width: 100%;font-size: 60px;">
+                                    <strong>MAX</strong>
+                                    <span style="border: 2px solid rgb(102, 199, 240);width: 62%;display: inline-block;position: absolute;top: 40px;left: 170px;"></span>
+
+                                </p>
+                                <p class="Intro" style="text-align:left;width: 100%;font-size: 30px;position: relative ;top:-25px">
+                                    <strong>PRIMARY</strong></p>
+                                <br/>
+                                <p class="NotoSansHans-DemiLight" style="font-size: 18px;"><strong>小学课程</strong>
+
+                                </p>
+                                <br/>
+                                <div class="desc NotoSansHans-DemiLight"  style="position: relative ;top:-20px;">
+                                    {{$t('i18ndata.xianshangxianxiamioashu')}}
+                                </div>
+
+
+                                <a href="/course" class="more">查看更多<i></i></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--师资-->
+        <div style="width: 100%;margin: 0 auto; background-image: url('/static/img/shouyebg.png');background-repeat: no-repeat;	background-size: cover;background-position-x: center;background-position-y:top">
+
+            <div style="max-width: 1440px;  margin: 0px auto;">
+                <div class="shizi">
+                    <h1 class="dbk Intro" style="font-size: 60px;">TEACHING ADVANTAGE</h1>
+                    <br/>
+
+                    <h2 class="NotoSansHans-DemiLight"  style="font-size: 30px;color: #1c1d28">
+                        <span style="border: 1px solid ;width: 5%;display: inline-block;position: absolute;top: 15px;left: 560px;"></span>
+                        教学优势
+                        <span style="border: 1px solid ;width: 5%;display: inline-block;position: absolute;top: 15px;left: 805px;"></span>
+                    </h2>
+
+                    <br/>
+                    <br/>
+                    <p class="gjkc-js" style="width: 80%;margin: 0 auto;">新的一年里少儿班课程进行全面升级，which is divided into two types: online and offline. 上课模式为线上加线下相结合， For the online class, foreign teachers from Canada will focus on developing students  fluency in English with the maximum number of four in each class. 线上是由加拿大本土的教师一对四线上授课。As for offline class, experienced Chinese teachers will concentrate on helping kids acquire other English language skills.</p>
+<br/>
+<br/>
+<br/>
+
+                    <div id="tixiyoushi" class="list-item tixiitem" style="background-color: #f9f9f9">
+                        <div class="item-img" style="width: 1500px;margin: 20px;">
+                            <img src="/static/img/shouye_tixi_04.jpg" alt="">
+                        </div>
+                        <div class="item-box" style="width: 100%;">
+
+                            <p style="text-align:center;width: 100%;font-size: 60px;"><strong>ADVANTAGE</strong></p>
+                            <p class="Intro" style="text-align:center;width: 100%;font-size: 60px;position: relative ;top:-10px">
+                                <strong>SYSTEM</strong>
+                            </p>
+<br/>
+<br/>
+                            <p class="NotoSansHans-DemiLight" style="font-size: 30px;position: relative ;top:-20px"><strong>体系优势</strong></p>
+                            <div class="desc NotoSansHans-DemiLight">
+                                {{$t('i18ndata.xianshangxianxiamioashu')}}
+                            </div>
+                            <br/>
+
+                            <a href="http://www.xschool.com/x-maker.html" class="more"
+                               style="">查看更多<i></i></a>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <!--#fff-->
+                    <div class="list-item feiji"
+                         style="background-image: url('/static/img/shouye_shizi_05_1.png');background-repeat: no-repeat ;background-position-x:center;background-position-y:top;width: 100%;height: 510px;">
+
+                        <div class="" style="width: 40%;">
+
+                            <p class="Intro" style="text-align:center;width: 100%;font-size: 60px;"><strong>ADVANTAGE</strong></p>
+                            <p class="Intro" style="text-align:center;width: 100%;font-size: 60px;position: relative ;top:-10px">
+                                <strong>TEACHERS</strong>
+
+                            </p>
+<br/>
+<br/>
+                            <p class="NotoSansHans-DemiLight" style="font-size: 30px;position: relative ;top:-20px"><strong>师资优势</strong></p>
+                            <p class="desc NotoSansHans-DemiLight" style="width: 80%;margin: 0 auto;text-align: left;text-indent: 2em">
+                                {{$t('i18ndata.xianshangxianxiamioashu')}}
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+<div class="sizibutton">
+                            <a style="text-decoration: none;color: white" href="http://www.xschool.com/x-maker.html ">查看更多</a>
+</div>
+                        </div>
+
+
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="list-item otox"
+                         style="background-image: url('/static/img/shouye_xianshangxiaxian_06.jpg');background-repeat: no-repeat ;background-position-x:center;background-position-y:top;width: 100%;height: 510px;">
+                        <div style="width: 60%"></div>
+                        <div class="item-box" style="width: 40%;">
+
+                            <p class="Intro" style="text-align:center;width: 100%;font-size: 60px;"><strong>ADVANTAGE</strong></p>
+                            <p class="Intro" style="text-align:center;width: 100%;font-size: 60px;position: relative ;top:-10px">
+                                <strong>OTO</strong>
+                            </p>
+                            <br/>
+                            <p class="NotoSansHans-DemiLight" style="text-align:center;width: 100%;font-size: 30px;">
+                                <strong>线上线下</strong>
+
+                            </p>
+                            <div class="desc NotoSansHans-DemiLight">
+                                {{$t('i18ndata.xianshangxianxiamioashu')}}
+                            </div>
+                            <br/>
+                            <div class="sizibutton" style="left: 0px;top: 30px;">
+                                <a style="text-decoration: none;color: white" href="">查看更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <div class="list-item doubleclass"
+                         style="background-image: url('/static/img/shouye_shuangshi_07.jpg');background-repeat: no-repeat ;background-position-x:right;background-position-y:center;width: 100%;height: 510px;background-color: #f9f9f9;">
+
+                        <div class="item-box" style="width: 40%;">
+
+                            <p class="Intro" style="text-align:center;width: 100%;font-size: 50px;"><strong>
+                                DOUBLE&nbsp;CLASS</strong>
+                            </p>
+                            <br/>
+                            <br/>
+                            <p class="NotoSansHans-DemiLight" style="text-align:center;width: 100%;font-size: 23px;"><strong>双师课堂</strong></p>
+
+                            <div class="desc NotoSansHans-DemiLight">
+                                {{$t('i18ndata.xianshangxianxiamioashu')}}
+                            </div>
+                            <br/>
+                            <br/>
+                            <a href="http://www.xschool.com/x-maker.html" class="more"
+                               style="">查看更多<i></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br/>
+<br/>
+<br/>
+<br/>
+
+    <div style="max-width: 1440px;  margin: 0px auto; overflow: hidden;">
+        <div  class="xuanchuan" style="    display: block;">
+            <h1 class="dbk Intro" style="text-align: center;font-size: 60px;"><img src="/static/img/shouye_dianright.png" width="50px;" height="50px;"
+                                 style="position: relative;top: -5px"> PROMO VIDEO <img
+                    src="/static/img/shouye_dianlefet.png" width="50px;" height="50px;"
+                    style="position: relative;top: -5px"></h1>
+
+
+            <p align="center" style="margin-top: 50px;">
+                <video width="100%" controls class="shiping">
+                    <source src="/static/img/xuanchuanpian.mp4" type="video/mp4">
+                </video>
+            </p>
+
+        </div>
+    </div>
+
+
+</div>
+<br/>
+<br/>
+<br>
+<br/>
+<br/>
+<br/>
+<br/>
+<div th:replace="front/footer :: footer"></div>
+<script type="application/javascript">
+    <!--    页面加载完毕后执行-->
+    $(document).ready(function () {
+
+        /*    alert($(window).width());*/
+
+
+        $("body").css('display', 'block');
+    });
+
+    var maisidun = new Vue({
+        el: "#eeonav",
+        i18n: i18n
+        //此处引入的是footer页面中定义的i18n
+    })
+
+
+    // ie language = navigator.browserLanguage
+    // 非ie language = navigator.language
+    // 如下
+    // 中文的情况下， lang 为 'zh' 开头， 比如大陆 ： zh-CN 香港： zh-HK  宝岛： zh-TW
+
+    /*  var lang = navigator.language || navigator.browserLanguage;
+
+
+      if(/^zh/.test(lang)) {
+          //是中文
+
+          vm.$i18n.locale="zh-CN"
+      } else {
+
+          //不是中文
+          vm.$i18n.locale="en-US"
+      }*/
+
+    //点击切换语言
+    $(function () {
+        $("#language_switch").click(function () {
+            if (vm.$i18n.locale == "zh-CN") {
+                Setcookie("i18nlocale", "en-US");
+                vm.$i18n.locale = "en-US"
+            } else {
+                Setcookie("i18nlocale", "zh-CN");
+                vm.$i18n.locale = "zh-CN"
+            }
+
+        })
+    })
+
+
+    //定时更换背景图片
+    var imgArr = [
+        "/static/img/swiper1.jpg",
+        "/static/img/swiper2.jpg",
+        "/static/img/swiper3.jpg",
+    ];
+
+
+</script>
+</body>
+</html>

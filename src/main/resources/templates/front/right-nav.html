@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8">
+
+
+</head>
+<body>
+<div th:fragment="right-nav">
+    <style type="text/css">
+        /****************首页*******************/
+
+        .layerForm ul li .formBox label input {
+            filter: alpha(opacity=0);
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        .layerTxt {
+            padding-left: 115px;
+            padding-right: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #9b9b9b;
+            text-align: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        /*火狐去掉按钮、连接的虚线*/
+
+        a:focus,
+        a:active,
+        button::-moz-focus-inner,
+        input[type="reset"]::-moz-focus-inner,
+        input[type="button"]::-moz-focus-inner,
+        input[type="submit"]::-moz-focus-inner,
+        select::-moz-focus-inner,
+        input[type="file"] > input[type="button"]::-moz-focus-inner {
+            border: 0;
+            outline: 0;
+        }
+
+        /*右侧导航栏*/
+
+        .xgwz_fix {
+            width: 90px;
+            background-color: #fff;
+            box-shadow: 0 0 10px #ccc;
+            position: fixed;
+            z-index: 99999;
+            top: 200px;
+            right: 20px;
+            border-radius: 50px;
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .xgwz_fix img {
+            display: initial;
+            margin: 10px 0px;
+            cursor: pointer;
+        }
+
+        .xgwz_fix .fuwuhao-pic {
+            display: none;
+            position: absolute;
+            width: 177px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .xgwz_fix .fuwuhao-pic img {
+            max-width: 100%;
+        }
+
+        .xgwz_fix a.fuwuhao {
+            position: relative
+        }
+
+        .xgwz_fix a.fuwuhao:hover .fuwuhao-pic {
+            display: block;
+            right: 80px;
+            top: -118px;
+        }
+
+        .kefudianhua-pic {
+            display: none;
+            position: absolute;
+            width: 260px;
+            height: 50px;
+            line-height: 50px;
+            background: #fff;
+            color: #ff8a00;
+            font-size: 30px;
+            text-align: center;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .xgwz_fix a.kefudianhua {
+            position: relative
+        }
+
+        .xgwz_fix a.kefudianhua:hover .kefudianhua-pic {
+            display: block;
+            right: 80px;
+            bottom: -25px;
+        }
+
+        .xgwz_fix h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /*遮罩*/
+
+        .deskDiv {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: url(/static/img/back5.png) repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .closeBox {
+            float: right;
+            cursor: pointer;
+            display: block;
+            width: 65px;
+            height: 55px;
+            background: url(/static/img/ico16.png) center center no-repeat;
+            -moz-transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+        }
+
+        /*弹出层*/
+
+        .layerDiv {
+            display: none;
+            padding-bottom: 30px;
+            width: 500px;
+            height: auto;
+            position: fixed;
+            left: 50%;
+            margin-left: -250px;
+            top: 0;
+            background: #fff;
+            border-radius: 20px;
+            z-index: 110;
+        }
+
+        .layerDiv .layerTitle {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 0 0 0 20px;
+            height: auto;
+            background: url(/static/img/ico14.png) repeat-y;
+            overflow: hidden;
+        }
+
+        .layerDiv .layerTitle h2 {
+            padding-left: 40px;
+            background: url(../images/ico15.png) 0 center no-repeat;
+            height: 56px;
+            line-height: 56px;
+            float: left;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .closeBox:hover {
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+        }
+
+        .layerForm {
+            padding: 30px 30px 0;
+            height: auto;
+        }
+
+        .layerForm ul {
+            width: 100%;
+            height: auto;
+            float: left;
+        }
+
+        .layerForm ul li {
+            margin-bottom: 12px;
+            width: 100%;
+            height: auto;
+            float: left;
+        }
+
+        .layerForm ul li span {
+            width: 85px;
+            display: block;
+            float: left;
+            height: 33px;
+            line-height: 32px;
+            font-size: 14px;
+            color: #4a4a4a;
+        }
+
+        .layerForm ul li .formBox {
+            width: 355px;
+            float: left;
+            height: 32px;
+            border-bottom: 1px solid #e9e4e5;
+        }
+
+        .layerForm ul li .formBox1 {
+            height: 33px;
+            border-bottom: none;
+        }
+
+        .layerForm ul li .formtxt {
+            height: 32px;
+            line-height: 32px;
+            width: 100%;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .layerForm ul li .formBtn {
+            margin-top: 10px;
+            width: 355px;
+            height: auto;
+            float: right;
+        }
+
+        #submit {
+            letter-spacing: 1px;
+            text-indent: 1px;
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #ac0e10;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            -moz-transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+        }
+
+        #submit:hover {
+            background: #ff1235;
+        }
+    </style>
+    <!--右侧的导航栏-->
+    <div class="xgwz_fix">
+
+        <a href="javascript:void(0)" id="getRecive">
+            <img src="/static/img/01.png ">
+        </a>
+        <h4>
+            <div class="blank10 "></div>
+            免费约课
+        </h4>
+        <a class="kefudianhua "><img class="img_tel " src="/static/img/02.png ">
+            <div class="kefudianhua-pic ">400-058-1997</div>
+        </a>
+        <h4>电话咨询</h4>
+
+        <a class="fuwuhao "><img src="/static/img/03.png ">
+            <div class="fuwuhao-pic "><img src="/static/img/15750145551947.png "></div>
+        </a>
+        <h4>公众号</h4>
+    </div>
+
+    <!--弹出-->
+    <div class="deskDiv " style="display: none; "></div>
+
+    <div class="layerDiv receive " style="top: 194px; display: none; " id="rightnav">
+        <div class="layerTitle ">
+            <h2>免费领取试听课</h2>
+            <span class="closeBox " id="close"></span>
+        </div>
+        <form class="layerForm cleafix "  @submit.prevent="baoming($event)"
+              name="form2 " id="form2 ">
+            <ul>
+                <li>
+                    <span>{{$t('i18n.xingming')}}</span>
+                    <div class="formBox "><input class="formtxt " v-model="babyname" type="text " name="name " maxlength="30">
+
+
+                    </div>
+                </li>
+                <li>
+                    <span>年龄</span>
+                    <div class="formBox "><input class="formtxt "  v-model="babyage" type="text " name="babyage " maxlength="2">
+
+
+
+
+                    </div>
+                </li>
+                <li>
+                    <span>电话</span>
+                    <div class="formBox "><input class="formtxt " v-model="phoneNumber" type="text " @blur="blur_phone()" name="phoneNumber " maxlength="11 ">
+
+                    </div>
+                </li>
+
+                <li>
+
+                    <div class="formBtn ">
+
+                        <button type="submit" id="submit" class="submit1 baomingsubmit">
+                            <strong>{{tishimsg}}<strong/>
+                        </button>
+<!--                        <button type="submit"  id="submit" class="submit1 baomingsubmit" ><strong>{{tishimsg}}<strong/></button>-->
+<!--                    -->
+
+
+                    </div>
+                </li>
+            </ul>
+
+        </form>
+        <div class="layerTxt ">我们尽可能会在24小时内联系您</div>
+    </div>
+
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <script src="/static/js/vue/vue-router.js"></script>
+
+
+    <script type="application/javascript ">
+
+        var right = new Vue({
+            el: "#rightnav",
+            i18n,
+            data: {
+                babyage: '',
+                babyname: '',
+                phoneNumber: '',
+                tishimsg: '立 即 领 取'
+            },
+            /*限制只能输入数字*/
+            watch: {
+                babyage: function () {
+                    this.babyage = this.babyage.replace(/\D/g, '')
+                },
+                phoneNumber: function () {
+                    this.phoneNumber = this.phoneNumber.replace(/\D/g, '')
+                }
+            },
+            methods: {
+                /*提交按钮*/
+                baoming: function (event) {
+
+                    // 检查正则
+                    var re_phone = /^1[345789]\d{9}$/;
+
+                    if (this.babyname == "" || this.babyname == null) {
+                        this.tishimsg = '请填写宝贝名称';
+                        var bba = this;
+                        setTimeout(function () {
+                            bba.tishimsg = '立 即 领 取';
+
+                        }, 2000);
+                    } else if (this.babyage == "" || this.babyage == null) {
+                        this.tishimsg = '请填写宝贝年龄';
+                        var bba = this;
+                        setTimeout(function () {
+                            bba.tishimsg = '立 即 领 取';
+
+                        }, 2000);
+
+                    } else if (this.phoneNumber == "" || this.phoneNumber == null) {
+                        this.tishimsg = '请填写手机号码';
+                        var bba = this;
+                        setTimeout(function () {
+                            bba.tishimsg = '立 即 领 取';
+
+                        }, 2000);
+                    } else if (re_phone.test(this.phoneNumber)) {//符合则提交
+
+
+                        console.log("提交");
+                        var params = new URLSearchParams();
+                        params.append('babyage', this.babyage);
+                        params.append('babyname', this.babyname);
+                        params.append('phoneNumber', this.phoneNumber);
+
+                        axios.post('/apply', params).then(function (response) {
+
+
+                            fanhui = response.data;
+                            if (fanhui == "sucees") {
+                                message('报名成功,我们将尽快联系您!');
+                                this.tishimsg = '您已报名成功!';
+                                $(function () {
+                                    $('.deskDiv').css({
+                                        display: 'none'
+                                    });
+                                    $(".receive ").css({
+                                        display: 'none'
+                                    });
+
+                                    $(".baomingsubmit").attr("disabled","true");
+                                    $(".baomingsubmit").html(' <strong>您已报名成功!<strong/>')
+                                })
+                            } else if (fanhui == "false") {
+                                message({
+                                    message: '报名失败!',
+                                    type: 'error'
+                                });
+
+
+                            } else {
+                                message({
+                                    message: '服务器异常!!!',
+                                    type: 'error'
+                                });
+                            }
+
+
+                        }).catch(function (error) {
+                            console.log(error);
+                            message({
+                                message: '服务器异常!!!',
+                                type: 'error'
+                            });
+                        });
+
+
+                    } else {
+                        this.tishimsg = '手机号码格式错误';
+                        //$("#btnsubm").css("background-color","red");
+                        var bba = this;
+                        setTimeout(function () {
+                            bba.tishimsg = '立 即 领 取';
+
+                        }, 2000);
+
+
+                    }
+                },
+                blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+                }
+                ,
+            }
+
+        })
+
+
+
+
+
+
+
+        $(function () {
+
+            /*控制模态框显示关闭*/
+            $('#getRecive').click(function () {
+                $('.deskDiv').fadeIn(100);
+                $(".receive ").css({
+                    top: ($(window).height() - ($(".layerDiv ").height() + 30)) / 2,
+                    display: 'block'
+                });
+            });
+            /*控制模态框关闭*/
+            $('#close').click(function () {
+
+                $('.deskDiv').css({
+                    display: 'none'
+                });
+                $(".receive ").css({
+                    display: 'none'
+                });
+            });
+        })
+    </script>
+</div>
+</body>
+</html>

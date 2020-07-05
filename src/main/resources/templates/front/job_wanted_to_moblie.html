@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/static/images/paralleTeachers/log.ico" type="image/x-icon"/>
+    <title>PARAL TEACHER</title>
+
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <script src="/static/js/vue/vue-router.js"></script>
+
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+    <!--表单验证-->
+    <link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+
+    <!--layui-->
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+
+    <!--文件上传-->
+
+    <link rel="stylesheet" href="/static/bootstrap_uploadfile/css/fileinput.css"/>
+    <link rel="stylesheet" href="/static/bootstrap_uploadfile/css/fileinput-rtl.css"/>
+    <link rel="stylesheet" href="/static/bootstrap_uploadfile/css/theme.css"/>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/fileinput.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/piexif.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/purify.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/sortable.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/theme.js"></script>
+
+    <!--课程表插件-->
+    <script src="\static\time-table\Timetables.min.js"></script>
+    <!--    自定义字体-->
+    <link rel="stylesheet" href="\static\css\fonts_custom.css"/>
+
+    <!--定义css-->
+    <link rel="stylesheet" href="\static\css\paralleTeachers\job_wanted_to_moblie.css"/>
+
+
+</head>
+<body>
+<div id="job_wanted_formvue">
+
+    <form id="job_wanted_form">
+
+        <div id="headdiv">
+            <div id="headimg"></div>
+            <img src="\static\images\paralleTeachers\logo.png"
+                 style="width: 140px;height: 22px;margin: 5px 0px 5px 30px"></div>
+        <br/>
+        <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+            <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">Teacher
+                Application
+                Process</p>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">Name</label>
+                    <input type="text" v-model="firstName" class="form-control"
+                           name="firstName"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">Phone number</label>
+                    <input type="text" v-model="phoneNumber" class="form-control"
+                           name="phoneNumber"/>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">Date of birth</label>
+                    <div class="input-group">
+                                                    <span class="input-group-addon"><span
+                                                            class="glyphicon glyphicon-calendar"></span></span>
+                        <input type="text" v-model="dateOfBirth" class="form-control"
+                               placeholder="yyyy-mm-dd"
+                               name="birth_time"
+                               id="birth_time"/>
+                    </div>
+                    <span class="help-block">Such As 2012-02-06</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;display: none">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">Please insert Your Nationality</label>
+                    <select class="form-control" v-model="nationality" name="nationality"
+                            data-bv-notempty disabled     data-bv-notempty-message="  can not be empty">
+                        <option value="">-- please select --</option>
+                        <option value="0">United State</option>
+                        <option value="1">Canada</option>
+                        <option value="2">British</option>
+                        <option value="3">Gerogia</option>
+                        <option value="4">Australia</option>
+                        <option value="5">New Zealand</option>
+                        <option value="6">Italy</option>
+                        <option value="7">Ukraine</option>
+                        <option value="8">Russia</option>
+                        <option value="9">Sorth Africa</option>
+                        <option value="10">Denmark</option>
+                        <option value="11">Switzerland</option>
+                        <option value="12">Germany</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+            <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">Education</p>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <label class=" control-label">The highest degree / diploma of education</label>
+                <select class="form-control" v-model="diploma" name="highest_degree"
+                        data-bv-notempty
+                        data-bv-notempty-message="  can not be empty">
+                    <option value="">-- please select --</option>
+                    <option value="0">High School Diploma</option>
+                    <option value="1">Bachelor</option>
+                    <option value="2">Master</option>
+                    <option value="3">PhD</option>
+                    <option value="4">Other</option>
+                </select>
+
+            </div>
+        </div>
+        <br/>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">College/University Education Name
+                        of the school</label>
+                    <input type="text" v-model="educationName" class="form-control"
+                           name="EducationName"/>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">Diploma received? </label>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+
+                    <label class="radio-inline">
+                        <input type="radio" v-model="diplomaReceived" name="diplomaReceived" value="1"> YES
+                    </label>
+                    &nbsp;
+                    &nbsp;
+
+                    <label class="radio-inline">
+                        <input type="radio" v-model="diplomaReceived" name="diplomaReceived" value="0"> NO
+                    </label>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">English Language Teaching
+                        Certification</label>
+
+                    <select class="form-control" v-model="teachingCertification"
+                            name="English_Language"
+                            data-bv-notempty
+                            data-bv-notempty-message="  can not be empty">
+                        <option value="">-- please select --</option>
+                        <option value="1">TESL</option>
+                        <option value="2">TEFL</option>
+                        <option value="3">CELTA</option>
+                        <option value="4">TESOL</option>
+                        <option value="5">DELTA</option>
+                        <option value="6">Masters</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+
+        <br/>
+        <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+            <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">
+                Employment</p>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">How long have you been teaching
+                        English?</label>
+                    <select class="form-control" v-model="teachingEnglish"
+                            name="teachingEnglish"
+                            data-bv-notempty
+                            data-bv-notempty-message="  can not be empty">
+                        <option value="">-- please select --</option>
+                        <option value="01">Less than 1 year</option>
+                        <option value="12">1-2 years</option>
+                        <option value="23">2-3 years</option>
+                        <option value="3">More than 3 years</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">I have ______ year(s) of online
+                        teaching
+                        experience</label>
+
+                    <select class="form-control" v-model="onlineTeaching"
+                            name="onlineTeaching"
+                            data-bv-notempty
+                            data-bv-notempty-message="  can not be empty">
+                        <option value="">-- please select --</option>
+                        <option value="01">Less than 1 year</option>
+                        <option value="12">1-2 years</option>
+                        <option value="23">2-3 years</option>
+                        <option value="3">More than 3 years</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">Are you currently
+                        employed? </label>
+
+                    <label class=" control-label">Diploma received? </label>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+
+                    <label class="radio-inline">
+                        <input type="radio" v-model="currentlyEmployed" name="currentlyEmployed" value="1"> YES
+                    </label>
+                    &nbsp;
+                    &nbsp;
+
+                    <label class="radio-inline">
+                        <input type="radio" v-model="currentlyEmployed" name="currentlyEmployed" value="0"> NO
+                    </label>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class="control-label">Do you want a part time or full
+                        time teaching job?</label>
+
+                    <select class="form-control" v-model="teachingJob"
+                            name="time_teachingJob"
+                            data-bv-notempty
+                            data-bv-notempty-message="  can not be empty">
+                        <option value="">-- please select --</option>
+                        <option value="0">Full Time</option>
+                        <option value="1">Part Time</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label class=" control-label">How many hours do you want to
+                        participate in your teaching
+                        job?
+                    </label>
+
+                    <select class="form-control" v-model="participateYour"
+                            name="participate_teaching"
+                            data-bv-notempty
+                            data-bv-notempty-message="  can not be empty">
+                        <option value="">-- please select --</option>
+                        <option value="1">10 hours/week</option>
+                        <option value="2">20 hours/week</option>
+                        <option value="3">30 hours/week</option>
+                        <option value="4">40 hours/week</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+
+                <div class="form-group">
+                    <label class="control-label">Click the button on the right to select one of your photos</label>
+
+                    <input type="file" id="kv-explorer" class="form-control"
+                           name="photo_yourself"/>
+                    <!--  <span class="help-block">Choose a jpg  file with a size between 1M and 10M.</span>-->
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-lg-12">
+
+                <div class="form-group">
+                    <label class=" control-label">Personal video</label>
+
+                    <input type="file" id="personal_video" class="form-control"
+                           name="personal_video"/>
+                    <span class="help-block">Requirement of video:</span>
+                    <span class="help-block">1. Simple background</span>
+                    <span class="help-block">2. Outlook from head to chest</span>
+                    <span class="help-block">3. High spirit</span>
+                    <span class="help-block">4. Loud voice</span>
+                    <span class="help-block">5. Introduce of your name/age/hobbies/teaching experiment/say something to your students</span>
+                    <span class="help-block">6. Choose a MP4  file with a size between 1M and 50M.</span>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <br/>
+        <br/>
+
+        <div class="row" style="margin: 0 auto;text-align: center;">
+            <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">I confirm the
+                above information
+                provided is accurate and
+                complete.</p>
+            </div>
+        </div>
+        <br/>
+        <div class="row" style="margin: 0 auto;text-align: center;">
+            <div class="col-lg-12"><label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1"> YES
+            </label>
+            </div>
+        </div>
+        <br/>
+    </form>
+</div>
+
+<div class="row" style="margin: 0 auto;text-align: center">
+    <div class="progress" id="jobsumitrjindu" style="display: none;">
+        <div style="width: 1%;" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <button class="layui-btn" id="jobsumitr" onclick="jobsumit();">
+            Next Step
+        </button>
+    </div>
+</div>
+<br/>
+<br/>
+
+<div id="xuanze" style="display: none;">
+    <br/><br/>
+
+
+<div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+    <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">Two Types Of Class
+        Schedule For You</p>
+    </div>
+</div>
+<br/>
+<br/>
+<div class="row" style="margin: 0 auto;text-align: center;">
+    <div class="col-lg-12">
+        <label class="radio-inline" style="margin-left: 5px;margin-right: 5px;">
+            <input type="radio" name="typetime" onclick="readionck(1)" value="1">
+            Only work form Tue to Fri.
+        </label>
+
+
+        <label class="radio-inline" style="margin-left: 5px;margin-right: 5px;">
+            <input type="radio" name="typetime" onclick="readionck(2)" value="1">
+            Work form Tue to Sun. Monday Off.
+
+        </label>
+
+    </div>
+</div>
+<br/>
+<br/>
+</div>
+<div id="divnonoe" style="display: none;">
+
+
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; "><strong>Select
+            the specific class time.</p>
+        </div>
+    </div>
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">You can choose
+            anytime your want.</p>
+        </div>
+    </div>
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">Fully classes can
+            be arranged in a week is <span id="countkeshu">56</span>.</p>
+        </div>
+    </div>
+
+    <div class="row" style="margin: 0 auto;text-align: center">
+        <div class="col-lg-12">
+            <div id="coursesTable" style="width: 100%;margin: 0 auto;"></div>
+        </div>
+    </div>
+<br/>
+
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 16px;font-family: AEASWFTE_zdy;line-height:100%; ">Awesome, You have selected &nbsp;<span style="color: rgb(255, 153, 0); " id="seletcount"></span>&nbsp;classes in a week</p>
+        </div>
+    </div>
+
+
+    <br/>
+    <div class="row" style="margin: 0 auto;text-align: center">
+        <div class="progress" id="formSteptimesubjindu" style="display: none;">
+            <div style="width: 1%;" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <button class="layui-btn" id="timetablesubmit" onclick=" onsubminttime();">
+                &emsp;Next Step&emsp;
+            </button>
+        </div>
+    </div>
+    <br/>  <br/>  <br/>
+</div>
+<!--客服联系-->
+<div id="kefu" style="display: none;">
+    <br/>  <br/>  <br/>
+    <img class="ims" src="\static\images\paralleTeachers\kefu.png">
+    <br/>
+    <br/>
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 12px;font-family: AEASWFTE_zdy;line-height:100%; ">
+            Thank you for your application.
+        </p>
+
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 12px;font-family: AEASWFTE_zdy;line-height:100%; ">
+            Our staff may contact with you by e-mail or telephone in 3 days.
+        </p>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p style="font-size: 12px;font-family: AEASWFTE_zdy;line-height:100%; ">
+            We are sincerely looking forward to your joining.
+        </p>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row" style="margin: 0 auto;text-align: center;color:rgb(255,176,29)">
+        <div class="col-lg-12"><p id="fanhuihsouye" style="font-size: 12px;font-family: AEASWFTE_zdy;line-height:100%; ">
+
+        </p>
+        </div>
+    </div>
+    <br/>
+    <div class="row" style="margin: 0 auto;text-align: center">
+        <div class="col-lg-12">
+            <button class="layui-btn" onclick="fanhuishouye()">
+                Complete
+            </button>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+
+</body>
+<script src="\static\js\paralleTeachers\job_wanted_to_moblie.js"></script>
+
+
+</html>

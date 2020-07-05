@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<meta charset="UTF-8">
+<title>教学成果</title>
+
+<script src="/static/js/jquery-2.1.1.min.js"></script>
+<!--    错误提示-->
+<link rel="stylesheet" href="/static/js/message/message.css"/>
+<script src="/static/js/message/message.js"></script>
+<script src="/static/js/vue/axios.min.js"></script>
+<script src="/static/js/vue/vue.js"></script>
+<!--    路由-->
+<script src="/static/js/vue/vue-router.js"></script>
+<!--国际化-->
+<script src="/static/js/vue/vue-i18n.js"></script>
+<!--导入国际化语言包-->
+<script src="/static/js/vue/lang/en-US.js"></script>
+<script src="/static/js/vue/lang/zh-CN.js"></script>
+<!--bootstarp-->
+<script src=" /static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .h1 {
+        position: absolute;
+        left: 350px;
+        top: 100px;
+        color: fuchsia;
+    }
+
+    #wrap {
+        position: relative;
+        width: 100%;
+        height: 600px;
+      /*  background: url("/static/img/jioaxuechengguotoup.jpg") no-repeat center;
+        background-size: cover;*/
+        background: linear-gradient(to top right, #9FA5D5 0%, #E8F5C8 25%, #FFEB3B 100%);
+        perspective: 800px;
+        overflow: hidden;
+    }
+
+    .photo {
+        position: absolute;
+        width: 260px;
+        height: 350px;
+        z-index: 1;
+        transition: .5s;
+        left: 50%;
+        top: 50%;
+        margin: -160px 0 0 -130px;
+    }
+
+    .photo .photo-wrap {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: all .6s ease-in-out;
+        transform-origin: 0% 50% 0px;
+    }
+
+    .photo .photo-wrap .side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+        top: 0;
+        right: 0;
+        box-sizing: border-box;
+        backface-visibility: hidden;
+    }
+
+    .photo .photo-wrap .side-front {
+        transform: rotateY(0deg);
+    }
+
+    .photo .photo-wrap .side-front .image {
+        width: 100%;
+        height: 310px;
+        line-height: 250px;
+        overflow: hidden;
+    }
+
+    .photo .photo-wrap .side-front .image img {
+        width: 100%;
+        vertical-align: middle;
+        /*使高度不够的图片居中显示*/
+    }
+
+    .photo .photo-wrap .side-front .caption {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .photo .photo-wrap .side-back {
+        transform: rotateY(180deg);
+    }
+
+    .btnn {
+        position: absolute;
+        width: 80%;
+        left: 10%;
+        height: 30px;
+        line-height: 30px;
+        bottom: 20px;
+        z-index: 3;
+        text-align: center;
+    }
+
+    .btnn .i {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background-color: #aaa;
+        border-radius: 50%;
+        transform: scale(.5);
+        transition: .5s;
+    }
+
+    .photo_center {
+        top: 50%;
+        left: 50%;
+        margin: -160px 0 0 -130px;
+        z-index: 2;
+    }
+
+    .btnn .i_current {
+        transform: scale(1);
+    }
+
+    .nav .i_back {
+        background-color: #555;
+        transform: rotateY(180deg);
+    }
+
+    .photo_front .photo-wrap {
+        /* .photo_front 是添加到 div.photo 的类 */
+        transform: translate(0px, 0px) rotateY(0deg);
+    }
+
+    .photo_back .photo-wrap {
+        /* .photo_back 是添加到 div.photo 的类*/
+        transform: translate(260px, 0px) rotateY(180deg);
+    }
+    /*播放按钮*/
+
+    .videoModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9000;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background: rgba(0, 0, 0, 0.65);
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: none
+    }
+
+    .videoModal .video-wrapper {
+        position: relative;
+        margin: 0 auto;
+        max-width: 1120px;
+        height: 100%;
+        width: 58.9473684211%
+    }
+
+    .videoModal .video-dialog {
+        background: transparent;
+        position: absolute;
+        left: 0;
+        top: 100;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        display: table
+    }
+
+    .videoModal .player-body {
+        position: relative
+    }
+
+    .videoModal .modal-close {
+        top: 10px;
+        right: 10px;
+        opacity: 1;
+        outline: 0;
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        z-index: 10000;
+        width: 50px;
+        height: 50px;
+        background: url(/static/img/video-close.png) no-repeat;
+        background-size: 100% 100%
+    }
+
+    .videoModal .prism-player {
+        position: relative
+    }
+
+    .videoModal .prism-player video,
+    .videoModal .prism-player iframe {
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        display: block
+    }
+
+    .videoModal .prism-player,
+    .videoModal .prism-player {
+        background: none !important;
+        border: 1px solid transparent !important
+    }
+
+    @media screen and (max-width: 1600px) {
+        .videoModal .video-wrapper {
+            width: 82.3529411765%
+        }
+        .videoModal .modal-close {
+            right: 0
+        }
+        .wrapper {
+            max-width: 1020px
+        }
+        .wrapper2 {
+            max-width: 1600px
+        }
+        .h66 {
+            height: 55px
+        }
+        .w480 {
+            width: 340px
+        }
+        .h1200 {
+            height: 850px
+        }
+        .h960 {
+            height: 680px
+        }
+        .h720 {
+            height: 510px
+        }
+        .h480 {
+            height: 340px
+        }
+        .h240 {
+            height: 170px
+        }
+        .pt240 {
+            padding-top: 170px
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 170px;
+            height: 55px;
+            background-size: 170px 55px
+        }
+    }
+
+    .play {
+        width: 104px;
+        height: 104px;
+        background: url(/static/img/v-play.png) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        cursor: pointer
+    }
+
+    .image img {
+        height: 100%;
+    }
+    .btnn{display: none;}
+</style>
+</head>
+
+<body style="background-color: #f5f5f5">
+<header>
+    <!--导航栏-->
+    <div th:replace="front/head :: head"></div>
+</header>
+</br>
+</br>
+</br>
+<!--头部轮播图-->
+<div id='wrap'>
+</div>
+<!--视频播放组件-->
+<div class="videoModal" id="videoModal">
+    <div class="video-wrapper">
+        <div class="video-dialog">
+            <div class="table-cell">
+                <div class="player-body">
+                    <div class="modal-close"></div>
+                    <div class="prism-player" id="prism-player"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer id="footerfooter" style="width: 100%;">
+    <div th:replace="front/footer :: footer"></div>
+</footer>
+</body>
+<script type="text/javascript" src="/static/js/data.js"></script>
+<script type="application/javascript">
+    $(function() {
+        /*关闭视频*/
+        $('.modal-close').click(function() {
+            var video = $('#prism-player video')[0];
+            if(video) {
+                video.pause();
+            }
+            $('#videoModal').fadeOut();
+        })
+    })
+    /*点击播放视频*/
+    function playdata(datasrc) {
+        var vh = '<video src=' + datasrc + ' autoplay controls></video>';
+        $('#prism-player').html(vh);
+        $('#videoModal').fadeIn();
+
+    }
+
+    function addPhotos() {
+        var box = '';
+        var _btn = '';
+        for(var i = 0; i < data.length; i++) {
+            box += '<div class="photo photo-front" onclick="turn(this)" data-src="/static/img/xuanchuanpian.mp4" id="photo_' + (i + 1) + '">\
+							<div class="photo-wrap">\
+								<div class="side side-front">\
+								<div class="play"></div>\
+									<p class="image">\
+										<img src="/static/img/' + data[i].img + '" alt="" />\
+									</p>\
+									<p class="caption">' + data[i].caption + '</p>\
+								</div>\
+								<div class="side side-back">\
+									<p class="desc">' + data[i].desc + '</p>\
+								</div>\
+							</div>\
+						</div>';
+            _btn += '<span id="btn_' + (i + 1) + '" onclick="turn(g(\'#photo_' + (i + 1) + '\'))" class="i"></span>'
+        }
+        var navigation = '<div class="btnn">' + _btn + '</div>'
+        g('#wrap').innerHTML += box + navigation;
+        rsort(random([1, data.length]));
+    }
+    addPhotos();
+
+    function rsort(n) {
+        var photos = [];
+        var _photo = g('.photo');
+        for(var i = 0; i < _photo.length; i++) {
+            _photo[i].className = 'photo photo_front';
+            _photo[i].style.left = '';
+            _photo[i].style.top = '';
+            _photo[i].style.transform = 'scale(1.3)';
+            photos.push(_photo[i]);
+        }
+
+        var photo_center = g("#photo_" + n);
+        photo_center.className += ' photo_center';
+
+        photo_center = photos.splice(n - 1, 1);
+        //console.log(photo_center);
+        //console.log(photos);
+        var photo_left = photos.splice(0, Math.ceil(photos.length / 2));
+        var photo_right = photos;
+        var ranges = range();
+        for(var j = 0; j < photo_left.length; j++) {
+            photo_left[j].style.left = random(ranges.left.x) + 'px';
+            photo_left[j].style.top = random(ranges.left.y) + 'px';
+            photo_left[j].style.transform = 'rotate(' + random([-150, 150]) + 'deg) scale(1)';
+        }
+
+        for(var k = 0; k < photo_right.length; k++) {
+            photo_right[k].style.left = random(ranges.right.x) + 'px';
+            photo_right[k].style.top = random(ranges.right.y) + 'px';
+            photo_right[k].style.transform = 'rotate(' + random([-150, 150]) + 'deg) scale(1)';
+        }
+
+        var btns = g('.i');
+        for(var s = 0; s < btns.length; s++) {
+            btns[s].className = 'i';
+        }
+        g('#btn_' + n).className += ' i_current';
+    }
+
+    function range() {
+        var range = {
+            left: {
+                x: [],
+                y: []
+            },
+            right: {
+                x: [],
+                y: []
+            }
+        };
+        var wrap = {
+            width: g('#wrap').clientWidth,
+            height: g('#wrap').clientHeight
+        };
+        var photo = {
+            width: g('.photo')[0].clientWidth,
+            height: g('.photo')[0].clientHeight
+        };
+
+        range.left.x = [0 - photo.width / 4 + 130, wrap.width / 2 - photo.width * 5 / 4 + 130];
+        range.left.y = [0 - photo.height / 4 + 160, wrap.height / 2 - photo.height * 3 / 4 + 160];
+        range.right.x = [wrap.width / 2 + photo.width / 4 + 130, wrap.width - photo.width / 4 + 130];
+        range.right.y = range.left.y;
+
+        return range;
+    }
+
+    function turn(elem) {
+        var cls = elem.className;
+        var n = elem.id.split('_')[1]; //var n = elem.id.substr(-1, 1)，但是不推荐 substr;
+        if(!/photo_center/.test(cls)) { //判断当前点击的元素是不是 photo_center，不是的话不执行后面的翻转而进行海报排序
+            return rsort(n);
+        }
+        if(/photo_front/.test(cls)) { //执行播放视频
+
+            playdata($(elem).data('src'));
+        }
+
+        elem.className = cls;
+    }
+
+    function g(selector) {
+        return selector.substring(0, 1) == '.' ? document.getElementsByClassName(selector.substring(1)) : document.getElementById(selector.substring(1));
+    }
+
+    function random(range) {
+        var min = Math.min(range[0], range[1]);
+        var max = Math.max(range[0], range[1]);
+        var diff = max - min;
+        var number = Math.round(Math.random() * diff) + min;
+        return number;
+    }
+
+
+    //点击切换语言
+    $(function () {
+        $("#language_switch").click(function () {
+            if (vm.$i18n.locale == "zh-CN") {
+                Setcookie("i18nlocale", "en-US");
+                vm.$i18n.locale = "en-US"
+            } else {
+                Setcookie("i18nlocale", "zh-CN");
+                vm.$i18n.locale = "zh-CN"
+            }
+
+        })
+    })
+
+    var head = new Vue({
+        el: "#eeonav",
+        i18n: i18n,
+        //此处引入的是footer页面中定义的i18n
+    })
+
+</script>
+
+</html>

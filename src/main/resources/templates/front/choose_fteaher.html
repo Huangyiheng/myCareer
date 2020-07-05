@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/static/images/paralleTeachers/logico.ico" type="image/x-icon"/>
+    <title>遇到最好的外教</title>
+
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!--引入字体-->
+    <link rel="stylesheet" href="/static/css/fonts_custom.css"/>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?016ad8c6d8aa38ae08176064d55c5bda";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <style type="text/css">
+        .bk {
+            border-radius: 10px;
+            border: white solid 2px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            width: 120%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #div1 {
+            width: 100%;
+            /*width:1200px;*/
+            padding-bottom: 100px;
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        .section-one {
+            float: left;
+            margin-left: 12%;
+            width: 100%;
+            /*width:1200px;*/
+            height: 408px;
+            margin-bottom: 60px;
+        }
+
+        .section-one:first-child div {
+            margin-left: 4%;
+        }
+
+        .person_name {
+            font-size: 18px;
+            color: #666666;
+            font-family: AeroRegularSWFTE;
+            position: absolute;
+            bottom: 0px;
+            height: 12%;
+            line-height: 8vh;
+            margin: 0px;
+            background-color: white;
+
+        }
+
+        .div-mask {
+            /* 通过绝对定位 覆盖原图 */
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 88%;
+            background-color: rgba(255, 153, 0, 0.7);
+            font-size: 18px;
+            color: #ffffff;
+            font-family: SourceHanSansSC-Medium;
+            /* 垂直居中 */
+            /*display: flex;*/
+            justify-content: center;
+            /* 弹性布局的左右居中对齐 */
+            align-items: center;
+            /*弹性布局的垂直居中对齐*/
+            text-align: center;
+            /*文本居中*/
+            display: none;
+
+        }
+
+        .list-one-box:hover .div-mask {
+            display: flex;
+            border-radius: 10px;
+        }
+
+        .ty img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgba(222, 222, 222, .8);
+            /*考虑浏览器兼容性*/
+            -moz-box-shadow: 10px 10px 10px rgba(222, 222, 222, .8);
+            -webkit-box-shadow: 10px 10px 10px rgba(222, 222, 222, .8);
+        }
+
+        .suojiao {
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgba(222, 222, 222, .8);
+            /*考虑浏览器兼容性*/
+            -moz-box-shadow: 10px 10px 10px rgba(222, 222, 222, .8);
+            -webkit-box-shadow: 10px 10px 10px rgba(222, 222, 222, .8);
+        }
+
+        .rowdiv {
+            text-align: center;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .ty {
+            padding: 0px;
+            margin: 0px 10px;
+        }
+
+        .genduo {
+            margin-top: 15%;
+            margin-left: -90px;
+        }
+
+        .imghover {
+            margin: 0 auto;
+            width: 60%;
+            padding: 5%;
+            transition: all 0.3s ease 0s;
+            border-radius: 20px;
+        }
+
+        .imghover:hover {
+            background-color: #e9e9e9;
+            transform: scale(1.1);
+
+        }
+    </style>
+</head>
+<body>
+<div th:replace="front/parallel_head :: parallel_head"></div>
+<input id="jobid" type="text" th:value="${jobArray}" style="display: none;">
+<div>
+    <div class="main">
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <div class="row" style="text-align: center; margin-left: 0; margin-right: 0;">
+            <div class="col-lg-12" style="margin-left: 0; margin-right: 0;">
+                <div style="border-radius: 10px; height: 60px;">
+                    <p class="Medium" style="font-size: 23px;color: #666666">在这里，遇到最好的外教老师</p>
+                    <br/>
+                    <p class="Regular" style="font-size: 15px;color: #666666">点击外教图片查看更多老师信息，观看视频，还能查看外教老师可选上课时间。</p>
+                </div>
+            </div>
+        </div>
+
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <div class="row" style="text-align: center; margin-left: 0; margin-right: 0;">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+
+                    <div class="col-lg-6" style="padding: 0;">
+                        <div class="imghover">
+                            <a onclick="load(3)"><img src="/static/images/partener/europe.png" style="width: 89%;"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 " style="padding: 0;">
+                        <div class="imghover">
+                            <!--<a href="/teacher/region?region=1"><img src="/static/images/partener/northAmerica.png"></a>-->
+                            <a onclick="load(1)"><img src="/static/images/partener/northAmerica.png"
+                                                      style="width: 100%;"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+        <br/><br/><br/>
+        <!--图片开始-->
+        <div class="row" style="margin-left: 0; margin-right: 0;">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10" id="fujieidan">
+                <!--  <div class="row rowdiv">
+                      <div class="col-lg-4">
+                          <a href="/parallel/teacherDetail/1">
+                              <div class="col-lg-12 list-one-box ty">
+                                  <img src="\static\images\teacherShow\diana.jpg">
+                                  <div class=" col-lg-12 person_name">
+                                      Diana
+                                  </div>
+                                  <div class='div-mask'>
+                                      <p>点击查看外教</p>
+                                      <p class="genduo">更多信息</P>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="col-lg-4">
+                          <a href="/parallel/teacherDetail/1">
+                              <div class="col-lg-12 list-one-box ty">
+                                  <img src="\static\images\teacherShow\diana.jpg">
+                                  <div class=" col-lg-12 person_name">
+                                      Diana
+                                  </div>
+                                  <div class='div-mask'>
+                                      <p>点击查看外教</p>
+                                      <p class="genduo">更多信息</P>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="col-lg-4">
+                          <a href="/parallel/teacherDetail/1">
+                              <div class="col-lg-12 list-one-box ty">
+                                  <img src="\static\images\teacherShow\diana.jpg">
+                                  <div class=" col-lg-12 person_name">
+                                      Diana
+                                  </div>
+                                  <div class='div-mask'>
+                                      <p>点击查看外教</p>
+                                      <p class="genduo">更多信息</P>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+                  <br/><br/><br/>-->
+
+
+                <!--新老师   结束-->
+                <!--图片结束-->
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row" id="jiashuju" style="margin-left: 0; margin-right: 0;">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="row" style="text-align: center; margin-left: 0; margin-right: 0;">
+                    <div class="col-lg-4">
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\13.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Piper
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/11-->
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\14.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Clara
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/12-->
+
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\15.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Stella
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <br/> <br/> <br/>
+                <div class="row" style="text-align: center; margin-left: 0; margin-right: 0;">
+                    <div class="col-lg-4">
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\16.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Piper
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/11-->
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\17.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Clara
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/12-->
+
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\18.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Stella
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <br/> <br/> <br/>
+                <div class="row" style="text-align: center; margin-left: 0; margin-right: 0;">
+                    <div class="col-lg-4">
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\19.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Piper
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/11-->
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\20.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Clara
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/12-->
+
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\21.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Stella
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <br/> <br/> <br/>
+                <div class="row" style="text-align: center; margin-left: 0; margin-right: 0;">
+                    <div class="col-lg-4">
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\22.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Piper
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <!--/parallel/teacherDetail/11-->
+                        <a>
+                            <div class="col-lg-12 list-one-box ty" style="padding: 0px;margin: 0px 10px;">
+                                <div style="width: 100%;height: 90%; position: absolute;top: 0px; background-color: #adadad;opacity: 0.5;">
+
+                                </div>
+
+                                <img src="\static\images\phone\chossefteacher\23.jpg" style="width: 100%;">
+                                <div class=" col-lg-12 person_name" style=" ">
+                                    Clara
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <!--新老师   结束-->
+                <!--图片结束-->
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+</div>
+<br/><br/><br/>
+<br/><br/><br/>
+<div th:replace="front/pingxingwaijiaofooter.html :: footer"></div>
+<script type="text/javascript">
+
+    $(function () {
+        load(0);//请求数据
+    })
+
+    function load(diqu) {
+        var jobWanted = new Object();
+        jobWanted.showTeacher = 1;
+        jobWanted.pageNum = 1;//当前页数
+        jobWanted.length = 18;//每页数量
+        jobWanted.nationality = diqu;
+        $("#fujieidan").toggle("explode");
+        $("#jiashuju").toggle("explode");
+
+        $.ajax({
+            "url": "/job/showTeacher",
+            "type": "post",
+            "data": {
+                "jobWanted": JSON.stringify(jobWanted)
+            },
+            "dataType": "json",
+            "success": function (result) {
+                $("#fujieidan").empty();
+                var content = result.content
+                var box = "";
+                var count = "0";
+                var shenyu = 3;
+
+                for (var p in content) {
+                    count++;
+                }
+                for (var p in content) {//遍历json数组时，p为索引
+                    shenyu--;
+                    p = parseInt(p);
+
+                    debugger;
+                    // alert(content[p].firstName + " " + content[p].p_yourself.fileId);
+
+                    box += " <div class=\"col-lg-4\">"
+                        + "<a href=\"/parallel/teacherDetail/" + content[p].teacherdId + "\">"
+                        + "<div class=\"col-lg-12 list-one-box ty\" >"
+                        + " <img src=\"/file/picture?fileid=" + content[p].picture.fileId + "\" >"
+                        + "<div class=\" col-lg-12 person_name\" >" + content[p].teacherName + ""
+                        + " </div>"
+                        + "<div class='div-mask'>"
+                        + " <p>点击查看外教</p>"
+                        + " <p class=\"genduo\">更多信息</P>"
+                        + " </div></div></a> </div>"
+
+
+                    /*  if (p % 3 == 0) {
+                          box += "</div><br/><br/><br/>"
+                      }*/
+                    if ((p + 1) % 3 == 0) {
+                        shenyu = 3;
+                        var rowdiv = $("<div>").addClass("row rowdiv");
+                        rowdiv.append(box);
+
+                        box = ""
+                        $("#fujieidan").append(rowdiv);
+                    } else if ((p + 1) > (count - 1)) {
+                        if (shenyu == 1) {
+
+                            box += " <div class=\"col-lg-4\">"
+                                + "<a href=\"/parallel/teacherDetail/" + content[p].jobwantedId + "\">"
+                                + "<div class=\"col-lg-12 list-one-box ty\" >"
+                                + "<img src=\"/static/images/phone/chossefteacher/24.jpg \"style=\"width: 100%;opacity: 0.5;\">"
+                                + "<div class=\" col-lg-12 person_name\" >Emma"
+                                + " </div>"
+                                + "<div class='div-mask'>"
+                                + " <p>点击查看外教</p>"
+                                + " <p class=\"genduo\">更多信息</P>"
+                                + " </div></div></a> </div>"
+
+                        } else {
+
+                            box += " <div class=\"col-lg-4\">"
+                                + "<a href=\"/parallel/teacherDetail/" + content[p].jobwantedId + "\">"
+                                + "<div class=\"col-lg-12 list-one-box ty\" >"
+                                + "<img src=\"/static/images/phone/chossefteacher/24.jpg \"style=\"width: 100%;opacity: 0.5;\">"
+                                + "<div class=\" col-lg-12 person_name\" >Emma"
+                                + " </div>"
+                                + "<div class='div-mask'>"
+                                + " <p>点击查看外教</p>"
+                                + " <p class=\"genduo\">更多信息</P>"
+                                + " </div></div></a> </div>"
+
+
+                            box += " <div class=\"col-lg-4\">"
+                                + "<a href=\"/parallel/teacherDetail/" + content[p].jobwantedId + "\">"
+                                + "<div class=\"col-lg-12 list-one-box ty\" >"
+                                + "<img src=\"/static/images/phone/chossefteacher/25.jpg \"style=\"width: 100%;opacity: 0.5;\">"
+                                + "<div class=\" col-lg-12 person_name\" >Piper"
+                                + " </div>"
+                                + "<div class='div-mask'>"
+                                + " <p>点击查看外教</p>"
+                                + " <p class=\"genduo\">更多信息</P>"
+                                + " </div></div></a> </div>"
+
+                        }
+                        var rowdiv = $("<div>").addClass("row rowdiv");
+                        rowdiv.append(box);
+
+                        box = "";
+                        $("#fujieidan").append(rowdiv);
+                    }
+                }
+                $(".rowdiv").after("<br/><br/><br/>")
+                $("#jiashuju").toggle("explode");
+                $("#fujieidan").toggle("explode");
+
+            },
+            error: function () {
+                bt.enable();
+                message({
+                    message: '服务器异常,请重试!',
+                    type: 'error'
+                });
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        })
+
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

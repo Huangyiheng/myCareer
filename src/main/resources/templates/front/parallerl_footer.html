@@ -1,0 +1,922 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<div th:fragment="parallerfooter">
+
+
+    <style type="text/css">
+
+
+
+
+        /********************底部栏样式开始****************/
+
+
+        .foot-bar {
+            background-color: #141414;
+            padding: 20px 15px;
+            text-align: center
+        }
+
+        .foot-bar a,
+        .foot-bar span {
+            color: #FFFFFF;
+            margin: 0 5px;
+        }
+
+        .foot-bar img {
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+
+        .footer {
+            background-color: #2d2d2d;
+            color: #FFFFFF;
+        }
+
+        .foot-main {
+            padding: 100px 0;
+        }
+
+
+        .foot-nav {
+            position: relative;
+            padding-top: 10px;
+            margin: 30px 0;
+        }
+
+        .foot-nav:before {
+            display: block;
+            content: '　';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fb6b22;
+            width: 40px;
+            height: 4px;
+        }
+
+        .foot-nav li {
+            width: 100px;
+            float: left;
+            padding: 5px 0;
+        }
+
+        .foot-nav li a {
+            color: #909090;
+        }
+
+        .foot-nav li a:hover {
+            color: #FFFFFF;
+        }
+
+        .foot-hd {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #FFFFFF;
+        }
+
+        .foot-hd:after {
+            display: block;
+            content: '　';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: #fb6b22;
+            width: 40px;
+            height: 4px;
+        }
+
+        .foot-contact .tel {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .foot-contact .tel .iconfont {
+            font-size: 22px;
+        }
+
+
+        .foot-hd.text-center:after {
+            left: 50%;
+            margin-left: -20px;
+        }
+
+        .foot-form {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .foot-form .foot-hd {
+            font-size: 20px;
+        }
+
+        .foot-fmx > div {
+            padding: 5px;
+        }
+
+        .foot-fmx input {
+            height: 32px;
+            line-height: 30px;
+            padding: 0 10px;
+            width: 100%;
+            background-color: transparent;
+            outline: none;
+            color: #FFFFFF;
+
+        }
+
+        .foot-fmx .btn-getv {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 35px;
+            background-color: #ff8a00;
+            color: #FFFFFF;
+            cursor: pointer;
+            width: 300px;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 16px;
+        }
+
+
+        .footer {
+            background: #3c3c3c;
+            /*padding-top: 50px;
+            //padding-bottom: 100px*/
+        }
+
+        .footer .wrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+
+        .footer .left-box,
+        .footer .right-box {
+            width: 50%
+        }
+
+        .footer .left-box {
+            padding-left: 85px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        .footer h3 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 33px
+        }
+
+        .footer .enter,
+        .footer .about {
+            display: inline-block;
+            text-align: center
+        }
+
+        .footer .enter a,
+        .footer .about a {
+            color: #d3d2d2;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+            -webkit-transition: color 0.25s;
+            transition: color 0.25s;
+            text-align: left
+        }
+
+        .footer .enter a:hover,
+        .footer .about a:hover {
+            color: #fff
+        }
+
+        .footer .enter {
+            border-right: 2px dashed #636363;
+            padding-right: 35px
+        }
+
+        .footer .enter a {
+            margin-bottom: 24px
+        }
+
+        .footer .about {
+            padding-left: 35px
+        }
+
+        .footer .logo {
+            width: 175px;
+            margin-top: 70px
+        }
+
+        .footer .right-box p {
+            font-size: 14px;
+            color: #d3d2d2;
+            line-height: 24px
+        }
+
+        .footer .right-box .fp0 {
+            padding-left: 73px
+        }
+
+        .footer .iconcode {
+            display: inline-block;
+            width: 100%;
+            margin-top: 50px;
+            line-height: 158px
+        }
+
+        .footer .iconcode a {
+            width: 45px;
+            height: 45px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin-right: 18px;
+            display: inline-block
+        }
+
+        .footer .iconcode .wx {
+            background-image: url(../images/wx.png)
+        }
+
+        .footer .iconcode .qq {
+            background-image: url(../images/qq.png)
+        }
+
+        .footer .iconcode .sina {
+            background-image: url(../images/sina.png)
+        }
+
+        .footer .iconcode .zhihu {
+            background-image: url(../images/zhihu.png)
+        }
+
+        .footer .iconcode .code {
+            width: 124px;
+            text-align: center;
+            float: right;
+            display: none
+        }
+
+        .footer .iconcode .coo {
+            margin-right: 25px;
+            margin-left: 50px;
+            display: none
+        }
+
+        .footer .iconcode .code-name {
+            font-size: 14px;
+            color: #d3d2d2;
+            margin-top: 10px
+        }
+
+        .footer .iconcode img {
+            display: block;
+            max-width: 100%
+        }
+
+        .footer .cpy {
+            width: 100%;
+            text-align: center;
+            color: #cdcdcd;
+            font-size: 16px;
+            line-height: 30px;
+            margin-top: 30px
+        }
+
+        .footer .footer-flex {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+
+        .clearfix > li, .share-link {
+            list-style: none;
+        }
+
+        /*修改提示文字颜色*/
+        input::-webkit-input-placeholder { /* WebKit browsers */
+
+            color: white;
+
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+            color: white;
+
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+
+            color: white;
+
+        }
+
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */
+
+            color: white;
+
+        }
+
+        .footfitie div {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        /**********底部栏样式结束*****************/
+    </style>
+    <!--右侧的导航栏-->
+    <div id="rightnav">
+        <div class="xgwz_fix">
+
+            <a href="javascript:void(0)" id="getRecive">
+                <img src="/static/img/01.png " style="border-radius: 10px;">
+            </a>
+
+            <a class="kefudianhua "><img class="img_tel " src="/static/img/02.png " style="border-radius: 10px;">
+                <div class="kefudianhua-pic ">400-058-1997</div>
+            </a>
+
+            <a class="fuwuhao "><img src="/static/img/03.png " style="border-radius: 10px;">
+                <div class="fuwuhao-pic "><img src="/static/img/15750145551947.png " style="border-radius: 10px;"></div>
+            </a>
+        </div>
+
+        <!--弹出-->
+        <div class="deskDiv " style="display: none; "></div>
+
+        <div class="layerDiv receive " style="top: 194px; display: none; ">
+            <div class="layerTitle ">
+                <h2>{{$t('i18ndata.mianfeilingqushitingke')}}</h2>
+                <span class="closeBox " id="close"></span>
+            </div>
+            <form class="layerForm cleafix " @submit.prevent="baoming($event)"
+                  name="form2 " id="form2 ">
+                <ul>
+                    <li>
+                        <span>{{$t('i18ndata.xingming')}}</span>
+                        <div class="formBox "><input class="formtxt " v-model="babyname" type="text " name="name "
+                                                     maxlength="30">
+                        </div>
+                    </li>
+                    <li>
+                        <span>{{$t('i18ndata.nianling')}}</span>
+                        <div class="formBox "><input class="formtxt " v-model="babyage" type="text " name="babyage "
+                                                     maxlength="2">
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>{{$t('i18ndata.dianhua')}}</span>
+                        <div class="formBox "><input class="formtxt " v-model="phoneNumber" type="text "
+                                                     @blur="blur_phone()" name="phoneNumber " maxlength="11 ">
+
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <div class="formBtn ">
+
+                            <button type="submit" id="submit" class="submit1 baomingsubmit">
+                                <strong id="fixdtishimsg">{{$t('i18ndata.lijilingqu')}}</strong>
+                            </button>
+                            <!--                        <button type="submit"  id="submit" class="submit1 baomingsubmit" ><strong>{{tishimsg}}<strong/></button>-->
+                            <!--                    -->
+
+
+                        </div>
+                    </li>
+                    <p style="width: 100%;color: #9b9b9b;text-align: center;">{{$t('i18ndata.ershisilianxi')}}</p>
+                </ul>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!--页面底部-->
+    <div class="footer " id="footer"
+         style=" background-image: url('/static/img/shouye_footer_08.jpg');background-repeat: no-repeat;background-size: cover;overflow: hidden;">
+        <div class="foot-main  " style="padding-left: 20px;padding-right: 20px">
+            <div style="max-width: 1440px;margin: 0 auto;">
+                <div class="row footfitie">
+                    <div class="col-md-3 col-sm-3"><span>网址导航</span></div>
+                    <div class="col-md-1 col-sm-1"></div>
+                    <div class="col-md-4 col-sm-4">北京麦思顿免费试听课+活动课</div>
+                    <div class="col-md-4 col-sm-4">联系我们</div>
+
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row ">
+                    <div class="col-md-3 col-sm-4">
+                        <div class="row">
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    style="color: #FFFFFF; " title="返回首页 " href="http://www.lilyenglish.com/ ">{{$t('i18ndata.shouye')}}</a>
+                            </div>
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;
+                                <a href="### " style="color: #FFFFFF; "
+                                   target=" ">{{$t('i18ndata.xianshangxianxia')}}</a></div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;
+                                <a href="###" style="color: #FFFFFF; " target=" ">{{$t('i18ndata.shizi')}}</a></div>
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="###" style="color: #FFFFFF; "
+                                    target=" ">{{$t('i18ndata.shuangshiketang')}}</a></div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="### " style="color: #FFFFFF; "
+                                    target=" ">{{$t('i18ndata.jiaoxuechengguo')}}</a></div>
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="###" style="color: #FFFFFF; "
+                                    target=" ">{{$t('i18ndata.youerbancahnggui')}}</a></div>
+
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="### " style="color: #FFFFFF; " target=" ">{{$t('i18ndata.zhnaluehezuo')}}</a>
+                            </div>
+
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="###" style="color: #FFFFFF; " target=" ">{{$t('i18ndata.youerquantian')}}</a>
+                            </div>
+
+
+                        </div>
+                        <br/>
+                        <div class="row">
+
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="/wonderful_activity" style="color: #FFFFFF; " target=" ">{{$t('i18ndata.jingcaihuodong')}}</a>
+                            </div>
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="###" style="color: #FFFFFF; " target=" ">{{$t('i18ndata.xioaxueban')}}</a>
+                            </div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-6"><span class="glyphicon glyphicon-play" style="color: #ff8a00"></span>&nbsp;<a
+                                    href="###" style="color: #FFFFFF; " target=" ">{{$t('i18ndata.guanyuwomen')}}</a>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-1 col-sm-0"></div>
+                    <div class="col-md-4 col-sm-4">
+                        <form @submit.prevent="baoming($event)">
+                            <div class="foot-form ">
+
+                                <div class="row foot-fmx ">
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <input type="text " v-model="babyname" value="" id="name " maxlength="30"
+                                                   name="name " :placeholder="$t('i18ndata.xingming')">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <input type="text " v-model="babyage" maxlength="2" value="" id="babyage "
+                                                   name="babyage " :placeholder="$t('i18ndata.nianling')">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <input type="text " v-model="phoneNumber" maxlength="11" value=""
+                                                   @blur="blur_phone()" id="phoneNumber " name="phoneNumber "
+                                                   :placeholder="$t('i18ndata.dianhua')">
+                                        </div>
+                                    </div>
+                                    <br/>
+
+                                    <div class="col-xs-12 col-button ">
+                                        <button type="submit" id="btnsubm" class="btn btn-getv baomingsubmit">
+                                            <strong id="tishimsg">{{$t('i18ndata.lijilingqu')}}</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="row">
+                            <div class="col-md-12"><span class="glyphicon glyphicon-earphone"
+                                                         style="color: #ff8a00"></span>：&nbsp;400-1687-9009
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12"><span class="glyphicon glyphicon-envelope"
+                                                         style="color: #ff8a00"></span>：&nbsp;4578241@163.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;margin: 40px auto;">
+            Copyright © 北京麦思顿国际文化交流有限公司 Inc.All rights reserved.
+
+            <a rel="nofollow " href="" target="_blank " class="item "><img
+                    src="/static/img/beiantupian.png"> 京ICP备16004325号-1</a>
+        </div>
+
+
+    </div>
+
+
+    <script type="text/javascript">
+        /*读取cookie的方法*/
+        function getCookie(c_name) {
+//判断document.cookie对象里面是否存有cookie
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=")
+                //如果document.cookie对象里面有cookie则查找是否有指定的cookie，如果有则返回指定的cookie值，如果没有则返回空字符串
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1
+                    c_end = document.cookie.indexOf(";", c_start)
+                    if (c_end == -1) c_end = document.cookie.length
+                    return unescape(document.cookie.substring(c_start, c_end))
+                }
+            }
+            return ""
+        }
+
+        /*存入cookie的方法*/
+        function Setcookie(name, value) {
+            //设置名称为name,值为value的Cookie
+            var expdate = new Date();   //初始化时间
+            expdate.setTime(expdate.getTime() + 30 * 60 * 1000);   //时间单位毫秒
+            document.cookie = name + "=" + value + ";expires=" + expdate.toGMTString() + ";path=/";
+
+            //即document.cookie= name+"="+value+";path=/";  时间默认为当前会话可以不要，但路径要填写，因为JS的默认路径是当前页，如果不填，此cookie只在当前页面生效！
+        }
+
+        //maisidunyingyu.com
+        //maxwisdomglobal.com
+        var domain = window.location.href.split(':')[0] + '://' + document.domain;
+        /*  alert("当前地址"+domain);*/
+        i18nlocale = getCookie("i18nlocale");
+        if (i18nlocale == null) {
+            i18nlocale = "zh-CN"
+        }
+        const i18n = new VueI18n({
+            locale: i18nlocale,    // 语言标识
+            //this.$i18n.locale // 通过切换locale的值来实现语言切换
+
+            messages: {
+                'zh-CN': vuelgzh,   // 中文语言包,该变量路径:/static/js/vue/language/en.js
+                'en-US': vuelgen   // 英文语言包,该变量路径:/static/js/vue/language/zh.js
+            }
+
+        })
+        Vue.use(i18n) //使用Vue引入i18n，不然虽然能编译过，但所有页面都会变成空白，好像是webpack打包会失败，无法找到config
+
+
+        var vm = new Vue({
+            el: "#parallerfooter",
+            i18n: i18n,
+            data: {
+                babyage: '',
+                babyname: '',
+                phoneNumber: '',
+
+            },
+            /*限制只能输入数字*/
+            watch: {
+                babyage: function () {
+                    this.babyage = this.babyage.replace(/\D/g, '')
+                },
+                phoneNumber: function () {
+                    this.phoneNumber = this.phoneNumber.replace(/\D/g, '')
+                }
+            },
+            methods: {
+                /*提交按钮*/
+                baoming: function (event) {
+                    // 检查正则
+                    var re_phone = /^1[345789]\d{9}$/;
+
+                    if (this.babyname == "" || this.babyname == null) {
+
+
+                        $("#tishimsg").html(this.$t('i18ndata.namenotnull'));
+                        //动态加载i18n,语言数据也可以从后台获取
+                        //如果你的18n已经设置过语言包，记得要在这边也要把之前的值补进去，否则会被覆盖
+                        // this.$i18n.mergeLocaleMessage('zh-CN', { 'zh-CN': vuelgzh,   'en-US': vuelgen   });
+
+                        var bba = this;
+                        setTimeout(function () {
+
+                            $("#tishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+                    } else if (this.babyage == "" || this.babyage == null) {
+                        $("#tishimsg").html(this.$t('i18ndata.tianxiebbnl'));
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+
+                    } else if (this.phoneNumber == "" || this.phoneNumber == null) {
+                        $("#tishimsg").html(this.$t('i18ndata.tianxiesjhm'));
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+                    } else if (re_phone.test(this.phoneNumber)) {
+                        //符合则提交
+                        var bba = this;
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "POST",//方法类型
+                            //  dataType: "json",//预期服务器返回的数据类型
+                            url: "/apply",//url
+                            //processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+                            data: {"babyage": this.babyage, "babyname": this.babyname, "phoneNumber": this.phoneNumber},
+                            success: function (result) {
+
+                                fanhui = result;
+                                if (fanhui == "sucees") {
+                                    message(bba.$t('i18ndata.baomingcgwmjjklxn'));
+                                    $(function () {
+
+                                        $(".baomingsubmit").html("<strong>" + bba.$t('i18ndata.baomingcg') + "!<strong/>")
+
+                                        $(".baomingsubmit").attr("disabled", "true");
+                                    })
+                                } else if (fanhui == "false") {
+                                    message({
+                                        message: bba.$t('i18ndata.baomingsb') + '!',
+                                        type: 'error'
+                                    });
+
+
+                                } else {
+                                    message({
+                                        message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                        type: 'error'
+                                    });
+                                }
+
+                            },
+                            error: function () {
+                                console.log(error);
+                                message({
+                                    message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                    type: 'error'
+                                });
+                            }
+                        });
+
+
+                        /* console.log("提交");
+                         var params = new URLSearchParams();
+                         params.append('babyage', this.babyage);
+                         params.append('babyname', this.babyname);
+                         params.append('phoneNumber', this.phoneNumber);
+
+                         axios.post('/apply', params).then(function (response) {
+
+
+                             fanhui = response.data;
+                             if (fanhui == "sucees") {
+                                 message(bba.$t('i18ndata.baomingcgwmjjklxn'));
+                                 $(function () {
+
+                                     $(".baomingsubmit").html("<strong>" + bba.$t('i18ndata.baomingcg') + "!<strong/>")
+
+                                     $(".baomingsubmit").attr("disabled", "true");
+                                 })
+                             } else if (fanhui == "false") {
+                                 message({
+                                     message: bba.$t('i18ndata.baomingsb') + '!',
+                                     type: 'error'
+                                 });
+
+
+                             } else {
+                                 message({
+                                     message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                     type: 'error'
+                                 });
+                             }
+
+
+                         }).catch(function (error) {
+                             console.log(error);
+                             message({
+                                 message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                 type: 'error'
+                             });
+                         });
+ */
+
+                    } else {
+                        $("#tishimsg").html(this.$t('i18ndata.shoujihmgscw'));
+                        //$("#btnsubm").css("background-color","red");
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+
+
+                    }
+                },
+                blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+                }
+                ,
+            },
+            created: function () { //页面加载就执行
+                //页面加载就根据语言环境替换提示信息语言英文或中文
+            }
+
+        })
+
+
+        /******************固定栏jquery开始***************/
+        var right = new Vue({
+            el: "#rightnav",
+            i18n: i18n,
+            data: {
+                babyage: '',
+                babyname: '',
+                phoneNumber: '',
+                tishimsg: '立即领取',
+            },
+            /*限制只能输入数字*/
+            watch: {
+                babyage: function () {
+                    this.babyage = this.babyage.replace(/\D/g, '')
+                },
+                phoneNumber: function () {
+                    this.phoneNumber = this.phoneNumber.replace(/\D/g, '')
+                }
+            },
+            methods: {
+                /*提交按钮*/
+                baoming: function (event) {
+
+                    // 检查正则
+                    var re_phone = /^1[345789]\d{9}$/;
+
+                    if (this.babyname == "" || this.babyname == null) {
+                        $("#fixdtishimsg").html(this.$t('i18ndata.namenotnull'));
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#fixdtishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+                    } else if (this.babyage == "" || this.babyage == null) {
+                        $("#fixdtishimsg").html(this.$t('i18ndata.tianxiebbnl'));
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#fixdtishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+
+                    } else if (this.phoneNumber == "" || this.phoneNumber == null) {
+                        $("#fixdtishimsg").html(this.$t('i18ndata.tianxiesjhm'));
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#fixdtishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+                    } else if (re_phone.test(this.phoneNumber)) {//符合则提交
+                        var bba = this;
+
+                        console.log("提交");
+
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "POST",//方法类型
+                            //  dataType: "json",//预期服务器返回的数据类型
+                            url: "/apply",//url
+                            //processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+                            data: {"babyage": this.babyage, "babyname": this.babyname, "phoneNumber": this.phoneNumber},
+                            success: function (result) {
+                                fanhui = result;
+                                if (fanhui == "sucees") {
+                                    message(bba.$t('i18ndata.baomingcgwmjjklxn'));
+
+                                    $(function () {
+                                        $('.deskDiv').css({
+                                            display: 'none'
+                                        });
+                                        $(".receive ").css({
+                                            display: 'none'
+                                        });
+
+                                        $(".baomingsubmit").attr("disabled", "true");
+                                        $(".baomingsubmit").html("<strong>" + bba.$t('i18ndata.baomingcg') + "!<strong/>")
+                                    })
+                                } else if (fanhui == "false") {
+                                    message({
+                                        message: bba.$t('i18ndata.baomingsb') + '!',
+                                        type: 'error'
+                                    });
+
+
+                                } else {
+                                    message({
+                                        message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                        type: 'error'
+                                    });
+                                }
+
+                            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                console.log(error);
+                                message({
+                                    message: bba.$t('i18ndata.fuwuqiyc') + '!!!',
+                                    type: 'error'
+                                });
+                            }
+
+                        })
+
+
+                    } else {
+                        $("#fixdtishimsg").html(this.$t('i18ndata.shoujihmgscw'));
+                        //$("#btnsubm").css("background-color","red");
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#fixdtishimsg").html(bba.$t('i18ndata.lijilingqu'));
+
+                        }, 2000);
+
+
+                    }
+                },
+                blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+                }
+                ,
+            }
+
+        })
+
+
+        $(function () {
+
+            /*控制模态框显示关闭*/
+            $('#getRecive').click(function () {
+                $('.deskDiv').fadeIn(100);
+                $(".receive ").css({
+                    top: ($(window).height() - ($(".layerDiv ").height() + 30)) / 2,
+                    display: 'block'
+                });
+            });
+            /*控制模态框关闭*/
+            $('#close').click(function () {
+
+                $('.deskDiv').css({
+                    display: 'none'
+                });
+                $(".receive ").css({
+                    display: 'none'
+                });
+            });
+        })
+        /**************固定栏jquery结束*/
+        /*返回元素是否是在可视区域*/
+        function iskeshi(ft) {
+            //指定元素距离文档顶部高度
+            var sTop = $(this).scrollTop(); //获取滚动条的位置
+            var sh = $(window).innerHeight(); //视口高度
+            var ktop = ft - sh;
+            // 滚动条位置 大于 指定元素减去 视口高度时
+            if (sTop > ktop && sTop < ft) { //当底部出现在视口时 触发
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</div>

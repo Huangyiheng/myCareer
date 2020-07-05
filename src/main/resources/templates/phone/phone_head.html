@@ -1,0 +1,593 @@
+<div th:fragment="phone_head">
+
+    <style type="text/css">
+        #header {
+            z-index: 10;
+            /* background-image: linear-gradient(to right, #ffc602 , #ffd200);*/
+            /*background-image: linear-gradient(to right, #2d2d2d , #2d2d2d);*/
+            /*opacity: 60%;*/
+            background-color:rgba(0,0,0,.4);
+            position: fixed;top: 0px;
+            width: 100vw;
+        }
+
+        #header .logo h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        #header .logo h1 a, #header .logo h1 a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #header .logo img {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        /*--------------------------------------------------------------
+        # Navigation Menu
+        --------------------------------------------------------------*/
+        .nav-menu {
+            position: fixed;
+            top: 12.6vw;
+            bottom: 0;
+            z-index: 9999;
+            overflow-y: auto;
+            right: -60vw;
+            width: 60vw;
+            padding-top: 18px;
+           /* background-image: linear-gradient(to right, #5d5d5d, #5d5d5d)*/
+             background: rgba(0,0,0,.4);
+            transition: 0.4s;
+        }
+
+
+        .nav-menu * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            display: block;
+            position: relative;
+            color: white;
+            padding: 3vw 4vw;
+            font-weight: 500;
+            font-size: 4vw;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
+            text-decoration: none;
+        }
+
+
+        .nav-menu .drop-down > a {
+            padding-right: 35px;
+        }
+
+        .nav-menu .drop-down ul {
+            display: none;
+            overflow: hidden;
+        }
+
+        .nav-menu .drop-down li {
+            padding-left: 20px;
+        }
+
+        .nav-menu-active {
+            right: 0;
+        }
+
+        .nav-toggle {
+            outline: none !important;
+            cursor: pointer;
+            border: 0;
+            background: rgba(34, 34, 34, 0);
+            transition: all 0.4s;
+            margin-right: 2vw;
+            margin-top: 3vw;
+        }
+
+        .nav-toggle i {
+            color: #fff;
+            font-size: 6vw;
+        }
+
+        .nav-toggle-active {
+            right: 62vw;
+        }
+
+        .zhezhao {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            display: none;
+        }
+
+        .zhezhaohide {
+            display: block;
+        }
+        #xuexiaoform .row{
+            margin: 0px 2vw;
+        }
+    </style>
+    </head>
+
+    <body>
+
+    <!--
+        <div class="h5" style="color: white; text-align: right;" onclick="modalshow()"><strong style="border:1px solid white;padding: 3px;border-radius: 4px;font-size: 3vw; ">学校入驻</strong></div >
+        <h1 class="text-light"><a href="/"><img src="/static/images/phone/chossefteacher/logo.png" style="width: 40vw;  margin-top: 2vw;margin-bottom: 2vw"></a></h1>
+
+    <!-- ======= Header ======= -->
+    <div class="zhezhao " onclick="zhezhaohide()"></div>
+    <header id="header" >
+        <div class="">
+
+            <div class="logo float-left">
+                <div class="row" style="margin: 0px;">
+                    <div class=" col-xs-4">
+                        <!--modalshow()-->
+                        <div style="color: white;margin: 3vw 0vw 0vw 0vw;" onclick="xuexiaomodalshow()"><strong
+                                style="border:1px solid white;padding: 3px;border-radius: 4px;font-size: 4vw; ">免费试听</strong>
+                        </div>
+                    </div>
+                    <div class=" col-xs-6"><h1 class="text-light"><a href="/"><img
+                            src="/static/images/phone/chossefteacher/logo.png"
+                            style="width: 29vw; margin-left: 5vw;"></a></h1></div>
+
+                    <div class="col-xs-2" style="padding: 0px;text-align: right;">
+                        <button type="button" class="nav-toggle"><i class="glyphicon glyphicon-tasks"></i></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active"><a href="/">首页</a></li>
+                    <li class="drop-down"><a>课程<span style="float: right;"
+                                                       class="glyphicon glyphicon-chevron-down"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="/parallel/commodityOne">自拼专项口语线上课</a></li>
+                            <!-- <li class="drop-down"><a href=" ">Drop Down 2</a>
+                                 <ul>
+                                     <li><a href=" "></a></li>
+                                     <li><a href=" "></a></li>
+                                     <li><a href=" ">英语启蒙线上课</a></li>
+                                     <li><a href=" "></a></li>
+                                     <li><a href=" "></a></li>
+                                     <li><a href=" "></a></li>
+                                 </ul>
+                             </li>-->
+                            <li><a href="/parallel/drawTheBookWebsite">绘本专项口语线上课</a></li>
+                            <li><a href="/parallel/websiteEnlightenment">英语启蒙线上课</a></li>
+                            <li><a href="/parallel/websiteSystemCourse">线上体系必修课</a></li>
+                            <li><a href="/parallel/synchronousLearning">线上/线下同步学</a></li>
+                            <li><a href="/parallel/doubleClass">双师课堂</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/parallel/chooseTeacher">选择外教</a></li>
+                    <!--<li><a href="/parallel/maxwisdom">演示站</a></li>-->
+                    <li><a href="https://app9cb698b3f519.lightning.schooin.cn">专属商城</a></li>
+                    <li><a href="/parallel/partener">城市合伙人</a></li>
+                    <li><a  onclick="xuexiaomodalshow()">免费试听</a></li>
+
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End #header -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="z-index: 99;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">报名领取</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="xuexiaoform" class="form-horizontal">
+                        <div class="row">
+                            <div class=" col-xs-12">
+                                <div class="form-group">
+                                    <label class=" control-label">名称</label>
+                                    <input type="text" v-model="babyname" class="form-control"
+                                           maxlength="32"    name="babyname"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-xs-12">
+
+                                <div class="form-group">
+                                    <label class=" control-label">年龄</label>
+                                    <input type="text" v-model="babyage" class="form-control"
+                                           maxlength="2"     name="babyage"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-xs-12">
+
+                                <div class="form-group">
+                                    <label class=" control-label">电话</label>
+                                    <input type="text" oninput = "value=value.replace(/[^\d]/g,'')"  v-model="phoneNumber" class="form-control"
+                                           maxlength="11 "      name="phoneNumber"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="guanbimodl()" >关闭</button>
+                    <button type="button" class="btn btn-primary" id="suzhusubi" onclick="xuesxiaofromsub()">立即领取</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="mainfeilingqufrom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="z-index: 99;">
+            <div class="modal-content" id="rightnav">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="mianianfeishiting">免费领取试听课</h4>
+                </div>
+                <form class="form-horizontal" @submit.prevent="baoming($event)">
+                <div class="modal-body">
+
+
+                        <div class="row" style="margin: 0px 0vw;">
+                            <div class=" col-xs-12">
+
+                                <div class="form-group">
+                                    <label class=" control-label">名称</label>
+                                    <input class="form-control " v-model="babyname" type="text " name="name "
+                                           maxlength="30" style="border-bottom: 1px solid #e2e2e2;">
+                                    <span class="help-block" id="babynametishi"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 0px 0vw;">
+                            <div class=" col-xs-12">
+
+                                <div class="form-group">
+                                    <label class=" control-label">年龄</label>
+                                    <input class="form-control " v-model="babyage" type="text " name="babyage "
+                                           maxlength="2"style="border-bottom: 1px solid #e2e2e2;">
+                                    <span class="help-block" id="babyagetishi"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 0px 0vw;">
+                            <div class=" col-xs-12">
+
+                                <div class="form-group">
+                                    <label class=" control-label">电话</label>
+                                    <input class="form-control " v-model="phoneNumber" type="text "
+                                           @blur="blur_phone()" name="phoneNumber " maxlength="11 "style="border-bottom: 1px solid #e2e2e2;">
+                                    <span class="help-block" id="phoneNumbertishi"></span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="guanbimianfeiomodl()" >关闭</button>
+                        <button type="submit" id="submitform" class="btn btn-primary " >立即领取</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    </body>
+
+    <script type="text/javascript">
+
+        var right = new Vue({
+            el: "#rightnav",
+            data: {
+                babyage: '',
+                babyname: '',
+                phoneNumber: '',
+                tishimsg: '立即领取',
+            },
+            /*限制只能输入数字*/
+            watch: {
+                babyage: function () {
+                    this.babyage = this.babyage.replace(/\D/g, '')
+                },
+                phoneNumber: function () {
+                    this.phoneNumber = this.phoneNumber.replace(/\D/g, '')
+                }
+            },
+            methods: {
+                /*提交按钮*/
+                baoming: function (event) {
+
+                    // 检查正则
+                    var re_phone = /^1[345789]\d{9}$/;
+
+                    if (this.babyname == "" || this.babyname == null) {
+                        $("#babynametishi").html('请填写名称');
+                        setTimeout(function () {
+                            $("#babynametishi").html('');
+
+                        }, 2000);
+                    } else if (this.babyage == "" || this.babyage == null) {
+                        $("#babyagetishi").html('请填写年龄');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#babyagetishi").html('');
+
+                        }, 2000);
+
+                    } else if (this.phoneNumber == "" || this.phoneNumber == null) {
+                        $("#phoneNumbertishi").html('请填写电话号码');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#phoneNumbertishi").html('');
+
+                        }, 2000);
+                    } else if (re_phone.test(this.phoneNumber)) {//符合则提交
+                        var bba = this;
+
+                        console.log("提交");
+                        $("#submitform").attr('disabled', true);
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "POST",//方法类型
+                            //  dataType: "json",//预期服务器返回的数据类型
+                            url: "/audition/apply",//url
+                            //processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+                            data: {"babyage": this.babyage, "babyname": this.babyname, "phoneNumber": this.phoneNumber},
+                            success: function (result) {
+                                fanhui = result;
+                                if (fanhui == "sucees") {
+                                    guanbimianfeiomodl();
+                                    message({
+                                        message: '我们将尽快联系您！!',
+                                        type: 'success'
+                                    });
+                                    $("#submitform").removeAttr("disabled");
+
+                                } else if (fanhui == "false") {
+                                    message({
+                                        message: '报名失败!',
+                                        type: 'error'
+                                    });
+
+
+                                } else {
+                                    message({
+                                        message: '服务器异常!!!',
+                                        type: 'error'
+                                    });
+                                }
+
+                            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                console.log(error);
+                                message({
+                                    message: '服务器异常!!!',
+                                    type: 'error'
+                                });
+                            }
+
+                        })
+
+
+                    } else {
+                        $("#phoneNumbertishi").html('手机号错误！');
+                        //$("#btnsubm").css("background-color","red");
+                        setTimeout(function () {
+                            $("#phoneNumbertishi").html('');
+
+                        }, 2000);
+
+
+                    }
+                },
+                blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+                }
+                ,
+            }
+
+        })
+
+      function xuesxiaofromsub() {
+       /*    $('#xuexiaoform').data('bootstrapValidator').validate();//启用验证
+           flag = $('#xuexiaoform').data('bootstrapValidator').isValid();
+*/
+          flag=true;
+
+          if (flag == true) {
+
+              $("#suzhusubi").attr("disabled", "true");
+              var formData = new FormData();
+              formData.append("babyname", schoolright.babyname);
+              formData.append("babyage", schoolright.babyage);
+              formData.append("phoneNumber", schoolright.phoneNumber);
+              $.ajax({
+                  //几个参数需要注意一下
+                  type: "POST",//方法类型
+                  // contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+                  //  dataType: "json",//预期服务器返回的数据类型
+                  url: "/audition/apply",//url
+                  cache: false,//cache设置为false，上传文件不需要缓存。
+                  processData: false,//取消默认的序列化,因为formaata已经是序列化的数据
+                  contentType: false,//contentType设置为false，不设置contentType值，因为是由<form>表单构造的FormData对象，且已经声明了属性enctype="multipart/form-data"，所以这里设置为false。
+                  data: formData,
+
+                  success: function (result) {
+                      fanhui = result;
+                      if (fanhui == "sucees") {
+                          $("#myModal").modal('hide');
+                          message({
+                              message:'我们将在24小时内联系您!',
+                              type:'success'
+                          });
+
+
+                      } else {
+                          $("#suzhusubi").removeAttr("disabled");
+                          message({
+                              message:'请填写完整表单',
+                              type:'error'
+                          });
+                      }
+                  },
+                  error: function () {
+                      message({
+                          message:'服务器异常',
+                          type:'error'
+                      });
+                  }
+              })
+
+          } else {
+              message({
+                  message:'请填写完整表单',
+                  type:'warning'
+              });
+          }
+      }
+
+        function zhezhaohide() {
+            $('.nav-menu').toggleClass('nav-menu-active');
+            $('.nav-toggle').toggleClass('nav-toggle-active');
+            $('.nav-toggle i').toggleClass('bx-x bx-menu');
+            $(".zhezhao").toggleClass('zhezhaohide');
+        }
+
+        $(".nav-toggle").click(function () {
+            $('.nav-menu').toggleClass('nav-menu-active');
+            $('.nav-toggle').toggleClass('nav-toggle-active');
+            $('.nav-toggle i').toggleClass('bx-x bx-menu');
+            $(".zhezhao").toggleClass('zhezhaohide');
+        });
+        $(".nav-menu .drop-down > a").click(function () {
+
+            $(this).next().slideToggle(300);
+            $(this).parent().toggleClass('active');
+        });
+
+        $(".nav-menu a, .scrollto").click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                e.preventDefault();
+                var target = $(this.hash);
+                if (target.length) {
+
+                    var scrollto = target.offset().top;
+
+                    if ($(this).attr("href") == '#header') {
+                        scrollto = 0;
+                    }
+
+                    $('html, body').animate({
+                        scrollTop: scrollto
+                    }, 1500, 'easeInOutExpo');
+
+                    if ($(this).parents('.nav-menu').length) {
+                        $('.nav-menu .active').removeClass('active');
+                        $(this).closest('li').addClass('active');
+                        $('.nav-menu').removeClass('nav-menu-active');
+                        $('.nav-toggle').removeClass('nav-toggle-active');
+                        $('.nav-toggle i').toggleClass('bx-x bx-menu');
+                    }
+                    return false;
+                }
+            }
+        });
+
+
+
+
+
+        function  guanbimodl() {
+            $("#myModal").modal('hide');
+            $("#videoid").show('slow');
+        }
+        function  guanbimianfeiomodl() {
+            $("#mainfeilingqufrom").modal('hide');
+            $("#videoid").show('slow');
+        }
+
+
+        function modalshow(){
+            $("#myModal").modal('show');
+            $("#videoid").hide();
+        }
+        function xuexiaomodalshow(){
+            $("#mainfeilingqufrom").modal('show');
+            $("#videoid").hide();
+        }
+      $('#xuexiaoform').bootstrapValidator(
+            {
+                message: '无效的值',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    babyname: {
+                        validators: {
+                            notEmpty: {
+                                message: '不能为空'
+                            }
+                        }
+                    },
+                    phoneNumber: {
+                        validators: {
+                            notEmpty: {
+                                message: '不能为空'
+                            },
+                            regexp: {
+                                regexp: /^1\d{10}$/,
+                                message: '手机号格式错误'
+                            }
+                        }
+                    }
+                    ,
+                    babyage: {
+                        validators: {
+                            notEmpty: {
+                                message: '不能为空'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+        });
+
+
+      var schoolright = new Vue({
+          el: "#xuexiaoform",
+          data: {
+              babyname: '',
+              phoneNumber: '',
+              babyage: ''
+          }
+      })
+
+
+
+    </script>
+
+
+</div>

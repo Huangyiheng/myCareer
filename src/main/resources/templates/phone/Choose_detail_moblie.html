@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/static/images/paralleTeachers/log.ico" type="image/x-icon"/>
+    <title>外教详情页</title>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--表单验证-->
+    <link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <!--    自定义字体-->
+    <link rel="stylesheet" href="\static\css\fonts_custom.css"/>
+
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <!--layui-->
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?016ad8c6d8aa38ae08176064d55c5bda";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+    <style type="text/css">
+        .row {
+            margin: 0px;
+        }
+
+        /*  课程表*/
+
+
+        .Courses-head {
+        }
+
+        .Courses-head > div {
+            text-align: center;
+            font-size: 14px;
+            line-height: 28px;
+        }
+
+        .left-hand-TextDom, .Courses-head {
+        }
+
+        .Courses-leftHand {
+            font-size: 12px;
+        }
+
+        .Courses-leftHand .left-hand-index {
+            color: #9c9c9c;
+            margin-bottom: 4px !important;
+        }
+
+        .Courses-leftHand .left-hand-name {
+            color: #666;
+        }
+
+        .Courses-leftHand p {
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .Courses-head > div {
+            border-left: none !important;
+        }
+
+        .Courses-leftHand > div {
+            padding-top: 5px;
+        }
+
+        .Courses-leftHand > div:last-child {
+            border-bottom: none !important;
+        }
+
+
+        .Courses-content > ul:last-child {
+            border-bottom: none !important;
+        }
+
+        .highlight-week {
+            color: #02a9f5 !important;
+        }
+
+        .Courses-content li {
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+            line-height: 50px;
+        }
+
+        .Courses-content li span {
+            padding: 6px 2px;
+            box-sizing: border-box;
+            line-height: 18px;
+            border-radius: 4px;
+            white-space: normal;
+            word-break: break-all;
+            cursor: pointer;
+        }
+
+
+        .tbdiv {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .tbdiv:hover {
+            cursor: pointer;
+        }
+
+        #hetongtextarea {
+            border: 2px solid;
+            border-radius: 25px;
+            -moz-border-radius: 25px; /* Old Firefox */
+        }
+
+        .selecttime {
+            /* background-color: rgb(255,153,0);*/
+            color: white;
+            font-size: 12px;
+        }
+
+        .canada {
+            margin-right: 10px;
+        }
+
+        #coursesTablediv {
+            border-radius: 30px;
+            box-shadow: 0px 0px 70px #888888;
+        }
+
+        .Courses-content li {
+            line-height: 42px;
+        }
+
+        .Courses-leftHand div {
+            line-height: 34px;
+        }
+
+        .left-hand-TextDom {
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        .Courses-leftHand div {
+            color: white;
+            font-size: 12px;
+        }
+
+        .ttimg {
+            width: 5vw;
+        }
+
+        .imgguojia {
+            position: relative;
+            top: -10px;
+            width: 7vw;
+        }
+
+        .Courses-content ul:nth-child(odd) {
+            background-color: #f29438;
+        }
+
+        .Courses-leftHand div:nth-child(even) {
+            background-color: #f29438;
+        }
+
+        .Courses-content > ul > li {
+
+            border-right: 1px solid #f6f29b;
+
+        }
+
+        .Courses-content > ul > li:first-child {
+            border-left: 1px solid #f6f29b;
+        }
+
+        .Courses-content > ul > li:last-child {
+            border-right: 0px;
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="phone/phone_head :: phone_head"></div>
+
+<div th:style="'width: 100%;background-size: cover;background-image: url(/static/images/teacherShow/b1.jpg)'">
+
+    <div class="row" style="  padding: 0px;  margin-right: 0px;margin-left: 0px;  width: 100%;">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10" style="padding: 0px;">
+            <br/>
+            <br/>
+            <br/>
+            <div style="background-color: white;background-image: url('/static/images/teacherShow/x.png'); background-size: cover;">
+                <div class="row">
+                    <div class="col-xs-4" style="padding: 10px;">
+                        <img th:src="'/file/picture?fileid='+${zimg}" width="100%;">
+
+                    </div>
+                    <div class="col-xs-8" style="padding: 10px 10px 0px 0px;">
+                        <p style="margin-bottom: 5px;letter-spacing:2px;font-weight: 700;"><span class="h6 Intro"><b
+                                th:text="${name}"></b></span>
+                        </p>
+                        <p style="word-wrap: break-word;line-height: 3vh;width: 95%;color: #666666"><span
+                                class="h7 MSYH_zdy"
+                                th:text="${xiangq}"> </span>
+                        </p>
+                        <input id="jobid" type="text" th:value="${jobid}" style="display: none;">
+                        <input id="nationality" type="text" th:value="${nationality}" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12" style="padding: 0px 10px 10px 10px;   z-index:inherit">
+
+                        <video id="videoid" width="100%" controls preload="auto"
+                               poster="\static\images\paralleTeachers\videologo.png"
+                               webkit-playsinline="true"
+                               x5-video-player-type="h5"
+                               x5-video-orientation="portraint"
+                               className={styles.video}
+                        >
+
+
+                            <source th:src="'/file/video?fileid='+${viedo}" type="video/mp4">
+
+                        </video>
+
+                        <!--   <video id="videoid" width="100%;"
+                                   th:src="'/file/video?fileid='+${viedo}"
+
+                                   controls
+                           />-->
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+    <br/>
+</div>
+<br/>
+<div class="row" style="margin: 0px;">
+    <div class="col-xs-12;" style="text-align: center">
+        <p class="h4" style="letter-spacing:5px">教师可选时间</p>
+        <p class="h5" style="letter-spacing:1px;line-height: 0px;color: #666666">Teacher' s Schedule</p>
+    </div>
+</div>
+<div class="row" style="margin: 0px;">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10" style="background-color: #f5c53a;color: white;padding: 1vw 0vw 1vw 1vw;">
+        <span style="font-size: 3vw;"><i style="font-size: 3vw;" class="layui-icon">&#xe67b;</i>&nbsp;:可预约&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+                style="font-size: 3vw;" class="layui-icon">&#xe67a;</i>&nbsp;:已被预约</span>
+    </div>
+
+    <div class="col-xs-1">
+    </div>
+</div>
+<div class="row" style="margin: 0px;">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10" style="text-align: center;background-color: #f5c53a;">
+
+        <div id="coursesTable" style="width: 100%;margin: 0 auto;">
+
+
+        </div>
+
+
+    </div>
+
+    <div class="col-xs-1">
+    </div>
+</div>
+<br/>
+<div class="row" style="margin: 0px;">
+    <div class="col-xs-12;" style="text-align: center">
+        <p class="h6" style="letter-spacing:2px;">记录与孩子匹配的时间后,请联系您的顾问老师。</p>
+        <p class="h7">或者拨打学校电话：4008779107咨询。</p>
+    </div>
+</div>
+<br/><br/><br/>
+
+<img id="imgg" src="">
+
+
+</body>
+<!--课程表插件-->
+<script src="\static\time-table\Timetables.min.js"></script>
+
+<script type="text/javascript">
+
+    function initial() {
+        $(".tbdiv").html("");
+        $(".selecttime").html("<i style='font-size: 4vw;' class=\"layui-icon\">&#xe67b;</i>");
+        $(".left-hand-TextDom").append(" <img class='imgguojia' src=\"\\static\\images\\choose_Detail\\guojia.png\">");
+        $(".Courses-head-1").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\MON.png\">")
+        $(".Courses-head-2").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\TUE.png\">")
+        $(".Courses-head-3").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\wed.png\">")
+        $(".Courses-head-4").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\thu.png\">")
+        $(".Courses-head-5").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\fri.png\">")
+        $(".Courses-head-6").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\sat.png\">")
+        $(".Courses-head-7").html(" <img class='ttimg' src=\"\\static\\images\\choose_Detail\\sun.png\">")
+
+
+        $(".left-hand-TextDom").css("height", "8vw");
+        $(".Courses-head").css("height", "8vw");
+        $("#courseWrapper").css("border", "0px");
+        $(".selecttime").each(function () {
+            var peoplenumber = $(this).attr("peoplenumber");
+            if (peoplenumber == 2) {
+                $(this).html("<i style='font-size: 4vw;' class=\"layui-icon\">&#xe67a;</i>");
+            }
+        });
+
+
+    }
+
+
+    window.onload = function () {
+
+
+        var jobid = $("#jobid").val();
+        var nationality = parseInt($("#nationality").val());
+
+        $.ajax({
+            "url": "/timetable/databyteacher",
+            "type": "post",
+            "data": {
+                "teacherid": jobid
+            },
+            "success": function (result) {
+                if (result !== "") {
+                    //  $("#timetablemodal").modal('show');
+
+
+                    var json = eval(result);
+                    var week = ['一', '二', '三', '四', '五', '六', '天'];
+                    var day = new Date().getDay();
+                    var courseType = courseTypeGeorgia;//加拿大时间;
+
+
+                    // 实例化(初始化课表)
+                    Timetable = new Timetables({
+                        el: '#coursesTable',
+                        timetables: json,
+                        week: week,
+                        merge: false,
+                        timetableType: courseType,
+                        highlightWeek: day,
+                        gridOnClick: function (e) {
+                            console.log(e)
+                        },
+                        styles: {
+                            leftHandWidth: 80,
+                            Gheight: 40,
+                            palette: false
+                        }
+                    });
+
+
+                    initial();//初始化颜色
+
+                }
+
+            },
+            error: function (e) {
+                message({
+                    message: '服务器异常,请重试!',
+                    type: 'error'
+                });
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        })
+    }
+
+
+    var courseTypeGeorgia = [
+        ['08:30-10:00', 1],
+        ['10:00-10:30', 1],
+        ['10:35-11:05', 1],
+        ['11:10-11:40', 1],
+        ['13:30-14:00', 1],
+        ['14:05-14:35', 1],
+        ['14:40-15:10', 1],
+        ['15:15-15:45', 1],
+        ['15:50-16:20', 1],
+        ['17:00-17:30', 1],
+        ['17:35-18:05', 1],
+        ['18:10-18:40', 1],
+        ['18:45-19:15', 1],
+        ['19:20-19:50', 1],
+        ['19:55-20:25', 1],
+        ['20:30-21:00', 1],
+        ['21:05-21:35', 1]
+    ];
+
+</script>
+</html>

@@ -1,0 +1,86 @@
+/*CSS初始化*/
+/*清楚默认样式*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    /*background: #f3f3f3;;*/
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+img{
+    /*清图片底部默认缝隙*/
+    vertical-align: middle;
+    /*清楚图片默认边框*/
+    border:0;
+}
+input,textarea{
+    border: 0;
+    outline: 0;
+}
+em ,i{
+    font-size: normal;
+}
+/*2常用样式*/
+/*整体背景颜色，字号，字色，修改*/
+body{
+    font: 14px arial ,'microsoft yahei';
+    /*color: #666;*/
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: 400;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/*版心，修改*/
+.w{
+    width: 1920px;
+    margin: 0 auto;
+}
+.clearfix:after{
+    content:'';
+    display:block;
+    clear:both;
+    height:0;
+    visibility:hidden;
+}
+.clearfix{
+    *zoom:1;
+}
+.f12{
+    font-size: 12px;
+}
+.f14{
+    font-size: 14px;
+}
+.f16{
+    font-size: 16px;
+}
+.f18{
+    font-size: 18px;
+}
+.f20{
+    font-size: 20px;
+}
+.size{
+    color: #f3f3f3;
+}
+.tc{
+    text-align: center;
+}
+/*文字省略*/
+/*white-space:nowrap
+overflow:hidden
+text-overflow:ellipsis
+
+&gt;> &it;<*/

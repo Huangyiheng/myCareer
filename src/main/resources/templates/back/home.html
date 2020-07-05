@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="icon" href="/static/images/paralleTeachers/log.ico" type="image/x-icon"/>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+    <!--表单验证-->
+    <link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+    <!--表格基础  -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/datatbles/dataTables.bootstrap.min.css"/>
+    <!-- 扩展插件,自动填充 -->
+    <link rel="stylesheet" href="/static/datatbles/dataTables.autoFill.js"/>
+    <!-- 扩展插件, 单击并拖动列重新排序。-->
+    <link rel="stylesheet" href="/static/datatbles/colReorder.bootstrap.css"/>
+    <!--扩展插件,按钮  -->
+    <link rel="stylesheet" href="/static/datatbles/buttons.bootstrap.css"/>
+    <!--日期插件  -->
+    <link rel="stylesheet" href="/static/bootstarp-data/bootstrap-datetimepicker.min.css"/>
+    <!-- 表单序列化工具 -->
+    <script type="text/javascript" src="/static/jquery-serialize-object/jquery.serialize-object.js"></script>
+    <!-- 自定义工具类 -->
+    <script type="text/javascript" src="/static/mytool.js"></script>
+
+    <!--日期插件  -->
+    <script type="text/javascript" src="/static/bootstarp-data/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="/static/bootstarp-data/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- 表格依赖的js,加载顺序不能乱 -->
+    <script type="text/javascript" src="/static/datatbles/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/static/datatbles/dataTables.bootstrap.min.js"></script>
+
+
+    <!-- 扩展插件,类似于Excel的点击和拖动复制和填充数据。 -->
+    <script type="text/javascript" src="/static/datatbles/dataTables.autoFill.js"></script>
+
+    <!-- 扩展插件, 单击并拖动列重新排序。-->
+    <script type="text/javascript" src="/static/datatbles/colReorder.bootstrap.js"></script>
+    <script type="text/javascript" src="/static/datatbles/dataTables.colReorder.js"></script>
+
+    <!-- 按钮 -->
+    <script type="text/javascript" src="/static/datatbles/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="/static/datatbles/buttons.bootstrap.js"></script>
+    <script type="text/javascript" src="/static/datatbles/jszip.js"></script>
+    <!--<script type="text/javascript" src="/static/datatbles/pdfmake.js"></script>-->
+    <script type="text/javascript" src="/static/datatbles/vfs_fonts.js"></script>
+    <script type="text/javascript" src="/static/datatbles/buttons.colVis.js"></script>
+    <script type="text/javascript" src="/static/datatbles/buttons.flash.js"></script>
+    <script type="text/javascript" src="/static/datatbles/buttons.html5.js"></script>
+    <script type="text/javascript" src="/static/datatbles/buttons.print.js"></script>
+    <!--文件上传-->
+    <link rel="stylesheet" href="/static/bootstrap_uploadfile/css/fileinput.css"/>
+    <link rel="stylesheet" href="/static/bootstrap_uploadfile/css/fileinput-rtl.css"/>
+    <link rel="stylesheet" href="/static/bootstrap_uploadfile/css/theme.css"/>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/fileinput.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/piexif.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/purify.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/sortable.js"></script>
+    <script type="text/javascript" src="/static/bootstrap_uploadfile/js/theme.js"></script>
+
+    <style type="text/css">
+        .layui-nav-item a{
+            font-size: 0.8vw;
+        }
+
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" style="height: 2vw;">
+        <div class="layui-logo" style="line-height: 2vw;width: 7vw;"><a href="/"><img src="\static\images\paralleTeachers\zwlogo.png" width="100%;"></a></div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+       <!-- <ul class="layui-nav layui-layout-left"style="position: absolute;left: 7vw;" >
+            <li class="layui-nav-item" style="line-height: 2vw;"><a href="">控制台</a></li>
+            <li class="layui-nav-item" style="line-height: 2vw;"><a href="">商品管理</a></li>
+            <li class="layui-nav-item" style="line-height: 2vw;"><a href="">用户</a></li>
+            <li class="layui-nav-item" style="line-height: 2vw;">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child" style="position: absolute;top: 2vw;">
+                    <dd><a style="color: #0C0C0C;" href="">邮件管理</a></dd>
+                    <dd><a style="color: #0C0C0C;" href="">消息管理</a></dd>
+                    <dd><a style="color: #0C0C0C;" href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>-->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" style="line-height: 2vw;">
+                <a href="javascript:;">
+
+                 <!--    <img  th:src="'/file/picture?fileid='+${user.avatarYourself.fileId}"  class="layui-nav-img">-->
+                    [[${user.name}]]
+
+                </a>
+             <!--   <dl class="layui-nav-child"style="position: absolute;top: 2vw;color: #0C0C0C">
+                    <dd><a style="color: #0C0C0C;" href="">基本资料</a></dd>
+                    <dd><a style="color: #0C0C0C;" href="">安全设置</a></dd>
+                </dl>-->
+            </li>
+            <li class="layui-nav-item" style="line-height: 2vw;"><a href="/logout">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black" style="width: 7vw;top:2vw;">
+        <div class="layui-side-scroll" style="width: 7vw;">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test"style="width: 7vw;">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a onclick="openpage('/sys/authority')">权限配置</a></dd>
+                        <dd><a onclick="openpage('/sys/roleshome')">角色配置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">教务管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a onclick="openpage('/back/user_home')">用户管理</a></dd>
+                        <dd><a onclick="openpage('/salescalls/home')">试听预约</a></dd>
+                        <dd><a onclick="openpage('/recruitstudent/recruit_student')">试听报名</a></dd>
+                        <dd><a onclick="openpage('/job/back')">求职申请</a></dd>
+                        <dd><a onclick="openpage('/joins/school')">校区加盟</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">门户管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a onclick="openpage('/teacher/teacherback')">外教展示</a></dd>
+                        <dd><a onclick="openpage('/aboutUs/aboutUs')">动态新闻</a></dd>
+                    </dl>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" style="bottom: 0px;position: absolute;left: 7vw;top:2vw;z-index: auto" id="main-content" >
+
+        <!-- 内容主体区域 -->
+        <!--   <iframe style="width: 100vw;height: 92.8vh;background-color: yellowgreen;">
+
+
+           </iframe>-->
+    </div>
+
+    <!-- <div class="layui-footer">
+         &lt;!&ndash; 底部固定区域 &ndash;&gt;
+         © layui.com - 底部固定区域
+     </div>-->
+</div>
+<!--layui-->
+<link rel="stylesheet" href="/static/layui/css/layui.css"/>
+<script type="text/javascript" src="/static/layui/layui.all.js"></script>
+
+<script>
+    function reinitIframe() {
+        var iframe = document.getElementById("iframepage");
+        try {
+            var bodyheght = $("#main-content").height();
+            var height = bodyheght - 10;
+
+            iframe.height = height;
+            // console.log(iframe.height);
+        } catch (ex) {
+        }
+    }
+
+    //添加taby页
+    function openpage(url) {
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: "",
+            success: function (msg) {
+                $("#main-content").html(msg);
+            },
+
+            error: function (XMLHttpRequest, textStatus, thrownError) {
+            }
+        })
+    }
+
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

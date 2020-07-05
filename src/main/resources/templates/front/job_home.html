@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/static/images/paralleTeachers/log.ico" type="image/x-icon"/>
+    <title>PARAL TEACHER</title>
+    <link rel="stylesheet" href="/static/css/logincss/page-health-index.css" type="text/css"/>
+    <link href="/static/css/logincss/style.css" rel='stylesheet' type='text/css' media="all"/>
+
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <script src="/static/js/vue/vue-router.js"></script>
+
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+    <!--表单验证-->
+    <link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+    <!--表格基础  -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+    <!--layui-->
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <!--    自定义字体-->
+    <link rel="stylesheet" href="\static\css\fonts_custom.css"/>
+
+
+    <style>
+        .im {
+
+            text-align: center;
+        }
+
+        .ims {
+            width: 100%;
+            background-image: url('/static/images/paralleTeachers/parller2.png');
+            background-size: cover;
+            height: 70vh;
+
+        }
+
+        .el-dropdown-link {
+            cursor: pointer;
+            color: #000000;
+        }
+
+        .el-icon-arrow-down {
+            font-size: 12px;
+        }
+
+        .qq {
+            width: 100%;
+            height: 500px;
+            background: url(/static/images/paralleTeachers/pingxingwaijiao.png);
+            background-size: cover;
+            border-radius: 20px;
+        }
+
+        .denglu {
+            position: absolute;
+            top: 10vh;
+            right: 10vw;
+            background: #FFF;
+            width: 420px;
+            border-radius: 20px;
+            margin-left: 750px;
+            padding-top: 5px;
+        }
+
+        .head {
+            width: 100%;
+            height: 50px;
+        }
+
+        a {
+            font-weight: bold;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        a:hover {
+            color: #E38D13;
+        }
+
+        .container {
+
+            width: 340px;
+            padding-top: 30px;
+
+        }
+
+        .shuru {
+            width: 50%;
+        }
+
+        body {
+            background-image: url(/static/images/paralleTeachers/bodyback.png);
+            background-size: cover;
+        }
+
+        .dropdown-menu {
+            width: 100%;
+            transition: all 1s linear;
+        }
+        p{
+            -webkit-appearance: none;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div class="ims"></div>
+<div class="app">
+
+    <div class="head">
+        <div class="denglu">
+            <div class="deng">
+                <!--<a >Log In</a>&nbsp;&nbsp;<a>|</a>&nbsp;-->&nbsp;<p class="h3"
+                                                                        style="color: rgb(255,153,0);font-family: AEASWFTE_zdy">Apply
+                Now</p>
+            </div>
+
+            <div class="container" id="jobform">
+                <!--  /login找到项目   /login 处理登陆servlet的虚拟路径 -->
+                <form id="parraform" class="form-horizontal">
+                    <label for="inputPassword" class="sr-only"></label>
+                    <input type="text" v-model="name" maxlength="30" id="inputPassword" class="form-control"
+                           placeholder="NAME" required>
+                    <br/>
+                    <label for="inputName" class="sr-only"></label>
+                    <input type="text" v-model="email" maxlength="30" id="inputName" class="form-control"
+                           placeholder="EMAIL ADDRESS" required
+                           autofocus>
+
+                    <br/>
+
+
+                </form>
+                <div style="margin-bottom: 20px;">
+                    <button style="background-color: #ff4e00;border: 0px;"
+                            class="btn btn-lg btn-primary btn-block" id="parraformsub">Get
+                        Started
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <!-- </div> -->
+    <div class="appi">
+        <div class="im">
+            <div class="row">
+                <div class="col-lg-12"> <p style="font-size: 34px;font-family: AEASWFTE_zdy;line-height:100%; ">Four Reasons Why</p></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">   <p style="font-size: 34px;font-family: AEASWFTE_zdy;line-height:100%;">I Participate Paral Teacher Program </p></div>
+            </div>
+
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <p><img src="\static\images\paralleTeachers\xiajiantou.png" style="width: 150px;"></span>
+            </p>
+
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="row" style="text-align: center;font-family: initial">
+            <div class="col-lg-3" style="padding: 0px;">
+                <row clas="">
+                    <div class="col-sm-12">
+                        &nbsp;<img src="\static\images\paralleTeachers\time.png" style="width: 30%">
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h3"><strong>Set Your Own Schedule</strong></p>
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h4"> Flexible working hours,having </p>
+                        <p class="h4">class whenever and wherever </p>
+                        <p class="h4">you want.</p>
+
+                    </div>
+                </row>
+
+            </div>
+            <div class="col-lg-3" style="padding: 0px;">
+                <row clas="">
+                    <div class="col-sm-12">
+                        &nbsp;<img src="\static\images\paralleTeachers\diannao.png" style="width: 40%">
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h3"><strong>Teach One-On-Two</strong></p>
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12" style="padding: 0px;">
+                        <p class="h4">Not embarrassed of teaching with</p>
+                        <p class="h4">only one student More interest- </p>
+                        <p class="h4">ing and fun with group of 2 or 4.</p>
+
+                    </div>
+                </row>
+
+            </div>
+            <div class="col-lg-3" style="padding: 0px;">
+                <row clas="">
+                    <div class="col-sm-12">
+                        &nbsp;<img src="\static\images\paralleTeachers\qian.png" style="width: 26%">
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h3"><strong>Easy to Get Paid</strong></p>
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h4"> Settle wages by class hours, easy </p>
+                        <p class="h4">to memories. Local company reg-</p>
+                        <p class="h4">istered, your wages are safety</p>
+                        <p class="h4">and guaranteed.</p>
+
+                    </div>
+                </row>
+
+            </div>
+            <div class="col-lg-3" style="padding: 0px;">
+                <row clas="">
+                    <div class="col-sm-12">
+                        &nbsp;<img src="\static\images\paralleTeachers\shou.png" style="width: 33%">
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h3"><strong>Never Walk Alone</strong></p>
+                    </div>
+                </row>
+                <row clas="">
+                    <div class="col-sm-12">
+                        <p class="h4">A bunch of staffs always stand</p>
+                        <p class="h4">firm behind you. Any assistant,</p>
+                        <p class="h4">we are here.</p>
+                    </div>
+                </row>
+
+            </div>
+        </div>
+
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="im"><img src="/static/images/waiguoTeacher/woman.png"></div>
+
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <p style="font-size: 34px;font-family: AEASWFTE_zdy;">Teachers Like You, Everywhere</p>
+
+    <br/>
+    <br/>
+    <div class="appe"><img src="\static\images\paralleTeachers\ditu.png"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/> <br/>
+
+    <p style="text-align: center;width: 100%">
+        <button class="btn btn-default" type="submit" onclick="dingbu()"
+                style="background-color:  rgb(255,153,0);color: white;width: 18%">
+            <span class="h2">Get Started</span>
+        </button>
+
+    </p>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="appi">
+        <div style="margin-top: -5px;" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="\static\images\paralleTeachers\lunbo1.png" alt="...">
+                </div>
+                <div class="item ">
+                    <img src="\static\images\paralleTeachers\lunbo4.png" alt="...">
+
+
+
+                </div>
+
+                <div class="item">
+                    <img src="\static\images\paralleTeachers\lunbo2.png" alt="...">
+                </div>
+                <div class="item">
+                    <img src="\static\images\paralleTeachers\lunbo3.png" alt="...">
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color: #ca6908;"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="color: #ca6908;"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <br/>
+        <br/>
+
+
+        <div class="wenzxi4">
+            <div class="row">
+                <div class="col-lg-12"> <p style="font-size: 34px;font-family: AEASWFTE_zdy;line-height:40px; ">The Following Information</p></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12"> <p style="font-size: 34px;font-family: AEASWFTE_zdy;line-height:40px; ">You May Concerned</p></div>
+            </div>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <p><img src="\static\images\paralleTeachers\xiajiantou.png" style="width: 150px;"></span>
+                <br/><br/><br/><br/>
+            </p>
+        </div>
+        <br/>
+
+        <ul id="accordion" class="accordion">
+            <li>
+                <div class="link">HOW TO APPLY FOR PARAL TEACHER?<span
+                        style="float: right;color: rgb(255,153,0);" class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+                <ul class="submenu" style="">
+                    <li>1.&nbsp;&nbsp;&nbsp;Sign up to create an account.</li>
+                    <li>2.&nbsp;&nbsp;Complete a simple form and submit your application.</li>
+                    <li>3.&nbsp;&nbsp;Our staff will contact with you and send some materials to you.</li>
+                    <li>4.&nbsp;&nbsp;With given materials prepare a short online demo lesson. Have an interview
+                        with our staff.
+                    </li>
+                    <li>5.&nbsp;&nbsp;Settle your own schedule and get access to additional information.</li>
+                    <li>6.&nbsp;&nbsp;Get training and attend to the real class with our current teacher.</li>
+                    <li>7.&nbsp;&nbsp;Sign your contract and start teaching!</li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="accordion1" class="accordion">
+            <li>
+                <div class="link"> How much can I earn?<span
+                        style="float: right;color: rgb(255,153,0);" class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+                <ul class="submenu" style="">
+                    <li>Depends on your class hours, Our staff will give a specific wages instruction while having an interview.
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="accordion2" class="accordion">
+            <li>
+                <div class="link"> What kind of commitment is there?<span
+                        style="float: right;color: rgb(255,153,0);" class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+                <ul class="submenu" style="">
+                    <li>The 6-month minimum commitment is required, But during that time, you can arrange your
+                        own work schedule.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="accordion3" class="accordion">
+            <li>
+                <div class="link"> Do I need to speak Chinese?<span
+                        style="float: right;color: rgb(255,153,0);" class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+                <ul class="submenu" style="">
+                    <li style="line-height:100%;">No Chinese is required. We want to create full English immersion for our students.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br/>
+        <!-- 	<div class="wenzi">If you hava any questions,contact us at tach@pralteacher.com</div> -->
+        <br/>
+        <p class="h3">If you have any questions, contact us at teach@maxwisdomglobal.com</p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <div class="qq">
+
+        </div>
+
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+</div>
+
+<div th:replace="front/footer :: footer"></div>
+
+<script type="text/javascript" src="\static\js\paralleTeachers\job_home.js"></script>
+
+</body>
+
+
+</html>

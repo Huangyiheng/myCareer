@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<meta charset="UTF-8">
+<title>师资</title>
+<link rel="icon" href="/static/images/paralleTeachers/logico.ico" type="image/x-icon"/>
+<script src="/static/js/jquery-2.1.1.min.js"></script>
+<!--    错误提示-->
+<link rel="stylesheet" href="/static/js/message/message.css"/>
+<script src="/static/js/message/message.js"></script>
+<script src="/static/js/vue/axios.min.js"></script>
+<script src="/static/js/vue/vue.js"></script>
+<!--    路由-->
+<script src="/static/js/vue/vue-router.js"></script>
+<!--国际化-->
+<script src="/static/js/vue/vue-i18n.js"></script>
+<!--导入国际化语言包-->
+<script src="/static/js/vue/lang/en-US.js"></script>
+<script src="/static/js/vue/lang/zh-CN.js"></script>
+<!--bootstarp-->
+<script src=" /static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+    }
+
+    #particles-js {
+        width: 100%;
+        /* background-image: url(/static/img/bg2.gif);
+         background-size: cover;
+         background-repeat: no-repeat;*/
+    }
+
+    canvas.particles-js-canvas-el {
+        height: 630px !important;
+    }
+
+    .bodyimg1 {
+        /*兼容IE6+，火狐，谷歌，欧朋，苹果*/
+        background: url('/static/img/shizitoubutu.jpeg') no-repeat center top fixed;
+        background-size: cover;
+        /*background-attachment: fixed;*/
+        /*background-attachment :定义背景图片随滚动轴的移动方式
+        取值: scroll | fixed | inherit
+        scroll: 默认值。背景图像会随着页面其余部分的滚动而移动。
+        fixed: 当页面的其余部分滚动时，背景图像不会移动。
+        inherit: 继承初始值: scroll（任何版本的 Internet Explorer （包括 IE8）都不支持属性值 "inherit"。）
+        继承性: 否
+        适用于: 所有元素*/
+    }
+
+    .bodyimg2 {
+        background: url('/static/img/quanyuantu.jpeg') no-repeat center top fixed;
+        background-size: cover;
+    }
+
+    .content {
+        transition: all 1s ease;
+        padding: 20px;
+        color: #ffffff;
+        opacity: 0;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        width: 30%;
+        word-wrap:break-word
+    }
+
+    .bg {
+        background: url('/static/img/laoshi.jpg') no-repeat center;
+        height: 30vh;
+        text-align: center;
+        line-height: 600px;
+        float: left;
+
+        width: 100%;
+        background-size: cover;
+        transition: all 0.5s ease;
+    }
+
+    .bg_hover {
+        -webkit-filter: blur(15px);
+        -moz-filter: blur(15px);
+        -o-filter: blur(15px);
+        -ms-filter: blur(15px);
+        filter: blur(15px);
+    }
+
+    .content p {
+        word-wrap: break-word;
+        font-size: 35px;
+        text-indent: 2em;
+    }
+
+    .content .name {
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+    }
+    .laoshidiv{
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        text-align: center;
+        background-color:rebeccapurple;
+        border: lawngreen solid;
+    }
+.laoshi{
+display: inline-block;
+    margin: 0% 1% 0% 1%;
+    width: 30%;
+}
+</style>
+</head>
+
+<body class="bodyimg1" id="bodyimg">
+<header>
+    <!--导航栏-->
+    <div th:replace="front/head :: head"></div>
+</header>
+<br/>
+<br/>
+<br/>
+<br/>
+<!--星星动画div-->
+<div id="particles-js"></div>
+
+
+<!--<div style="width: 100vw;height: 1000px;margin: 0 auto ;background-color: whitesmoke">
+    <div style="width:80vw;margin: 0 auto;background-color: wheat ">
+        <div style="width: 100px;height: 100px;background-color: yellowgreen;"></div>
+
+        <p style="text-align: center;font-size: 40px;font-weight: 700;">我们有更好的老师</p>
+    </div>
+</div>
+<div style="width: 100%;margin: 0 auto ;height: 500px;" class="divtouming">
+    <div style="width:100vh;margin: 0 auto; ">
+
+
+    </div>
+</div>-->
+
+<div style="width: 100vw;height: 1000px;margin: 0 auto ;background-color: whitesmoke">
+    <div style="width:80vw;margin: 0 auto; ">
+        <br/>
+        <br/>
+        <p class="h1" style="text-align: center">我们的团队</p>
+        <div class="laoshidiv ">
+
+
+
+            <div class=" laoshi">
+                <div class="bg "></div>
+                <div class="content ">
+                    <div class="name">Name</div>
+                    <p class="">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</p>
+                </div>
+            </div>
+            <div class=" laoshi">
+                <div class="bg "></div>
+                <div class="content ">
+                    <div class="name">Name</div>
+                    <p class="">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</p>
+                </div>
+            </div>
+            <div class=" laoshi">
+                <div class="bg "></div>
+                <div class="content ">
+                    <div class="name">Name</div>
+                    <p class="">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</div>
+
+<footer id="footerfooter" style="width: 100%;">
+    <div th:replace="front/footer :: footer"></div>
+</footer>
+<!--动画插件-->
+<script src="/static/js/particles/particles.js"></script>
+<script src="/static/js/particles/app.js"></script>
+<script type="application/javascript">
+  /*   $(document).ready(function (){
+        $("body").css('display','block');
+        var bodywidth=$(window).width();//获取窗口宽度
+    });
+$(window).resize(function() {
+    var heights = $(window).height();
+    var widths = $(window).width();
+    //window.scrollTo((document.body.scrollWidth-document.body.offsetWidth)/2,0);
+
+    //alert(widths);
+})*/
+
+
+    $(".laoshi").mouseover(function () {
+        $(this).find("div:eq(0)").addClass("bg_hover");
+        $(this).find("div:eq(1)").css("opacity", "1");
+    })
+    $(".laoshi").mouseout(function () {
+        $(this).find("div:eq(0)").removeClass("bg_hover");
+        $(this).find("div:eq(1)").css("opacity", "0");
+    })
+
+    $(window).scroll(function () {
+        /!*设置背景图片效果切换*!/
+        var divtouming = $('.divtouming').offset().top;
+        var obhe = $('.divtouming').height();
+        if (iskeshi(divtouming - 10)) {
+            $("#bodyimg").removeClass("bodyimg1");
+            $("#bodyimg").addClass("bodyimg2");
+            // bj=false;
+        } else if (iskeshi(divtouming + obhe)) {
+            $("#bodyimg").removeClass("bodyimg1");
+            $("#bodyimg").addClass("bodyimg2");
+
+        } else {
+            $("#bodyimg").removeClass("bodyimg2");
+            $("#bodyimg").addClass("bodyimg1");
+
+        }
+    });
+
+
+    //点击切换语言
+    $(function () {
+        $("#language_switch").click(function () {
+            if (vm.$i18n.locale == "zh-CN") {
+                Setcookie("i18nlocale", "en-US");
+                vm.$i18n.locale = "en-US"
+            } else {
+                Setcookie("i18nlocale", "zh-CN");
+                vm.$i18n.locale = "zh-CN"
+            }
+
+        })
+    })
+
+  var head = new Vue({
+      el: "#eeonav",
+      i18n: i18n,
+      //此处引入的是footer页面中定义的i18n
+  })
+
+
+
+</script>
+</body>
+</html>

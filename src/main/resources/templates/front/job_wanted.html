@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="UTF-8">
+    <title>Job</title>
+
+
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <!--    错误提示-->
+    <link rel="stylesheet" href="/static/js/message/message.css"/>
+    <script src="/static/js/message/message.js"></script>
+    <script src="/static/js/vue/axios.min.js"></script>
+    <script src="/static/js/vue/vue.js"></script>
+    <!--    路由-->
+    <script src="/static/js/vue/vue-router.js"></script>
+    <!--国际化-->
+    <script src="/static/js/vue/vue-i18n.js"></script>
+    <!--导入国际化语言包-->
+    <script src="/static/js/vue/lang/en-US.js"></script>
+    <script src="/static/js/vue/lang/zh-CN.js"></script>
+    <!--bootstarp-->
+    <script src=" /static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <style type="text/css">
+        .row {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+
+        body {
+            background-image: url("/static/img/center_bg3.gif");
+            background-repeat: repeat;
+        }
+    </style>
+
+</head>
+<body>
+<!--<p class="bg-success">...</p>
+<p class="bg-info">...</p>
+<p class="bg-warning">...</p>
+<p class="bg-danger">...</p>
+<p class="bg-primary h3">Personal Information</p>-->
+
+<div th:replace="front/head :: head"></div>
+ <br/>
+ <br/>
+ <br/>
+
+
+    <div  style="border: lightblue dashed 3px;width: 1000px;margin: 0 auto;" id="job_wanted_formvue" >
+        <form id="job_wanted_form" class="form-horizontal" >
+            <div class="row">
+                <div class=" col-lg-12"><p class="bg-primary h3">Personal Information</p></div>
+
+                <div class=" col-lg-6">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">First Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" v-model="first_name" class="form-control" name="First_Name"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class=" col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Surname</label>
+                        <div class="col-lg-10">
+                            <input type="text" v-model="surname" class="form-control" name="Surname"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+
+                <div class=" col-lg-6">
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Phone number</label>
+                        <div class="col-lg-8">
+                            <input type="text" v-model="phone_number" class="form-control" name="phone_number"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class=" col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">E-mail</label>
+                        <div class="col-lg-10">
+                            <input type="text" v-model="e_mail" class="form-control" name="e_mail"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Date of birth</label>
+                        <div class="col-lg-4">
+                            <div class="input-group date" id="datetimePicker">
+                                <input type="text" v-model="date_of_birth" class="form-control" placeholder="yyyy-mm-dd"
+                                       name="birth_time"
+                                       id="birth_time"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                        <label class="col-lg-1 control-label">Gender</label>
+                        <div class="col-lg-5">
+                            <select class="form-control" v-model="gender" name="Gender" data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="1">MAN</option>
+                                <option value="0">FEMALE</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+
+                        <label class="col-lg-3 control-label">Please insert Your Nationality</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" v-model="nationality" name="Nationality"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <p class="bg-primary h3">Employment Detail</p>
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">How long have you been teaching English?</label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="teaching_english" name="teaching_English"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="01">Lese than 1 year</option>
+                                <option value="12">1-2 years</option>
+                                <option value="23">2-3 years</option>
+                                <option value="3">More than 3 years</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">I have ______ year(s) of online teaching
+                            experience</label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="online_teaching" name="online_teaching"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="01">Lese than 1 year</option>
+                                <option value="12">1-2 years</option>
+                                <option value="23">2-3 years</option>
+                                <option value="3">More than 3 years</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">Your student’s ages are from</label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="student_ages" name="student_ages" data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="36">3-6</option>
+                                <option value="712">7-12</option>
+                                <option value="1315">13-15</option>
+                                <option value="16">16 and above</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">Are you currently employed? </label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="currently_employed" name="currently_employed"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="1">YES</option>
+                                <option value="0">NO</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">Type of Work</label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="type_work" name="Type_Work" data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+
+                                <option value="0">Full Time</option>
+                                <option value="1">Part Time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">Do you want a part time or full time teaching job?</label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="teaching_job" name="time_teaching_job"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="0">Full Time</option>
+                                <option value="1">Part Time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-9 control-label">How many hours you want to participate in your teaching
+                            job?
+                        </label>
+                        <div class="col-lg-3">
+                            <select class="form-control" v-model="participate_your" name="participate_teaching"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="1">10 hours/week</option>
+                                <option value="2">20 hours/week</option>
+                                <option value="3">30 hours/week</option>
+                                <option value="4">40 hours/week</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--学历；教育背景；教育程度-->
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <p class="bg-primary h3">Educational Background</p>
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">The highest degree / diploma of education</label>
+                        <div class="col-lg-5">
+                            <select class="form-control" v-model="diploma" name="highest_degree" data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="0">High School Diploma</option>
+                                <option value="1">Bachelor</option>
+                                <option value="2">Master</option>
+                                <option value="3">PhD</option>
+                                <option value="4">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--学院教育经历-->
+            <div class="row">
+
+                <!-- <div class=" col-lg-12">
+                     <div class="form-group">
+                         <label class="col-lg-7 control-label">College/University Education Name of the school</label>
+                         <div class="col-lg-5">
+                             <input type="text" class="form-control" name="EducationName"/>
+                          &lt;!&ndash;   <textarea name="Education_Name" class="form-control" rows="3"></textarea>&ndash;&gt;
+                         </div>
+                     </div>
+                 </div>-->
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">College/University Education Name of the school</label>
+                        <div class="col-lg-5">
+                            <input type="text" v-model="education_name" class="form-control" name="EducationName"/>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">Major Start time / End time
+                        </label>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" v-model="education_start_time"
+                                   placeholder="yyyy-mm-dd"
+                                   name="Major_Start"
+                                   id="Major_Start"/>
+
+                        </div>
+                        <div class="col-lg-1" style="padding-left: 0px;padding-right: 0px;">
+
+                            <hr style="height:1px;border:none;border-top:1px solid #555555;"/>
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" v-model="education_end_time" placeholder="yyyy-mm-dd"
+                                   name="Major_End"
+                                   id="Major_End"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">Diploma received
+                        </label>
+                        <div class="col-lg-5">
+                            <select class="form-control" v-model="diploma_received" name="Diploma_received"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="1">YES</option>
+                                <option value="0">NO</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">English Language Teaching Certification</label>
+                        <div class="col-lg-5">
+                            <select class="form-control" v-model="teaching_certification" name="English_Language"
+                                    data-bv-notempty
+                                    data-bv-notempty-message="The country is required">
+                                <option value="">-- please select --</option>
+                                <option value="1">TESL</option>
+                                <option value="2">TEFL</option>
+                                <option value="3">CELTA</option>
+                                <option value="4">TESOL</option>
+                                <option value="5">DELTA</option>
+                                <option value="6">Masters</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--上传部分-->
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <p class="bg-primary h3">Upload Section</p>
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">A passport-size photo of yourself</label>
+                        <div class="col-lg-5"><!--id="kv-explorer"-->
+
+                            <input type="file" id="kv-explorer" class="form-control" name="photo_yourself"/>
+                            <!--  <span class="help-block">Choose a jpg  file with a size between 1M and 10M.</span>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">Passport page containing your photo and passport
+                            number</label>
+                        <div class="col-lg-5">
+                            <input id="photo_Passport" type="file" name="photo_passport" multiple>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">CV</label>
+                        <div class="col-lg-5">
+                            <input id="CV" type="file" name="CV" multiple>
+                            <span class="help-block">Choose a PDF or docx  file with a size between 0.1M and 10M.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">Personal video</label>
+                        <div class="col-lg-5">
+                            <input id="Personal_video" type="file" name="Personal_video" multiple>
+                            <span class="help-block">Choose a MP4  file with a size between 1M and 50M.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-12">
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">Educational Qualifications</label>
+                        <div class="col-lg-5">
+                            <input id="Educational_Qualifications" type="file" name="Educational_Qualifications"
+                                   multiple>
+                            <span class="help-block">Choose a PDF  file with a size between 0.1M and 10M.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <!--确认书-->
+                <div class=" col-lg-12">
+                    <p class="bg-primary h3">Confirmation</p>
+                    <div class="form-group">
+                        <label class="col-lg-7 control-label">I confirm the above information provided is accurate and
+                            complete</label>
+                        <div class="col-lg-5">
+                            <label class="radio">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> YES
+                            </label>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <div class="row">
+
+            <div class="col-lg-12" style="text-align: center;"><!--style="display: none;"-->
+                <div class="alert alert-success" style="display: none;" ></div>
+                <div class="alert alert-warning" style="display: none;" ></div>
+                <div class="alert alert-info" style="display: none;" ></div>
+                <button type="submit" id="jobsubmit" class="btn btn-primary">submit</button>
+                <p></p>
+            </div>
+
+        </div>
+        </form>
+
+    </div>
+ <br/>
+ <br/>
+<!--页尾-->
+<div th:replace="front/footer :: footer"></div>
+<!--表单验证-->
+<link rel="stylesheet" href="/static/bootstrap_validator/bootstrapValidator.css"/>
+<script type="text/javascript" src="/static/bootstrap_validator/bootstrapValidator.js"></script>
+<!--  <script type="text/javascript" src="/static/bootstrap_validator/language/zh_CN.js"></script>-->
+
+<!-- 自定义工具类 -->
+<script type="text/javascript" src="/static/mytool.js"></script>
+
+<!--文件上传-->
+
+<link rel="stylesheet" href="/static/bootstrap_uploadfile/css/fileinput.css"/>
+<link rel="stylesheet" href="/static/bootstrap_uploadfile/css/fileinput-rtl.css"/>
+<link rel="stylesheet" href="/static/bootstrap_uploadfile/css/theme.css"/>
+<script type="text/javascript" src="/static/bootstrap_uploadfile/js/fileinput.js"></script>
+<script type="text/javascript" src="/static/bootstrap_uploadfile/js/piexif.js"></script>
+<script type="text/javascript" src="/static/bootstrap_uploadfile/js/purify.js"></script>
+<script type="text/javascript" src="/static/bootstrap_uploadfile/js/sortable.js"></script>
+<script type="text/javascript" src="/static/bootstrap_uploadfile/js/theme.js"></script>
+
+<script type="text/javascript">
+    var flag = false;
+
+
+    var jobsub = new Vue({
+        el: "#job_wanted_formvue",
+        data: {
+            first_name: '',
+            surname: '',
+            phone_number:'',
+            e_mail:'',
+            date_of_birth: '',
+            gender: '',
+            nationality: '',
+            teaching_english: '',
+            online_teaching: '',
+            student_ages: '',
+            currently_employed: '',
+            type_work: '',
+            teaching_job: '',
+            participate_your: '',
+            diploma: '',
+            education_name: '',
+            education_start_time: '',
+            education_end_time: '',
+            diploma_received: '',
+            teaching_certification: '',
+        },
+
+        methods: {
+            /*提交按钮*/
+            jobsubvue: function (event) {
+
+
+            }
+        }
+    })
+
+
+    <!--    当个别控件判断失效时可以试着把他的位置换到上面来-->
+
+    $('#job_wanted_form').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            inlineRadioOptions: {
+                validators: {
+                    notEmpty: {
+                        message: ''/*The gender is required*/
+                    }
+                }
+            },
+            Educational_Qualifications: {
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    file: {
+                        extension: 'pdf',
+                        type: 'application/pdf',
+                        minSize: 1024*100,
+                        maxSize: 10 * 1024 * 1024,
+                        message: 'Please choose a pdf file with a size between 1M and 10M.'
+                    }
+                }
+            },
+            Personal_video: {
+                validators: {
+
+                    file: {
+                        extension: 'mp4',
+                        // type: 'application/jpg',/*[JPG,jpg,png]*/
+                        minSize: 1024 * 1024,
+                        maxSize: 50 * 1024 * 1024,
+                        message: 'Please choose a mp4 file with a size between 1M and 50M.'
+                    }
+                }
+            },
+            photo_passport: {
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    file: {
+                        extension: 'jpg,png,jpeg',
+                        // type: 'application/jpg',/*[JPG,jpg,png]*/
+                        minSize: 1024 * 1024,
+                        maxSize: 10 * 1024 * 1024,
+                        message: 'Please choose a jpg or png or jpeg file with a size between 1M and 10M.'
+                    }
+                }
+            },
+            photo_yourself: {
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    file: {
+                        extension: 'jpg,png,jpeg',
+                        // type: 'application/jpg',/*[JPG,jpg,png]*/
+                        minSize: 1024 * 1024,
+                        maxSize: 10 * 1024 * 1024,
+                        message: 'Please choose a jpg or png or jpeg file with a size between 1M and 10M.'
+                    }
+                }
+            },
+
+            CV: {
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    file: {
+                        extension: 'docx,pdf,doc',
+                       // type: 'pdf/docx/doc',
+                        minSize: 0,
+                        maxSize: 10 * 1024 * 1024,
+                        message: 'Please choose a pdf or docx file with a size between 1M and 10M.'
+                    }
+                }
+            },
+
+
+            EducationName: {
+                message: 'The First Name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'must be more than 3 and less than 30 characters long'
+                    },
+
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+
+            First_Name: {
+                message: 'The First Name is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'must be more than 3 and less than 30 characters long'
+                    },
+                    /*remote: {
+                        url: 'remote.php',
+                        message: 'The username is not available'
+                    },*/
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            e_mail: {
+                message: 'The First e_mail is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            phone_number: {
+                message: 'The phone number is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The phone number is required'
+                    },
+                    digits: {
+                        message: 'The value can contain only digits'
+                    }
+                }
+            },
+            Major_Start: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD'
+                    }
+                }
+            },
+            Major_End: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD'
+                    }
+                }
+            },
+
+
+
+
+
+
+
+
+
+
+
+            Surname: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: ' must be more than 3 and less than 30 characters long'
+                    },
+                    /*remote: {
+                        url: 'remote.php',
+                        message: 'The username is not available'
+                    },*/
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            birth_time: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD'
+                    }
+                }
+            }
+        },
+        Gender: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        Nationality: {
+            message: 'The Nationality is not valid',
+            validators: {
+                notEmpty: {
+                    message: 'required and can\'t be empty'
+                },
+                stringLength: {
+                    min: 3,
+                    max: 30,
+                    message: ' must be more than 3 and less than 30 characters long'
+                },
+                /*remote: {
+                    url: 'remote.php',
+                    message: 'The username is not available'
+                },*/
+                regexp: {
+                    regexp: /^[a-zA-Z0-9_\.]+$/,
+                    message: 'can only consist of alphabetical, number, dot and underscore'
+                }
+            }
+        },
+        teaching_English: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        online_teaching: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        student_ages: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        currently_employed: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        Type_Work: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        time_teaching_job: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        participate_teaching: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+        highest_degree: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        },
+
+
+        Diploma_received: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: 'required and cannot be empty'
+                    }
+                }
+            }
+        },
+        English_Language: {
+            validators: {
+                enabled: true,
+                validators: {
+                    notEmpty: {
+                        message: ' required and cannot be empty'
+                    }
+                }
+            }
+        }
+
+
+    }).on('success.form.bv', function (e) {
+    });
+$("#jobsubmit").click(function(){
+    $('#job_wanted_form').data('bootstrapValidator').validate();//启用验证
+    flag = $('#job_wanted_form').data('bootstrapValidator').isValid();
+    if (flag == true) {
+        $('.alert-warning').html('').hide();
+        $('.alert-success').html('').hide();
+        $('.alert-info').html('Uploading now, please wait a moment...').show();
+        $("#jobsubmit").attr("disabled", "true");
+
+
+
+      /*  if (!jobsub.date_of_birth == null || !jobsub.date_of_birth == "") {
+            jobsub.date_of_birth=new Date(jobsub.date_of_birth);
+        }
+
+        if (!jobsub.education_start_time == null || !jobsub.education_start_time == "") {
+            jobsub.education_start_time=new Date(jobsub.education_start_time);
+        }
+        if (!jobsub.education_end_time == null || !jobsub.education_end_time == "") {
+            jobsub.education_end_time= new Date(jobsub.education_end_time);
+        }
+*/
+        var formData = new FormData();
+        formData.append("first_name", jobsub.first_name);
+        formData.append("surname", jobsub.surname);
+        formData.append("phone_number", jobsub.phone_number);
+        formData.append("e_mail", jobsub.e_mail);
+        if (!jobsub.date_of_birth == null || !jobsub.date_of_birth == "") {
+            formData.append("date_of_birth", new Date(jobsub.date_of_birth));
+        }
+        formData.append("gender", jobsub.gender);
+        formData.append("nationality", jobsub.nationality);
+        formData.append("teaching_english", jobsub.teaching_english);
+        formData.append("online_teaching", jobsub.online_teaching);
+        formData.append("student_ages", jobsub.student_ages);
+        formData.append("currently_employed", jobsub.currently_employed);
+        formData.append("type_work", jobsub.type_work);
+        formData.append("teaching_job", jobsub.teaching_job);
+        formData.append("participate_your", jobsub.participate_your);
+        formData.append("diploma", jobsub.diploma);
+        formData.append("education_name", jobsub.education_name);
+        if (!jobsub.education_start_time == null || !jobsub.education_start_time == "") {
+            formData.append("education_start_time", new Date(jobsub.education_start_time));
+        }
+        if (!jobsub.education_end_time == null || !jobsub.education_end_time == "") {
+            formData.append("education_end_time", new Date(jobsub.education_end_time));
+        }
+        formData.append("diploma_received", jobsub.diploma_received);
+        formData.append("teaching_certification", jobsub.teaching_certification);
+        formData.append("cv_from", $("input[name='CV']")[0].files[0]);
+        formData.append("photo_yourself_from", $("input[name='photo_yourself']")[0].files[0]);
+        formData.append("photo_passport_from", $("input[name='photo_passport']")[0].files[0]);
+        formData.append("Personal_video_from", $("input[name='Personal_video']")[0].files[0]);
+        formData.append("Educational_Qualifications_from", $("input[name='Educational_Qualifications']")[0].files[0]);
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            //  dataType: "json",//预期服务器返回的数据类型
+            url: "/recruiting",//url
+            cache: false,//cache设置为false，上传文件不需要缓存。
+            processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+            contentType: false,//contentType设置为false，不设置contentType值，因为是由<form>表单构造的FormData对象，且已经声明了属性enctype="multipart/form-data"，所以这里设置为false。
+            data:formData,
+          /*  data: {
+                "first_name": jobsub.first_name
+                , "surname": jobsub.surname
+                , "phone_number": jobsub.phone_number
+              , "e_mail": jobsub.e_mail
+                , "date_of_birth":jobsub.date_of_birth
+                , "gender":jobsub.gender
+                , "nationality": jobsub.nationality
+                , "teaching_english": jobsub.teaching_english
+                , "online_teaching": jobsub.online_teaching
+                , "student_ages": jobsub.student_ages
+                , "currently_employed": jobsub.currently_employed
+                , "type_work": jobsub.type_work
+                , "teaching_job": jobsub.teaching_job
+                , "participate_your": jobsub.participate_your
+                , "diploma":  jobsub.diploma
+                , "education_name":  jobsub.education_name
+                , "education_start_time": jobsub.education_start_time
+                , "education_end_time": jobsub.education_end_time
+                , "diploma_received": jobsub.diploma_received
+                , "teaching_certification": jobsub.teaching_certification
+                , "cv_from": $("input[name='CV']")[0].files[0]
+                /!*  , "photo_yourself_from": $("input[name='photo_yourself']")[0].files[0]
+                , "photo_passport_from": $("input[name='photo_passport']")[0].files[0]
+                , "Personal_video_from": $("input[name='Personal_video']")[0].files[0]
+                , "Educational_Qualifications_from": $("input[name='Educational_Qualifications']")[0].files[0]*!/
+            },*/
+            success: function (result) {
+                fanhui =result;
+                if (fanhui == "sucees") {
+                    $('.alert-warning').html('').hide();
+                    $('.alert-info').html('').hide();
+                    $('.alert-success').html('We will get back to you as soon as possible').show();
+
+                    message("We will reply to you by email as soon as possible");
+                }else if(fanhui=="error"){
+                    $('.alert-warning').html('').hide();
+                    $('.alert-info').html('').hide();
+                    message("Server exception. Please try again later");
+                    $("#jobsubmit").removeAttr("disabled");
+                }else{
+                    $('.alert-warning').html('').hide();
+                    $('.alert-info').html('').hide();
+                    message("Server exception. Please try again later");
+                    $("#jobsubmit").removeAttr("disabled");
+                }
+            },
+            error: function () {
+                $('.alert-warning').html('').hide();
+                $('.alert-info').html('').hide();
+                message("Server exception. Please try again later");
+                $("#jobsubmit").removeAttr("disabled");
+                console.log(reason);
+            }
+        })
+/*        axios({
+            method: "post",
+            url: "/recruiting",
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data',  // 文件上传
+            },
+        }).then(function (response) {
+            fanhui = response.data;
+            if (fanhui == "sucees") {
+                $('.alert-warning').html('').hide();
+                $('.alert-info').html('').hide();
+                $('.alert-success').html('We will get back to you as soon as possible').show();
+
+                message("We will reply to you by email as soon as possible");
+            }else if(fanhui=="error"){
+                message("Server exception. Please try again later");
+            }else{
+                message("Server exception. Please try again later");
+            }
+
+        }).catch(function (reason) {
+            message("Server exception. Please try again later");
+            console.log(reason);
+        })*/
+    }
+
+else{
+        $('.alert-info').html('').hide();
+        $('.alert-success').html('').hide();
+        $('.alert-warning').html('below the standard ,Please revise it before submitting').show();
+    }
+
+})
+
+    $("#Educational_Qualifications").fileinput({
+        language: 'en', //设置语言
+        uploadUrl: '',//'/document/uploadfile.do?type='+type, //上传的地址
+        allowedFileExtensions: ['pdf'], //'JPG', 'jpg', 'gif', 'png', 'exe', 'txt', 'rar', 'jar', 'bmp'接收的文件后缀
+        uploadAsync: true, //默认异步上传
+        showUpload: false, //是否显示上传按钮
+        showRemove: true, //显示移除按钮
+        showPreview: true, //是否显示预览
+        showCaption: true, //是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        dropZoneEnabled: false, //是否显示拖拽区域
+        maxImageWidth: 10000,//图片的最大宽度
+        maxImageHeight: 10000,//图片的最大高度
+        maxFileSize: 10 * 1024, //单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 1, //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "Only one can be uploaded",/*"选择上传的文件数量({n}) 超过允许的最大数值{m}！",*/
+        layoutTemplates: {
+            actionUpload: '',//去除上传预览缩略图中的上传图片；
+            actionZoom: ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+        },
+    })
+
+    $("#Personal_video").fileinput({
+        language: 'en', //设置语言
+        uploadUrl: '',//'/document/uploadfile.do?type='+type, //上传的地址
+        allowedFileExtensions: ['MP4'], //'JPG', 'jpg', 'gif', 'png', 'exe', 'txt', 'rar', 'jar', 'bmp'接收的文件后缀
+        uploadAsync: true, //默认异步上传
+        showUpload: false, //是否显示上传按钮
+        showRemove: true, //显示移除按钮
+        showPreview: true, //是否显示预览
+        showCaption: true, //是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        dropZoneEnabled: false, //是否显示拖拽区域
+        maxImageWidth: 10000,//图片的最大宽度
+        maxImageHeight: 10000,//图片的最大高度
+        maxFileSize: 50 * 1024, //单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 1, //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "Only one can be uploaded",/*"选择上传的文件数量({n}) 超过允许的最大数值{m}！",*/
+        layoutTemplates: {
+            actionUpload: '',//去除上传预览缩略图中的上传图片；
+            actionZoom: ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+        },
+    })
+
+    $("#photo_Passport").fileinput({
+        language: 'en', //设置语言
+        uploadUrl: '',//'/document/uploadfile.do?type='+type, //上传的地址
+        allowedFileExtensions: ['JPG', 'jpg','png'], //'JPG', 'jpg', 'gif', 'png', 'exe', 'txt', 'rar', 'jar', 'bmp'接收的文件后缀
+        uploadAsync: true, //默认异步上传
+        showUpload: false, //是否显示上传按钮
+        showRemove: true, //显示移除按钮
+        showPreview: true, //是否显示预览
+        showCaption: true, //是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        dropZoneEnabled: false, //是否显示拖拽区域
+        maxImageWidth: 10000,//图片的最大宽度
+        maxImageHeight: 10000,//图片的最大高度
+        maxFileSize: 1024 * 10, //单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 1, //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "Only one can be uploaded",/*"选择上传的文件数量({n}) 超过允许的最大数值{m}！",*/
+        layoutTemplates: {
+            actionUpload: '',//去除上传预览缩略图中的上传图片；
+            actionZoom: ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+        },
+    })
+
+    $("#CV").fileinput({
+        language: 'en', //设置语言
+        uploadUrl: '',//'/document/uploadfile.do?type='+type, //上传的地址
+        allowedFileExtensions: ['pdf','docx'], //'JPG', 'jpg', 'gif', 'png', 'exe', 'txt', 'rar', 'jar', 'bmp'接收的文件后缀
+        uploadAsync: true, //默认异步上传
+        showUpload: false, //是否显示上传按钮
+        showRemove: true, //显示移除按钮
+        showPreview: true, //是否显示预览
+        showCaption: true, //是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        dropZoneEnabled: false, //是否显示拖拽区域
+        maxImageWidth: 10000,//图片的最大宽度
+        maxImageHeight: 10000,//图片的最大高度
+        maxFileSize: 1024 * 10, //单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 1, //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "Only one can be uploaded",/*"选择上传的文件数量({n}) 超过允许的最大数值{m}！",*/
+        layoutTemplates: {
+            actionUpload: '',//去除上传预览缩略图中的上传图片；
+            actionZoom: ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+        },
+    })
+
+    $(function () {
+        initFileInput("kv-explorer");
+    })
+
+    function initFileInput(ctrlName) {
+        var control = $('#' + ctrlName);
+        var type = $("input[name='typeid']").val();
+        control.fileinput({
+            language: 'en', //设置语言
+            uploadUrl: '',//'/document/uploadfile.do?type='+type, //上传的地址
+            allowedFileExtensions: ['JPG', 'jpg'], //'JPG', 'jpg', 'gif', 'png', 'exe', 'txt', 'rar', 'jar', 'bmp'接收的文件后缀
+            //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
+            uploadAsync: true, //默认异步上传
+            showUpload: false, //是否显示上传按钮
+            showRemove: true, //显示移除按钮
+            showPreview: true, //是否显示预览
+            showCaption: true, //是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false, //是否显示拖拽区域
+            //minImageWidth: 50, //图片的最小宽度
+            //minImageHeight: 50,//图片的最小高度
+            maxImageWidth: 10000,//图片的最大宽度
+            maxImageHeight: 10000,//图片的最大高度
+            maxFileSize: 1024 * 10, //单位为kb，如果为0表示不限制文件大小
+            //minFileCount: 0,
+
+            maxFileCount: 1, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "Only one can be uploaded",/*"选择上传的文件数量({n}) 超过允许的最大数值{m}！",*/
+            layoutTemplates: {
+                // actionDelete:'', //去除上传预览的缩略图中的删除图标
+                actionUpload: '',//去除上传预览缩略图中的上传图片；
+                actionZoom: ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+            },
+        }).on('filepreupload', function (event, data, previewId, index) { //上传中
+            var form = data.form,
+                files = data.files,
+                extra = data.extra,
+                response = data.response,
+                reader = data.reader;
+            //alert("event"+event+"data"+data+"previewid"+previewid+"index"+index);
+            //console.log('文件正在上传');
+        }).on("fileuploaded", function (event, data, previewId, index) { //一个文件上传成功
+            var data = data.response.lstOrderImport;
+            //alert(data);
+            $('#uploadfile').modal('hide');
+            $('#documentadd').modal('hide');
+            //添加成功刷新页面
+            $('#body').load('/document/documenthome.do');
+            //$('#documentshow').load("/document/documentshow.do?page=1&typeid="+type);
+
+
+            //alert("sdfsd "+event+"previewId"+previewId+"data"+data.response.list[0].fname+"index"+index);
+            //alert("event"+event+"data"+data+"previewid"+previewid+"index"+index);
+            //console.log('文件上传成功！' + data.id);
+        }).on('fileerror', function (event, data, msg) { //一个文件上传失败
+            //alert("event"+event+"data"+data+"msg"+msg);
+            //console.log('文件上传失败！' + data.id);
+
+        }).on('filebatchuploaderror', function (event, data, msg) {
+            //alert("event"+event+"data"+data+"msg"+msg);
+            //$(".file-error-message").text("请按照正确的进行操作！谢谢！");
+        })
+
+    }
+/*定义头部的18n*/
+    //点击切换语言
+    $(function () {
+        $("#language_switch").click(function () {
+            if(vm.$i18n.locale=="zh-CN"){
+                Setcookie("i18nlocale","en-US");
+                vm.$i18n.locale="en-US"
+            }else{
+                Setcookie("i18nlocale","zh-CN");
+                vm.$i18n.locale="zh-CN"
+            }
+
+        })
+    })
+    var vm = new Vue({
+        el: "#eeonav",
+        i18n:i18n//此处引入的是footer页面中定义的i18n
+    })
+
+        // 导航
+        $('.right-nav div').hover(function (e) {
+            $('.right-nav ul').hide();
+            $(this).find('ul').show()
+        }, function (e) {
+            $('.right-nav ul').hide();
+        })
+  /*  $('#Major_Start,#Major_End').datetimepicker({
+        format: 'yyyy-mm-dd', //日期格式
+        // language: 'zh-CN', //设置语言中文
+        //startDate:new Date(),//开始日期为当前日期
+        endDate: new Date(), //结束日期
+        weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）
+        todayBtn: 1,
+        autoclose: true, //选择一个日期后是否关闭窗口
+        todayHighlight: 1,
+        startView: 2, //日期时间选择器打开之后首先显示的视图。0:时间,1:时间小时,2:日期,3:月份,4:年分
+        minView: 2, //最小视图到日期结束
+        forceParse: true, //强制解析输入的值转为时间
+        minuteStep: 1, //分钟步进间隔
+        showMeridian: 1
+    })
+*/
+
+    /*  $.ajax({
+                         //几个参数需要注意一下
+                         type: "POST",//方法类型
+                         dataType: "json",//预期服务器返回的数据类型
+                         url: "/recruiting" ,//url
+                         processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+                         data: formData,
+                         success: function (result) {
+                             alert(result);
+                             fanhui = result.data;
+                             alert("返回值"+fanhui);
+                             if (fanhui == "sucees") {
+                                 alert("成功");
+                                 message("We will reply to you by email as soon as possible");
+                             }else if(fanhui=="error"){
+                                 message("Server exception. Please try again later");
+                             }else{
+                                 message("Server exception. Please try again later");
+                             }
+                         },
+                         error : function() {
+                             alert("异常！");
+                         }
+                     });*/
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
+<meta charset="UTF-8">
+<title>精彩活动</title>
+<link rel="icon" href="/static/images/paralleTeachers/logico.ico" type="image/x-icon"/>
+<script src="/static/js/jquery-2.1.1.min.js"></script>
+<!--    错误提示-->
+<link rel="stylesheet" href="/static/js/message/message.css"/>
+<script src="/static/js/message/message.js"></script>
+<script src="/static/js/vue/axios.min.js"></script>
+<script src="/static/js/vue/vue.js"></script>
+<!--    路由-->
+<script src="/static/js/vue/vue-router.js"></script>
+<!--国际化-->
+<script src="/static/js/vue/vue-i18n.js"></script>
+<!--导入国际化语言包-->
+<script src="/static/js/vue/lang/en-US.js"></script>
+<script src="/static/js/vue/lang/zh-CN.js"></script>
+<!--bootstarp-->
+<script src=" /static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+
+<style type="text/css">
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    html, body {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+    }
+
+    .box {
+     /*   position: absolute;
+        left: 0px;*/
+        display: inline-block;
+
+
+        width: 440px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 5%;
+        background-color: #fff;
+        transition: all .25s ease-in;
+    }
+
+    .box:hover {
+        cursor: pointer;
+        transform: translateY(-5px);
+        box-shadow: 5px 5px 20px #888888;
+    }
+
+    .content {
+
+        border-radius: 5px;
+
+    }
+
+    .content img {
+
+        border-radius: 5% 5% 0 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .font_title {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .font_futitle {
+        font-size: 30px;
+
+        text-align: center;
+    }
+
+    .fontp {
+        white-space: normal;
+        word-break: break-all;
+        overflow: hidden;
+        margin: 20px;
+        font-size: 20px;
+        text-indent: 2em;
+        font-weight: 550;
+    }
+
+    /*页面顶部横屏图*/
+    .toptup {
+        width: 100%;
+        height: 40vh;
+        background-image: url('/static/img/jingcai_top.png');
+        background-position-y: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        transform: scale(1.2);
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+
+
+    .toptup.on {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+</style>
+</head>
+
+<body style="background-color: #f5f5f5">
+<header>
+    <!--导航栏-->
+    <div th:replace="front/head :: head"></div>
+</header>
+<div class="toptup "></div>
+</br>
+</br>
+<p style="text-align: center;font-size: 40px;font-weight: 700;"><span class="glyphicon glyphicon-stop"
+                                                                      style="color: orange;font-size: 15px;position: relative;top: -6px;"></span>&nbsp;&nbsp;&nbsp;WONDERFUL&nbsp;ACTIVITES&nbsp;&nbsp;&nbsp;<span
+        class="glyphicon glyphicon-stop" style="color: orange;font-size: 15px;position: relative;top: -6px;"></span></p>
+</br>
+</br>
+<div id="container" style="width: 1440px;margin: 0 auto;text-align: center">
+<!--最开始初始位置指定用-->
+    <div class="box" >
+        <div class="content">
+            <img src="/static/img/2.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生.... 防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生...
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                       style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box" >
+        <div class="content">
+            <img src="/static/img/2.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生.... 防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生...
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+
+
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/2.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生.... 防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生...
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/3.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发 防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生...布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/4.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/5.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前目前已有多个省份发布中小学延期通知,在这个特殊时期目前已有多个省份发布中小学延期通知,在这个特殊时期目前已有多个省份发布中小学延期通知,在这个特殊时期目前已有多个省份发布中小学延期通知,在这个特殊时期已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/6.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵目前已有多个省份发布中小学延期通知,在这个特殊时期目前已有多个省份发布中小学延期通知,在这个特殊时期目前已有多个省份发布中小学延期通知,在这个特殊时期动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/7.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已目前已有多个省份发布中小学延期通知,在这个特殊时期有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/8.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/9.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+    <div class="box">
+        <div class="content">
+            <img src="/static/img/10.jpg">
+        </div>
+        <p class="font_title"><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>
+        <p class="font_futitle"><strong>桥梁计划</strong></p>
+        <div class="fontp">
+            防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....
+        </div>
+        </br>
+        </br>
+        <div class="row font_footer">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4"><img src="/static/img/login.png" width="40px;"
+                                                style="position: relative;top: -6px;"></div>
+            <div class="col-lg-4 col-sm-4"><span class="glyphicon glyphicon-time"></span>2012-03-04</div>
+            <div class="col-lg-3 col-sm-4"><span class="glyphicon glyphicon-eye-open"></span>1568</div>
+            <div class="col-lg-1"></div>
+        </div>
+        </br>
+    </div>
+
+</div>
+<footer id="footerfooter" style="display: none;width: 100%;">
+    <div th:replace="front/footer :: footer"></div>
+</footer>
+</body>
+<script type="application/javascript">
+
+ $(window).resize(function() {
+     var heights = $(window).height();
+     var widths = $(window).width();
+     //window.scrollTo((document.body.scrollWidth-document.body.offsetWidth)/2,0);
+
+     //alert(widths);
+ })
+var dongtaihe=0;
+
+    var footerhe = 0;
+  $(document).ready(function () {
+        $(window).on("load", function () {
+            var bodywidth=$(window).width();//获取窗口宽度
+
+            if(bodywidth<1300){//如果宽度小于1200调整布局
+                $("#container").width(bodywidth);
+                $("#container").css("margin","0 auto");
+                dongtaihe=300;
+            }
+
+
+
+
+            !$('.toptup').hasClass('on') && $('.toptup').addClass('on');
+            imgLocation();
+            var dataImg = {"data": [{"src": "1.jpg"}, {"src": "2.jpg"}, {"src": "3.jpg"}, {"src": "4.jpg"}, {"src": "5.jpg"}]};
+            var count = 50;
+
+            window.onscroll = function () {
+                count = count - 1;
+                if (scrollside() && count > 0) {
+
+
+                    $.each(dataImg.data, function (index, value) {
+                        var box = $("<div>").addClass("box").appendTo($("#container"));
+                        var content = $("<div>").addClass("content").appendTo(box);
+//                    console.log("./img/"+$(value).attr("src"));
+                        $("<img>").attr("src", "/static/img/" + $(value).attr("src")).appendTo(content);
+                        $("<p>").addClass("font_title").appendTo(content);
+                        content.append("<p class='font_title'><strong>BRIDGE&nbsp;&nbsp;PROGRAM</strong></p>");
+                        content.append(" <p class=\"font_futitle\"><strong>桥梁计划</strong></p>");
+                        content.append(" <div class=\"fontp\">\n防控疫情,牵动人心.目前已有多个省份发布中小学延期通知,在这个特殊时期,牵动着所有学生....\n</div>");
+                        content.append(" </br></br>");
+                        content.append(" <div class=\"row font_footer\">\n" +
+                            "                                <div class=\"col-lg-1\"></div>\n" +
+                            "                                <div class=\"col-lg-3\"><img src=\"/static/img/login.png\" width=\"40px;\"\n" +
+                            "                            style=\"position: relative;top: -6px;\"></div>\n" +
+                            "                                <div class=\"col-lg-4\"><span class=\"glyphicon glyphicon-time\"></span>2012-03-04</div>\n" +
+                            "                            <div class=\"col-lg-3\"><span class=\"glyphicon glyphicon-eye-open\"></span>1568</div>\n" +
+                            "                            <div class=\"col-lg-1\"></div>\n" +
+                            "                                </div>\n" +
+                            "                                </br>");
+
+
+                    });
+                    imgLocation();
+
+                } else {
+                    $("#footerfooter").css({position: "absolute"});
+
+                    // $("#footerfooter").css("left",temp);
+                    $("#footerfooter").css("top", footerhe + 1100+dongtaihe);
+                    $("#footerfooter").show();
+
+
+                }
+            };
+        });
+    });
+
+
+    function scrollside() {
+
+        var box = $(".box");
+        var lastboxHeight = box.last().get(0).offsetTop + Math.floor(box.last().height() / 2);
+        console.log("lastboxHeight" + lastboxHeight);
+        var documentHeight = $(document).width();
+        var scrollHeight = $(window).scrollTop();
+        console.log("documentHeight" + documentHeight);
+        console.log("scrollHeight" + scrollHeight);
+        return (lastboxHeight < scrollHeight + documentHeight) ? true : false;
+    }
+var one=true;
+    function imgLocation() {
+
+        var box = $(".box");
+        var boxWidth = box.eq(0).width();
+        var num = Math.floor($("#container").width() / boxWidth);
+        var boxArr = [];
+
+        var conhe = $("#container").offset().top;//获取开始位置
+        /*设置居中自适应*/
+      var contaweid=  $("#container").width();
+      var marginleft=  (contaweid-((boxWidth+20)*num))/2;
+
+
+         box = $(".box");
+        box.each(function (index, value) {
+            var boxHeight = box.eq(index).height() + 20;//元素的高度(+间隔)
+
+
+            if (index < num&&one) {
+                boxArr[index] = boxHeight;//得到第一行元素的高度
+              /*  $(value).css({
+                    "position": "absolute",
+                    "top": conhe,
+                    "left": (box.eq(index).position().left+marginleft)
+                });
+                one=false;
+                imgLocation();*/
+
+            } else {
+                var minboxHeight = Math.min.apply(null, boxArr);//获取最小值
+                var minboxIndex = $.inArray(minboxHeight, boxArr);//得到最小元素的索引值
+
+                footerhe = minboxHeight + conhe
+                $(value).css({
+                    "position": "absolute",
+                    "top": footerhe,
+                    "left": (box.eq(minboxIndex).position().left)
+                });
+                boxArr[minboxIndex] += box.eq(index).height() + 20;
+            }
+        });
+    }
+
+
+
+
+
+/*
+ function imgLocation() {
+
+     var box = $(".box");
+     var boxWidth = box.eq(0).width();
+     var num = Math.floor($("#container").width() / boxWidth);
+     var boxArr = [];
+
+     var conhe = $("#container").offset().top;//获取开始位置
+     /!*设置居中自适应*!/
+     var contaweid=  $("#container").width();
+     var marginleft=  (contaweid-((boxWidth+20)*num))/2;
+
+     var box = $(".box");
+     box.each(function (index, value) {
+//        console.log(index+"--"+value);
+         var boxHeight = box.eq(index).height() + 20;
+         if (index < num) {
+             boxArr[index] = boxHeight;
+
+//            console.log(boxHeight);
+         } else {
+             var minboxHeight = Math.min.apply(null, boxArr);
+//            console.log(minboxHeight);
+             var minboxIndex = $.inArray(minboxHeight, boxArr);
+
+//            console.log(minboxIndex);
+//            console.log(value);
+             footerhe = minboxHeight + conhe
+             $(value).css({
+                 "position": "absolute",
+                 "top": footerhe,
+                 "left": (box.eq(minboxIndex).position().left+marginleft)
+             });
+             boxArr[minboxIndex] += box.eq(index).height() + 20;
+         }
+     });
+ }*/
+
+
+
+
+    //点击切换语言
+    $(function () {
+        $("#language_switch").click(function () {
+            if (vm.$i18n.locale == "zh-CN") {
+                Setcookie("i18nlocale", "en-US");
+                vm.$i18n.locale = "en-US"
+            } else {
+                Setcookie("i18nlocale", "zh-CN");
+                vm.$i18n.locale = "zh-CN"
+            }
+
+        })
+    })
+
+    var head = new Vue({
+        el: "#eeonav",
+        i18n: i18n,
+        //此处引入的是footer页面中定义的i18n
+    })
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,551 @@
+<div th:fragment="partenerfotter">
+
+
+    <style type="text/css">
+
+
+        /********************底部栏样式开始****************/
+
+
+        .foot-bar {
+            background-color: #141414;
+            padding: 20px 15px;
+            text-align: center
+        }
+
+        .foot-bar a,
+        .foot-bar span {
+            color: #FFFFFF;
+            margin: 0 5px;
+        }
+
+        .foot-bar img {
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+
+        .footer {
+            background-color: #2d2d2d;
+            color: #FFFFFF;
+            height: 450px;
+        }
+
+        .foot-main {
+            /*padding: 100px 0;*/
+        }
+
+
+        .foot-nav {
+            position: relative;
+            padding-top: 10px;
+            margin: 30px 0;
+        }
+
+        .foot-nav:before {
+            display: block;
+            content: '　';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fb6b22;
+            width: 40px;
+            height: 4px;
+        }
+
+        .foot-nav li {
+            width: 100px;
+            float: left;
+            padding: 5px 0;
+        }
+
+        .foot-nav li a {
+            color: #909090;
+        }
+
+        .foot-nav li a:hover {
+            color: #FFFFFF;
+        }
+
+        .foot-hd {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #FFFFFF;
+        }
+
+        .foot-hd:after {
+            display: block;
+            content: '　';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: #fb6b22;
+            width: 40px;
+            height: 4px;
+        }
+
+        .foot-contact .tel {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .foot-contact .tel .iconfont {
+            font-size: 22px;
+        }
+
+
+        .foot-hd.text-center:after {
+            left: 50%;
+            margin-left: -20px;
+        }
+
+        .foot-form {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .foot-form .foot-hd {
+            font-size: 20px;
+        }
+
+        .foot-fmx > div {
+            padding: 5px;
+        }
+
+        .foot-fmx input {
+            height: 32px;
+            line-height: 30px;
+            padding: 0 10px;
+            width: 100%;
+             background-color: transparent;
+            outline: none;
+            color: #FFFFFF;
+
+        }
+
+        .foot-fmx .btn-getv {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 35px;
+            background-color: #ff8a00;
+            color: #FFFFFF;
+            cursor: pointer;
+            width: 300px;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 16px;
+        }
+
+
+        .footer {
+          /*background-image: url('/static/images/paralleTeachers/footer.jpg');*/
+            /*padding-top: 50px;
+            //padding-bottom: 100px*/
+            background-color: #5d5d5d;
+        }
+
+        .footer .wrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+
+        .footer .left-box,
+        .footer .right-box {
+            width: 50%
+        }
+
+        .footer .left-box {
+            padding-left: 85px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        .footer h3 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 33px
+        }
+
+        .footer .enter,
+        .footer .about {
+            display: inline-block;
+            text-align: center
+        }
+
+        .footer .enter a,
+        .footer .about a {
+            color: #d3d2d2;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+            -webkit-transition: color 0.25s;
+            transition: color 0.25s;
+            text-align: left
+        }
+
+        .footer .enter a:hover,
+        .footer .about a:hover {
+            color: #fff
+        }
+
+        .footer .enter {
+            border-right: 2px dashed #636363;
+            padding-right: 35px
+        }
+
+        .footer .enter a {
+            margin-bottom: 24px
+        }
+
+        .footer .about {
+            padding-left: 35px
+        }
+
+        .footer .logo {
+            width: 175px;
+            margin-top: 70px
+        }
+
+        .footer .right-box p {
+            font-size: 14px;
+            color: #d3d2d2;
+            line-height: 24px
+        }
+
+        .footer .right-box .fp0 {
+            padding-left: 73px
+        }
+
+        .footer .iconcode {
+            display: inline-block;
+            width: 100%;
+            margin-top: 50px;
+            line-height: 158px
+        }
+
+        .footer .iconcode a {
+            width: 45px;
+            height: 45px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin-right: 18px;
+            display: inline-block
+        }
+
+
+
+        .footer .iconcode .code {
+            width: 124px;
+            text-align: center;
+            float: right;
+            display: none
+        }
+
+        .footer .iconcode .coo {
+            margin-right: 25px;
+            margin-left: 50px;
+            display: none
+        }
+
+        .footer .iconcode .code-name {
+            font-size: 14px;
+            color: #d3d2d2;
+            margin-top: 10px
+        }
+
+        .footer .iconcode img {
+            display: block;
+            max-width: 100%
+        }
+
+        .footer .cpy {
+            width: 100%;
+            text-align: center;
+            color: #cdcdcd;
+            font-size: 16px;
+            line-height: 30px;
+            margin-top: 30px
+        }
+
+        .footer .footer-flex {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+
+        .clearfix > li, .share-link {
+            list-style: none;
+        }
+
+        /*修改提示文字颜色*/
+        input::-webkit-input-placeholder { /* WebKit browsers */
+
+            color: white;
+
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+            color: white;
+
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+
+            color: white;
+
+        }
+
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */
+
+            color: white;
+
+        }
+
+        .footfitie div {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        /**********底部栏样式结束*****************/
+    </style>
+
+    <!--页面底部-->
+    <div class="footer " id="footer"
+         style=" background-repeat: no-repeat;background-size: cover;overflow: hidden;">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="foot-main  " style="padding-left: 20px;padding-right: 20px">
+            <div style="max-width: 1440px;margin: 0 auto;">
+                <div class="row footfitie">
+                    <div class="col-md-12 col-sm-12">还等什么，马上申请吧！</div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <form @submit.prevent="baoming($event)">
+                            <div class="foot-form ">
+                                <div class="row foot-fmx ">
+                                    <div class="row" style="width: 80%; position: absolute; left: 150px;">
+                                        <div class="col-lg-4">
+                                            <input  type="text " v-model="name" value="" id="name " maxlength="30"
+                                                   name="name " placeholder="姓名" style="border-bottom: white 1px solid; ">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text " v-model="gender" value="" id="gender "
+                                                   name="gender " placeholder="性別" style="border-bottom: white 1px solid;">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text " v-model="age" maxlength="2" value=""
+                                                   @blur="blur_phone()" id="age " name="age "
+                                                   placeholder="年龄" style="border-bottom: white 1px solid;">
+                                        </div>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <br/><br/><br/>
+                                    <div class="row" style="width: 50%; position: absolute; left: 320px;">
+                                        <div class="col-lg-6">
+                                            <input  type="text " v-model="phone" value="" id="phone " maxlength="30"
+                                                    name="phone " placeholder="电话" style="border-bottom: white 1px solid; ">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text " v-model="address" value="" id="address "
+                                                   name="address " placeholder="城市" style="border-bottom: white 1px solid;">
+                                        </div>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <br/><br/><br/>
+                                    <div class="col-xs-12 col-button ">
+                                        <!--i18ndata.lijilingqu-->
+                                        <button type="submit" id="btnsubm" style="background-color: white;" class="btn btn-getv baomingsubmit">
+                                            <strong id="tishimsg" style="color: #444666;">立即提交</strong>
+                                        </button>
+                                    </div>
+
+
+
+                                    <br/><br/><br/>
+                                    <br/><br/><br/>
+                                    <div class="col-lg-12 col-button ">
+                                        <!--i18ndata.lijilingqu-->
+                                            <p style="color: white; text-align: center; position: absolute; left: 56px;">或拨打项目经理电话：谢经理 15300127326</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+
+    </div>
+
+
+    <script type="application/javascript">
+
+        var domain = window.location.href.split(':')[0] + '://' + document.domain;
+        /*  alert("当前地址"+domain);*/
+
+
+
+
+        var vm = new Vue({
+            el: "#footer",
+            data: {
+                name: '',
+                gender: '',
+                age: '',
+                phone: '',
+                address: ''
+            },
+            /*限制只能输入数字*/
+            watch: {
+                age: function () {
+                    this.age = this.age.replace(/\D/g, '')
+                },
+                phone: function () {
+                    this.phone = this.phone.replace(/\D/g, '')
+                }
+            },
+            methods: {
+                /*提交按钮*/
+                baoming: function (event) {
+                    // 检查正则
+                    var re_phone = /^1[345789]\d{9}$/;
+
+                    if (this.name == "" || this.name == null) {
+
+
+                        $("#tishimsg").html('立即提交');
+                        //动态加载i18n,语言数据也可以从后台获取
+                        //如果你的18n已经设置过语言包，记得要在这边也要把之前的值补进去，否则会被覆盖
+                        // this.$i18n.mergeLocaleMessage('zh-CN', { 'zh-CN': vuelgzh,   'en-US': vuelgen   });
+
+                        var bba = this;
+                        setTimeout(function () {
+
+                            $("#tishimsg").html('立即提交');
+
+                        }, 2000);
+                    }else if (this.gender == "" || this.gender == null) {
+                        $("#tishimsg").html('请输入性别');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('立即提交');
+
+                        }, 2000);
+
+                    }else if (this.age == "" || this.age == null) {
+                        $("#tishimsg").html('请输入年龄');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('立即提交');
+
+                        }, 2000);
+
+                    } else if (this.phone == "" || this.phone == null) {
+                        $("#tishimsg").html('请输入手机号码');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('立即提交');
+
+                        }, 2000);
+                    }else if (this.address == "" || this.address == null) {
+                        $("#tishimsg").html('请输入城市');
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('立即提交');
+
+                        }, 2000);
+                    }else if (re_phone.test(this.phone)) {
+                        //符合则提交
+                        var bba = this;
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "POST",//方法类型
+                            //  dataType: "json",//预期服务器返回的数据类型
+                            url: "/parallel/cityPartener",//url
+                            //processData:false,//取消默认的序列化,因为formaata已经是序列化的数据
+                            data: {"name": this.name, "gender": this.gender, "age": this.age, "phone": this.phone, "address": this.address},
+                            success: function (result) {
+                                fanhui = result;
+                                if (fanhui == "sucees") {
+                                    message('我们将尽快联系您!');
+                                    $(function () {
+                                        $(".baomingsubmit").html("<strong>您已经报名成功!<strong/>")
+
+                                        $(".baomingsubmit").attr("disabled", "true");
+                                    })
+                                } else if (fanhui == "false") {
+                                    message({
+                                        message: '服务器异常!',
+                                        type: 'error'
+                                    });
+
+
+                                } else {
+                                    message({
+                                        message: '服务器异常!!!',
+                                        type: 'error'
+                                    });
+                                }
+
+                            },
+                            error: function () {
+                                console.log(error);
+                                message({
+                                    message: '服务器异常!!!',
+                                    type: 'error'
+                                });
+                            }
+                        });
+
+
+                    } else {
+                        $("#tishimsg").html('手机号码格式错误');
+                        //$("#btnsubm").css("background-color","red");
+                        var bba = this;
+                        setTimeout(function () {
+                            $("#tishimsg").html('立即入驻');
+
+                        }, 2000);
+
+
+                    }
+                },
+                blur_phone: function () { //除了数字,不让键盘的按键起作用
+
+                }
+                ,
+            },
+            created: function () { //页面加载就执行
+                //页面加载就根据语言环境替换提示信息语言英文或中文
+            }
+
+        })
+
+
+
+    </script>
+</div>
